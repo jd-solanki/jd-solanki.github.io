@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "mgmcdermott.vscode-language-babel",
+        "dbaeumer.vscode-eslint",
+        "xabikos.javascriptsnippets",
+        "yoavbls.pretty-ts-errors",
+        "syler.sass-indented",
+        "mrmlnc.vscode-scss",
+        "antfu.smart-clicks",
+        "meganrogge.template-string-converter",
+        "matijao.vue-nuxt-snippets",
+        "vue.volar"
+    ]
+}
