@@ -9,6 +9,7 @@
         "antfu.smart-clicks",
         "meganrogge.template-string-converter",
         "matijao.vue-nuxt-snippets",
-        "vue.volar"
+        "vue.volar",
+        "github.vscode-github-actions"
     ]
 }
