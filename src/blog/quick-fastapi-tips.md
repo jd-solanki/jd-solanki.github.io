@@ -1,4 +1,8 @@
-# Quick FastAPI Tips
+---
+title: Quick FastAPI Tips
+---
+
+# {{ $frontmatter.title }}
 
 ### 1. Instead of responding using integer status code, use `fastapi.status`
 

@@ -1,7 +1,13 @@
+<script lang="ts" setup>
+import { data as posts } from './blog.data.js'
+
+console.log(posts)
+</script>
+
 # Blog
 
-### [How to improve skills in tech world](/blog/how-to-improve-skills-in-tech-world.md)
-
-### [How to easily create scrollspy using VueUse](/blog/how-to-easily-create-scrollspy-using-vueuse.md)
-
-### [Quick FastAPI Tips](/blog/quick-fastapi-tips.md)
+<ul>
+  <li v-for="post of posts">
+    <a :href="post.url">{{ post.title }}</a>
+  </li>
+</ul>

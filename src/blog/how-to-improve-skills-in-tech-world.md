@@ -1,4 +1,9 @@
-# How To Improve Your Skills In Tech World
+---
+title: How To Improve Your Skills In Tech World
+---
+
+
+# {{ $frontmatter.title }}
 
 When starting out your tech career you might don't know where to start. There are so many things to learn and so many technologies to choose from. It's easy to get lost in all of this.
 

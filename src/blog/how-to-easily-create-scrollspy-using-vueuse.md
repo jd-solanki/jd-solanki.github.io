@@ -1,4 +1,9 @@
-# How To Easily Create ScrollSpy Using Vue Use
+---
+title: How To Easily Create ScrollSpy Using VueUse
+wip: true
+---
+
+# {{ $frontmatter.title }}
 
 Let's understand how powerful and modular [VueUse](https://vueuse.org/) is by creating a ScrollSpy [like bootstrap](https://getbootstrap.com/docs/5.3/components/scrollspy).
 
