@@ -36,6 +36,7 @@ export default defineConfig({
         text: 'Cheatsheet',
         items: [
           { text: 'SQLModel', link: '/cheatsheet/sqlmodel' },
+          { text: 'SQLAlchemy', link: '/cheatsheet/sqlalchemy' },
         ],
       },
     ],
@@ -49,5 +50,10 @@ export default defineConfig({
     // ℹ️ We only enabled this in development so that we can highlight code lines by seeing line number without calculating it in our editor.
     lineNumbers: isDev,
     theme: 'dracula',
+  },
+  vite: {
+    server: {
+      port: 7777,
+    },
   },
 })
