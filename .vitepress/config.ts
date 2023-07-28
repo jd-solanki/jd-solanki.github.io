@@ -12,6 +12,10 @@ export default defineConfig({
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap' }],
   ],
   themeConfig: {
+    logo: {
+      light: 'https://api.iconify.design/line-md:account.svg?color=%233c3c43',
+      dark: 'https://api.iconify.design/line-md:account.svg?color=%23fffff5',
+    },
     nav: [
       { text: 'Blog', link: '/blog/' },
       {
@@ -38,6 +42,7 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/jd-solanki/' },
       { icon: 'twitter', link: 'https://twitter.com/me_jd_solanki' },
+      // { icon: 'mastodon', link: 'https://m.webtoo.ls/@jd-solanki' }
     ],
   },
   markdown: {

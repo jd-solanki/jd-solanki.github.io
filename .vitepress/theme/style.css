@@ -71,3 +71,24 @@ kbd,
 samp {
     font-family: var(--vp-font-family-mono) !important;
 }
+
+
+/* ==========================
+👉 Home styles
+========================== */
+
+.VPHomeHero .main {
+    /* padding-top: 50px; */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.VPHomeFeatures .item {
+    padding: 16px !important;
+}
+
+.VPFeature a {
+    text-decoration: underline;
+}
