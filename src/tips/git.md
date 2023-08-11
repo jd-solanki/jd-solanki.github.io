@@ -10,6 +10,17 @@
 git reset $(git commit-tree HEAD^{tree} -m "Initial commit")
 ```
 
+## 🎋 Branches
+
+### Orphan Branche
+
+There's might be case where you want to start from scratch without any files and commit history. In this case, You can create orphan branch in the repo:
+
+```bash
+git checkout --orphan <newbranch>
+git rm -rf .
+```
+
 ## 🔖 Tags
 
 ### Remove tag
