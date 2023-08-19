@@ -1,15 +1,6 @@
 # Python
 
-### Prepending text to file
-
-```python
-def prepend_text(filename: Union[str, Path], text: str):
-    with fileinput.input(filename, inplace=True) as file:
-        for line in file:
-            if file.isfirstline():
-                print(text)
-            print(line, end="")
-```
+## Functions
 
 ### Execute function immediately in python
 
@@ -23,7 +14,32 @@ def say():
     print(f"hello!")
 ```
 
-## Use `capsys` fixture with types in pytest
+## OS & I/O
+
+### Prepending text to file
+
+```python
+def prepend_text(filename: Union[str, Path], text: str):
+    with fileinput.input(filename, inplace=True) as file:
+        for line in file:
+            if file.isfirstline():
+                print(text)
+            print(line, end="")
+```
+
+### Walk directory recursively
+
+```python
+from pathlib import Path
+
+path = Path("docs")
+for p in path.rglob("*"):
+     print(p.name)
+```
+
+## Testing
+
+### Use `capsys` fixture with types in pytest
 
 ```python
 from pytest import CaptureFixture // [!code hl]
@@ -37,14 +53,4 @@ def test_app(capsys: CaptureFixture[str]): // [!code hl]
     assert result.exit_code == 0
     with capsys.disabled():
         print(f"result.stdout: {result.stdout}")
-```
-
-## Walk directory recursively
-
-```python
-from pathlib import Path
-
-path = Path("docs")
-for p in path.rglob("*"):
-     print(p.name)
 ```
