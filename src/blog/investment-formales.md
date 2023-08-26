@@ -1,6 +1,8 @@
 ---
 title: Investment Formulas
-tags: finance
+tags: finance, notes
+meta:
+    - youtubeVideoLink: https://www.youtube.com/watch?v=674nedqMwR0
 ---
 
 # {{ $frontmatter.title }}
