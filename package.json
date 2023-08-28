@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/content": "^2.7.2",
+    "@nuxt/devtools": "latest",
+    "@unocss/nuxt": "^0.55.3",
+    "nuxt": "^3.7.0",
+    "sass": "^1.66.1"
+  },
+  "dependencies": {
+    "@unocss/reset": "^0.55.3",
+    "add": "^2.0.6",
+    "pnpm": "^8.7.0"
+  }
+}

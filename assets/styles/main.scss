@@ -1,0 +1,12 @@
+:root {
+    --app-bg: #1e1e20;
+}
+
+.dark {
+    --app-bg: #1e1e20;
+}
+
+html, body {
+    font-family: 'Inter';
+    background-color: var(--app-bg)
+}
