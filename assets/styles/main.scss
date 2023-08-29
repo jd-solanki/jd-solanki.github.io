@@ -1,12 +1,32 @@
 :root {
-    --app-bg: #1e1e20;
+    --app-bg: white;
+    --app-body-color: oklch(50% 0 0);
+    --app-heading-color: oklch(30% 0 0);
+    --app-code-bg: #292b30;
+    --app-font-family-sans: 'Inter';
+    --app-font-family-mono: 'JetBrains Mono';
+
+
+    --un-prose-headings: var(--app-heading-color);
+    --un-prose-font-mono: var(--app-font-family-mono)
 }
 
 .dark {
-    --app-bg: #1e1e20;
+    --app-bg: black;
+    --app-body-color: oklch(92% 0 0);
 }
 
 html, body {
-    font-family: 'Inter';
-    background-color: var(--app-bg)
+    font-family: var(--app-font-family-sans);
+    background-color: var(--app-bg);
+    color: var(--app-body-color);
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: var(--app-heading-color);
+}
+
+// Temp
+.prose pre {
+    background-color: var(--app-code-bg);
 }

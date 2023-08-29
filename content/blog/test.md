@@ -2,7 +2,7 @@
 
 its working
 
-```vue
+```vue{2}
 <script lang="ts" setup>
 const a = 1
 </script>
@@ -11,3 +11,6 @@ const a = 1
     <p>Hello</p>
 </template>
 ```
+
+- [ ] Awesome
+- [x] Awesome
