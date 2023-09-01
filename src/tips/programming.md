@@ -19,3 +19,7 @@ else:
 - I/O Bound, Slow I/O, Many connections => Asyncio
 
 _Source: [StackOverflow Question](https://stackoverflow.com/a/52498068)_
+
+### Processes vs Threads
+
+[Watch video](https://www.youtube.com/watch?v=4rLW7zg21gI)
