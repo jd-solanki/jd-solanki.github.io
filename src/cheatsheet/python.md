@@ -21,6 +21,37 @@ emoji_file_path = curr_dir / 'emoji-test.txt'
 emoji_data = emoji_file_path.read_text()
 ```
 
+## List
+
+### Get index while iterating over list
+
+```py
+names = ["Tony", "Steve", "Thor", "Bruce"]
+
+for index, name in enumerate(names):
+    print(f"{index}: {name}")
+```
+
+## Dict
+
+### Various ways to iterate over dict
+
+```py
+names = {"Tony": "Stark", "Steve": "Rogers", "Thor": "Odinson", "Bruce": "Banner"}
+
+# Iterate over keys
+for key in names:
+    print(key)
+
+# Iterate over values
+for value in names.values():
+    print(value)
+
+# Iterate over keys and values
+for key, value in names.items():
+    print(f"{key}: {value}")
+```
+
 ## Set
 
 ### Difference between two sets
