@@ -172,3 +172,39 @@ def divideByZero():
 if __name__ == '__main__': 
  divideByZero() 
 ```
+
+## Libraries
+
+### Alembic
+
+#### Auto import models in `env.py` file for auto generation of migrations
+
+```py
+# File: repo_root/pkg_name/utils/imports.py
+
+import os
+from importlib import import_module
+
+# Adjust the paths according to your project structure
+curr_dir = pathlib.Path(__file__).parent.resolve()
+pkg_dir = curr_dir.parent / "pkg_name"
+root_dir = pkg_dir.parent
+
+
+def import_models_for_alembic():
+    # Consider modules.py & all files in models directory as models
+    models_file_glob = pkg_dir.glob("**/models.py")
+    models_dir_glob = pkg_dir.glob("**/models/*.py")
+
+    # Combine the two generators
+    models_file_glob = [*models_file_glob, *models_dir_glob]
+
+    for file in models_file_glob:
+        # Skip __init__.py
+        if file.name == "__init__.py":
+            continue
+
+        relative_path = file.relative_to(root_dir)
+        module = str(relative_path).replace(os.sep, ".").replace(".py", "")
+        import_module(module)
+```
