@@ -13,3 +13,4 @@
 ### Exceptions
 
 - Write as minimum code as possible in `try` block to avoid catching unrelated exceptions
+- Only catch exceptions that you are expecting. Avoid catching `Exception` or `BaseException`
