@@ -26,6 +26,7 @@ export default defineConfig({
           { text: 'Git', link: '/tips/git' },
           { text: 'Mac', link: '/tips/mac' },
           { text: 'Node', link: '/tips/node' },
+          { text: 'SQLAlchemy', link: '/tips/sqlalchemy' },
         ],
       },
       {
