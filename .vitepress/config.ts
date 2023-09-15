@@ -22,6 +22,7 @@ export default defineConfig({
         text: 'Tips',
         items: [
           { text: 'Programming', link: '/tips/programming' },
+          { text: 'Python', link: '/tips/python' },
           { text: 'Git', link: '/tips/git' },
           { text: 'Mac', link: '/tips/mac' },
           { text: 'Node', link: '/tips/node' },
