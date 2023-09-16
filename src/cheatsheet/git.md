@@ -56,11 +56,14 @@ To stop ignoring changes to the folder/file (undo above), use `--no-skip-worktre
 git update-index --no-skip-worktree /temp
 ```
 
-### Store git credentials
+### Login & Store git credentials
 
 When you setup a new system you might need to enter your git credentials again and again. To avoid this, you can store your git credentials in the system's credential store.
 
 ```bash
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+
 git config --global credential.helper store
 ```
 
