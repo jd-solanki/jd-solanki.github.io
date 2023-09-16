@@ -32,6 +32,12 @@ Instead of creating function type based on callable use `Protocol`. `Protocol` w
 from typing import Callable
 
 EmailSender = Callable[[str, str, str], None]
+```
+
+Use below 👇
+
+```py
+from typing import Protocol
 
 class EmailSender(Protocol):
     def __call__(self, to: str, subject: str, body: str) -> None: ...
