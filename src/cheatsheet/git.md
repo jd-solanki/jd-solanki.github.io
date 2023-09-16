@@ -65,3 +65,9 @@ git config --global credential.helper store
 ```
 
 From next whenever you enter your credentials, it will be stored in the system's credential store.
+
+### Remove git credentials
+
+```bash
+git config --global --unset credential.helper
+```
