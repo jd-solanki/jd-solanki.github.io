@@ -74,6 +74,47 @@ a, *b, c = [1, 2, 3, 4, 5]
 print(b) # [2, 3, 4]
 ```
 
+## Testing
+
+## Patching env variables
+
+Source code:
+
+```py
+def greet():
+    username = os.environ['USER']
+    return f"Hello, {username}"
+```
+
+#### 1. Using `unittest`'s `mock` <Badge type="tip" text="Recommended" />
+
+:::info
+You can use this method even in pytest tests.
+:::
+
+```py
+from unittest import mock
+
+def test_greet(capsys):
+    with mock.patch.dict(os.environ, {"USER": "Tony"}):
+        greet()
+
+    out, = capsys.readouterr()
+    assert out == "Hello, Tony"
+```
+
+#### 2. Using `pytest`'s `monkeypatch`
+
+```py
+def test_greet(capsys, monkeypatch):
+    monkeypatch.setenv("USER", "Tony")
+
+    greet()
+
+    out, = capsys.readouterr()
+    assert out == "Hello, Tony"
+```
+
 ## Networking
 
 ### Validate IP Address
