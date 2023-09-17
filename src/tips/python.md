@@ -2,6 +2,8 @@
 
 ## Performance
 
+### Caching with `@lru_cache` decorator
+
 - Use [`func_tools.lru_cache`](https://docs.python.org/3/library/functools.html#functools.lru_cache) to cache the result of a expensive function call.
 
 ```py
@@ -20,6 +22,10 @@ You can also pass `maxsize` param. It specifies the maximum number of calls that
 
 :::warning
 Beware of using `@lru_cache` on class methods as it can cause memory leaks. Refer to [this](https://www.youtube.com/watch?v=sVjtp6tGo0g) video for more details.
+:::
+
+:::tip Get uncached version of function
+You can use `slow_func.__wrapped__()` to get uncached version of function. This is useful when writing test cases where you don't want to test cached output.
 :::
 
 ## Typing
