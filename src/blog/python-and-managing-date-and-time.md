@@ -131,10 +131,79 @@ dt = datetime.datetime(2023, 9, 20, 9, 30, 45, 100000, tzinfo=pytz.UTC)
 print(dt) # 2023-09-20 09:30:45.100000+00:00
 
 # Current UTC time that is timezone aware
-# WIP....
+dt_now = datetime.datetime.now(tz=pytz.UTC) # ℹ️ Recommended
+print(dt_now) # 2023-09-20 08:49:21.452949+00:00
+
+dt_uctnow = datetime.datetime.utcnow().replace(tzinfo=pytz.UTC)
+print(dt_uctnow) # 2023-09-20 08:49:21.453095+00:00
+
+
+'''
+`dt_now` & `dt-utcnow` is identical because both are timezone aware.
+`dt_now` is recommended though.
+'''
+
+dt_india = dt_now.astimezone(pytz.timezone('Asia/Kolkata'))
+print(dt_india) # 2023-09-20 14:22:36.130913+05:30
+
 ```
 
+:::details Get list of available timezones
+
+```py
+for tz in pytz.all_timezones:
+    print(tz)
+```
+
+:::
+
 <br>
+
+#### How to make naive datetime, timezone aware
+
+Refer to [this](/snippets/python.html#how-to-make-naive-datetime-timezone-aware) snippet.
+
+<br>
+
+:::tip
+Use iso format to pass datetime around or for saving. Refer to [this](/tips/python.html#date-time-timezones) tip.
+:::
+
+<br>
+
+## Printing datetime & Converting back
+
+- `strftime` => datetime to string
+- `strptime` => string to datetime
+
+### Printing or converting datetime to string
+
+You can use `strftime` method to print datetime in any format you want. Check out all [format codes](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes) with example in official python docs.
+
+```py
+import datetime
+
+import pytz
+
+# local time without timezone info
+dt_india = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata'))
+print(dt_india.isoformat())
+
+print(dt_india.strftime('%B %d, %Y')) # September 20, 2023
+```
+
+### Convert string datetime to datetime object
+
+```py
+import datetime
+
+dt_str = 'September 20, 2023'
+
+# Use `strptime` to convert string datetime to datetime object
+# Second argument is what format that string is in
+dt = datetime.datetime.strptime(dt_str, '%B %d, %Y')
+print(dt) # 2023-09-20 00:00:00
+```
 
 ---
 

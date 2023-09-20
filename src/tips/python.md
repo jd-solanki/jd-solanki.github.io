@@ -93,3 +93,16 @@ class EmailSender(Protocol):
 
 - [ArjanCodes](https://www.youtube.com/@ArjanCodes) YouTube channel
 - [anthonywritescode](https://www.youtube.com/@anthonywritescode) YouTube channel
+
+## Date, Time & Timezones
+
+- To pass date, time, etc around your application or save them, use iso format.
+
+```py
+import datetime
+import pytz
+
+# local time without timezone info
+dt_india = datetime.datetime.now(tz=pytz.timezone('Asia/Kolkata'))
+print(dt_india.isoformat()) # 2023-09-20T14:43:49.865596+05:30
+```

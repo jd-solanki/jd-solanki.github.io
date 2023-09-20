@@ -27,6 +27,29 @@ def prepend_text(filename: Union[str, Path], text: str):
             print(line, end="")
 ```
 
+## Date, Time & Timezones
+
+### How to make naive datetime, timezone aware
+
+```py
+import datetime
+import pytz
+
+# local time without timezone info
+dt_india = datetime.datetime.now()
+
+# If you try to convert this naive datetime in different timezone using `astimezone` it will give error
+
+# 1. Create timezone
+tz_india = pytz.timezone('Asia/Kolkata')
+
+# 2. Make naive datetime timezone aware using `localize`
+dt_india = tz_india.localize(dt_india)
+print(dt_india) # 2023-09-20 14:31:03.941181+05:30
+
+# as `dt_india` is now timezone aware, you can convert it to any other timezone using `astimezone`
+```
+
 ### Walk directory recursively
 
 ```python
