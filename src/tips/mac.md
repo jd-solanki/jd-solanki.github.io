@@ -13,3 +13,7 @@ echo .DS_Store >> ~/.gitignore
 # Set global gitignore file
 git config --global core.excludesfile ~/.gitignore
 ```
+
+### How to capture/copy text from screen
+
+Check out [this](https://www.youtube.com/watch?v=BZVlifUpr_c) video
