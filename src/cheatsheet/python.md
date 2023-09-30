@@ -63,6 +63,40 @@ other_names = {"Brain", "Yakko", "Wacko", "Rita"}
 print(names - other_names) # {'Pinky', 'Dot', 'Mike'}
 ```
 
+## Enum
+
+#### String Enum
+
+```py
+from enum import StrEnum # since python3.11
+
+class Fruits(StrEnum):
+    APPLE = 'Apple'
+    BANANA = 'Banana'
+```
+
+#### Numbered/Integer Enum
+
+```py
+from enum import IntEnum
+
+class Fruits(IntEnum):
+    VALID = 1
+    INVALID = 0
+```
+
+#### Base Enum
+
+```py
+from enum import Enum
+
+class Fruits(Enum):
+    APPLE = 'Apple'
+    BANANA = 'Banana'
+    VALID = 1
+    INVALID = 0
+```
+
 ## Packing & Unpacking
 
 ### Packing Variable
