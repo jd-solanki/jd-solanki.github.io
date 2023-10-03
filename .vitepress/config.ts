@@ -42,6 +42,7 @@ export default defineConfig({
           { text: 'SQLModel', link: '/cheatsheet/sqlmodel' },
           { text: 'SQLAlchemy', link: '/cheatsheet/sqlalchemy' },
           { text: 'TypeScript', link: '/cheatsheet/typescript' },
+          { text: 'Linux', link: '/cheatsheet/linux' },
         ],
       },
     ],
