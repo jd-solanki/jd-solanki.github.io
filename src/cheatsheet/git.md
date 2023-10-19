@@ -74,3 +74,11 @@ From next whenever you enter your credentials, it will be stored in the system's
 ```bash
 git config --global --unset credential.helper
 ```
+
+### Rename git tracked files
+
+Never rename files using `mv` command or manually. Instead use `git mv` command to let git know about the rename.
+
+```bash
+git mv Readme.md README.md
+```
