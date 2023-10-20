@@ -46,7 +46,8 @@ Completely following DRY principal:
 
 ```bash
 pwd # ~/foo
-ZIP_NAME=foo.zip zip -r $ZIP_NAME foo // [!code hl]
+ZIP_NAME=foo.zip
+zip -r $ZIP_NAME foo // [!code hl]
 pushd ~/bar
 unzip $PREV_DIR/$ZIP_NAME // [!code hl]
 ```
