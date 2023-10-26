@@ -23,7 +23,7 @@ pm2 status
 pm2 stop     <app_name|namespace|id|'all'|json_conf>
 pm2 restart  <app_name|namespace|id|'all'|json_conf>
 pm2 reload  <app_name|namespace|id|'all'|json_conf>
-pm2 delete   <app_name|namespace|id|'all'|json_conf> # Stop and delete app
+pm2 delete   <app_name|namespace|id|'all'|json_conf>
 pm2 describe <id|app_name>
 
 # Get application logs
