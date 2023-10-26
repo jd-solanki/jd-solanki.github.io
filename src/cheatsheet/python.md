@@ -1,5 +1,7 @@
 # Python
 
+> _There's also nice cheatsheet available [here](https://www.pythoncheatsheet.org/)_.
+
 ## [`Pathlib`](https://docs.python.org/3/library/pathlib.html)
 
 ### Get current file direction
