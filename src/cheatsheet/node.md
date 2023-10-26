@@ -33,7 +33,7 @@ pm2 logs <app_name|namespace|id|'all'|json_conf>
 pm2 restart all # Restart all apps
 
 # Run apps from configuration
-pm2 start pm2-apps.json
+pm2 start ecosystem.config.js
 
 # Save current process list to reload on reboot
 pm2 save
