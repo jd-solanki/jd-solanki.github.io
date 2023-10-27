@@ -1,5 +1,16 @@
 # Linux
 
+## Commands
+
+#### Utility
+
+```bash
+mktemp # create a temporary directory
+
+MYTEMPDIR=$(mktemp) # create a temporary directory and store the path in a variable
+echo $MYTEMPDIR # print the path to the temporary directory
+```
+
 ## Security
 
 #### ufw - Uncomplicated Firewall
