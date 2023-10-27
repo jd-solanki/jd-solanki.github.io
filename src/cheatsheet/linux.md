@@ -9,6 +9,10 @@ mktemp # create a temporary directory
 
 MYTEMPDIR=$(mktemp) # create a temporary directory and store the path in a variable
 echo $MYTEMPDIR # print the path to the temporary directory
+
+# ---
+
+echo $RANDOM # print a random number
 ```
 
 ## Security
