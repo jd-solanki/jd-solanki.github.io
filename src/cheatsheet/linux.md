@@ -40,9 +40,11 @@ sudo ufw deny 3000
 sudo ufw delete allow 3000
 ```
 
-### Hosting
+## Hosting
 
-#### Nginx
+### Nginx
+
+#### Common Commands
 
 ```bash
 # Start Nginx
@@ -69,3 +71,7 @@ sudo tail -f /var/log/nginx/error.log
 # View Nginx Access Logs
 sudo tail -f /var/log/nginx/access.log
 ```
+
+#### Useful links
+
+- [`root` vs `alias`](https://stackoverflow.com/a/10647080)
