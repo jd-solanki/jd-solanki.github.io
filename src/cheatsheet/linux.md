@@ -75,3 +75,4 @@ sudo tail -f /var/log/nginx/access.log
 #### Useful links
 
 - [`root` vs `alias`](https://stackoverflow.com/a/10647080)
+- [location block priority](https://stackoverflow.com/a/5238430)
