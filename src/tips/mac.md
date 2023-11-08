@@ -23,7 +23,7 @@ Check out [this](https://www.youtube.com/watch?v=BZVlifUpr_c) video
 Mac bundles some unwanted files while zipping a folder. To avoid this, use below command to zip a folder.
 
 ```bash
-zip -r data.zip . -x ".*" -x "__MACOSX"
+zip -r data.zip . -x ".DS_Store" -x "__MACOSX"
 ```
 
 Remove `__MACOSX` and `.DS_Store` from existing zip file
