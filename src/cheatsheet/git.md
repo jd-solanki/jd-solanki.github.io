@@ -21,6 +21,14 @@ git checkout --orphan <newbranch>
 git rm -rf .
 ```
 
+### Move uncommited changes to new branch
+
+Sometimes we accidentally make changes in the `main` branch and we want to move those changes to a new branch. In this case, we can create a new branch and move the changes to the new branch.
+
+```bash
+git checkout -b <new-branch>
+```
+
 ## 🔖 Tags
 
 ### Remove tag
