@@ -48,6 +48,20 @@ git tag -a v1.0.0 -m "v1.0.0"
 git push origin v1.0.0
 ```
 
+### Change tag commit
+
+:::details Why?
+Checkout this [stackoverflow question](https://stackoverflow.com/q/25849019).
+:::
+
+```bash
+# Reassign the same tag to different commit
+git tag --force v1.0 <commit-sha>
+
+# Force push the tag
+git push --force --tags
+```
+
 ## 🧮 Misc
 
 ### Temporarily ignore folder/file in git

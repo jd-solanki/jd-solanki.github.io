@@ -24,20 +24,13 @@ In last line, You need previous directory name.
 
 ## Solution
 
-Add below two alias to your alias file (`~/.zsh_aliases` or `~/.bash_aliases`):
-
-```text
-alias pushd='PREV_DIR=$(pwd) && pushd'
-alias popd='PREV_DIR=$(pwd) && popd'
-```
-
-After this you can get previous directory name using `$PREV_DIR` variable.
+You can leverage `$OLDPWD` variable to get previously navigated directory.
 
 ```bash
 pwd # ~/foo
 zip -r foo.zip foo
 pushd ~/bar
-unzip $PREV_DIR/foo.zip // [!code hl]
+unzip $OLDPWD/foo.zip // [!code hl]
 ```
 
 ## Bonus
@@ -49,7 +42,7 @@ pwd # ~/foo
 ZIP_NAME=foo.zip
 zip -r $ZIP_NAME foo // [!code hl]
 pushd ~/bar
-unzip $PREV_DIR/$ZIP_NAME // [!code hl]
+unzip $OLDPWD/$ZIP_NAME // [!code hl]
 ```
 
 We added `ZIP_NAME` variable to avoid repeating `foo.zip` in both commands.

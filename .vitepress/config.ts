@@ -39,6 +39,7 @@ export default defineConfig({
         items: [
           { text: 'Git', link: '/cheatsheet/git' },
           { text: 'Python', link: '/cheatsheet/python' },
+          { text: 'Node', link: '/cheatsheet/node' },
           { text: 'SQLModel', link: '/cheatsheet/sqlmodel' },
           { text: 'SQLAlchemy', link: '/cheatsheet/sqlalchemy' },
           { text: 'TypeScript', link: '/cheatsheet/typescript' },
