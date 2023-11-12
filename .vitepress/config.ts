@@ -45,6 +45,7 @@ export default defineConfig({
           { text: 'TypeScript', link: '/cheatsheet/typescript' },
           { text: 'Django', link: '/cheatsheet/django' },
           { text: 'Linux', link: '/cheatsheet/linux' },
+          { text: 'Regex', link: '/cheatsheet/regex' },
         ],
       },
     ],
