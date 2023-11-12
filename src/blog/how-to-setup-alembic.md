@@ -96,9 +96,9 @@ def get_url(): // [!code ++]
     driver_name = os.getenv("DB_DRIVER_NAME") // [!code ++]
     user = os.getenv("DB_USER") // [!code ++]
     password = os.getenv("DB_PASSWORD") // [!code ++]
-    server = os.getenv("DB_SERVER") // [!code ++]
+    host = os.getenv("DB_HOST") // [!code ++]
     db = os.getenv("DB_NAME") // [!code ++]
-    return f"{driver_name}://{user}:{password}@{server}/{db}" // [!code ++]
+    return f"{driver_name}://{user}:{password}@{host}/{db}" // [!code ++]
 
 def run_migrations_offline() -> None:
     url = config.get_main_option("sqlalchemy.url") // [!code --]
