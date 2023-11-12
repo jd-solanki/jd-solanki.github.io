@@ -71,7 +71,7 @@ curr_dir = pathlib.Path(__file__).parent.resolve() // [!code ++]
 load_dotenv(dotenv_path=curr_dir.parent / ".env") # Assuming .env file is placed besides alembic // [!code ++]
 ```
 
-After this hopefully your env variables should be loaded correctly. Update the `alembic/env.py` file to load the env variables the same way.
+After this hopefully your env variables should be loaded correctly. Once you have verified this, feel free to remove the `alembic/test.py` file.
 
 Next, let's update the `alembic/env.py` file by loading the environment variables.
 
@@ -93,11 +93,11 @@ After that create a `get_db_url` function and use it in `run_migrations_offline`
 from sqlalchemy import create_engine // [!code ++]
 
 def get_url(): // [!code ++]
-    driver_name = os.getenv("DB_DRIVER_NAME", "postgresql") // [!code ++]
-    user = os.getenv("DB_USER", "postgres") // [!code ++]
-    password = os.getenv("DB_PASSWORD", "") // [!code ++]
-    server = os.getenv("DB_SERVER", "db") // [!code ++]
-    db = os.getenv("DB_NAME", "app") // [!code ++]
+    driver_name = os.getenv("DB_DRIVER_NAME") // [!code ++]
+    user = os.getenv("DB_USER") // [!code ++]
+    password = os.getenv("DB_PASSWORD") // [!code ++]
+    server = os.getenv("DB_SERVER") // [!code ++]
+    db = os.getenv("DB_NAME") // [!code ++]
     return f"{driver_name}://{user}:{password}@{server}/{db}" // [!code ++]
 
 def run_migrations_offline() -> None:
