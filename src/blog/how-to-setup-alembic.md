@@ -180,7 +180,7 @@ class User(Base):
 Now, let's generate the migration.
 
 ```bash
-alembic revision --autogenerate -m "create user table"
+alembic revision --autogenerate -m "create_user_table"
 ```
 
 Hurray! We have successfully generated the migration. Now, let's apply it to the database.
