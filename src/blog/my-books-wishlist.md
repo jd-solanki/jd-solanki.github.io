@@ -27,3 +27,4 @@ title: My books wishlist
 - [ ] The Subtle Art Not Giving A F Ck
 - [ ] Tools Of Titans
 - [ ] The Power of Now
+- [ ] SAME AS EVER: Timeless Lessons on Risk, Opportunity and Living a Good Life (From the author of The Psychology Of Money)
