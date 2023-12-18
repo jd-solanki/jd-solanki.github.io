@@ -1,21 +1,271 @@
+/* Tokens */
 :root {
+    --a-base-c: var(--a-primary-hue), 10%, 20%;
+
+    --a-primary: 265, 97.7%, 66.3%;
+    --a-success: 94.5, 100%, 39.6%;
+    --a-info: 200.1, 100%, 54.3%;
+    --a-warning: 42.4, 100%, 50%;
+    --a-danger: 358.3, 100%, 64.9%;
+    --a-body-color: hsla(var(--a-base-c), 0.68);
+    --a-body-bg-c: 0, 4.8%, 95.9%;
+    --a-surface-c: 0, 0%, 100%;
+    --a-primary-hue: 265;
+
+    --a-border-opacity: 0.12;
+    --a-text-emphasis-light-opacity: 0.38;
+    --a-text-emphasis-medium-opacity: 0.68;
+    --a-text-emphasis-high-opacity: 0.87;
+}
+
+.dark {
+    --a-primary: 261, 73%, 66.3%;
+    --a-success: 94.5, 73%, 39.6%;
+    --a-info: 200.1, 73%, 54.3%;
+    --a-warning: 42.4, 73%, 50%;
+    --a-danger: 358.3, 73%, 64.9%;
+    --a-body-color: hsla(var(--a-base-c), 0.68);
+    --a-body-bg-c: var(--a-primary-hue), 15%, 5%;
+    --a-surface-c: var(--a-primary-hue), 7%, 10%;
+    --a-primary-hue: 261;
+}
+
+:root.dark {
+    --a-base-c: var(--a-primary-hue), 0%, 94%;
+
+    --a-primary-hue: 261;
+    --vp-c-brand-lighter: hsl(var(--a-primary-hue), 73%, 75%);
+    --vp-c-brand-light: hsl(var(--a-primary-hue), 73%, 70%);
+    --vp-c-brand: hsl(var(--a-primary-hue), 73%, 66%);
+    --vp-c-brand-dark: hsl(var(--a-primary-hue), 73%, 60%);
+    --vp-c-brand-darker: hsl(var(--a-primary-hue), 73%, 55%);
+    --vp-code-scrollbar-thumb-bg: hsl(0, 0%, 25%);
+
+    --vp-c-bg-alt: var(--vp-background);
+    --vp-code-line-highlight-color: hsl(0, 0%, 12%);
+}
+
+/* Styles */
+:root {
+
+    /* Background colors */
+    --vp-background: hsl(var(--a-body-bg-c));
+    --vp-c-bg: var(--vp-background);
+    --vp-c-bg-alt: var(--vp-background);
+    --vp-sidebar-bg-color: var(--vp-background);
+
+    /* Text color */
+    --vp-c-text-1: hsla(var(--a-base-c), var(--a-text-emphasis-medium-opacity));
+
     /* Font family */
     --vp-font-family-base: 'Inter', sans-serif;
+    --vp-font-family-heading: 'Rubik', sans-serif;
     --vp-font-family-mono: 'JetBrains Mono', monospace;
 
-    /* Code */
+    /* Branding */
+    --vp-c-brand-lighter: hsl(var(--a-primary-hue), 97%, 75%);
+    --vp-c-brand-light: hsl(var(--a-primary-hue), 97%, 70%);
+    --vp-c-brand: hsl(var(--a-primary-hue), 97%, 66%);
+    --vp-c-brand-dark: hsl(var(--a-primary-hue), 97%, 60%);
+    --vp-c-brand-darker: hsl(var(--a-primary-hue), 97%, 55%);
+
+
     --vp-code-scrollbar-thumb-bg: hsl(0, 0%, 40%);
     --vp-code-line-height: 1.9;
 }
 
 :root.dark {
-    /* Code */
+    /* Branding */
+    --a-primary-hue: 261;
+    --vp-c-brand-lighter: hsl(var(--a-primary-hue), 73%, 75%);
+    --vp-c-brand-light: hsl(var(--a-primary-hue), 73%, 70%);
+    --vp-c-brand: hsl(var(--a-primary-hue), 73%, 66%);
+    --vp-c-brand-dark: hsl(var(--a-primary-hue), 73%, 60%);
+    --vp-c-brand-darker: hsl(var(--a-primary-hue), 73%, 55%);
+
     --vp-code-scrollbar-thumb-bg: hsl(0, 0%, 25%);
+}
+
+/* ==========================
+👉 Algolia search
+========================== */
+
+.VPNavBarSearch.search {
+    flex-grow: unset;
+    margin-inline-end: 2rem;
+}
+
+@media (min-width: 768px) {
+    .VPNavBarSearch .DocSearch.DocSearch-Button {
+        background-color: hsla(var(--a-base-c), 0.045) !important;
+    }
+}
+
+/* ==========================
+👉 Navbar
+========================== */
+
+/* Add border bottom instead of shadow */
+.VPNav {
+    border-bottom: thin solid hsla(var(--a-base-c), var(--a-border-opacity));
+    font-family: var(--vp-font-family-heading);
+}
+
+.VPNav .title {
+    font-weight: 500;
+    color: hsla(var(--a-base-c), var(--a-text-emphasis-high-opacity, 0.87));
+}
+
+.VPNav .title img {
+    transform: translateY(-1px);
+}
+
+.VPMenuLink .link,
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .text {
+    font-weight: 400 !important;
+}
+
+/* Remove shadow effect on scroll */
+.VPNavBar .curtain {
+    display: none;
+}
+
+/* There's height - 1 in VitePress site for maybe shadow, Use actual height */
+.VPNavBar .content-body {
+    height: var(--vp-nav-height);
+}
+
+/* Remove border bottom from title in navbar */
+.VPNavBarTitle.has-sidebar .title {
+    border-bottom: none;
+}
+
+/* Remove double border in mobile */
+.VPNavBar.has-sidebar {
+    border-bottom: none;
+}
+
+/* ==========================
+👉 Sidebar
+========================== */
+
+/* Custom scrollbar */
+.VPSidebar::-webkit-scrollbar {
+    background: rgb(var(--a-layer-c));
+    block-size: 8px;
+    border-end-end-radius: 14px;
+    border-start-end-radius: 14px;
+    inline-size: 8px;
+}
+
+/* Track */
+.VPSidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+.VPSidebar::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 90%);
+    border-radius: 0.5rem;
+}
+
+.VPSidebar::-webkit-scrollbar-corner {
+    display: none;
+}
+
+/* Add border on right */
+.VPSidebar {
+    border-right: thin solid hsla(var(--a-base-c), var(--a-border-opacity));
+}
+
+/* Make sidebar starts from bottom of navbar */
+@media (min-width: 960px) {
+    .VPSidebar {
+        padding-top: 0 !important;
+        margin-top: var(--vp-nav-height);
+    }
+}
+
+/* Shift links due to emoji */
+.VPSidebar .VPSidebarItem.is-link {
+    transform: translateX(28px);
+}
+
+/* Hide scrollbar when not hovering */
+.VPSidebar:not(:hover)::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.VPSidebar:not(:hover) {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* ==========================
+👉 On This Page
+========================== */
+
+.VPDocAsideOutline {
+    font-family: var(--vp-font-family-heading);
+}
+
+.VPDocAsideOutline .outline-title {
+    font-weight: 500;
+}
+
+.VPDocAsideOutline .outline-link {
+    font-weight: 400;
+    color: hsla(var(--a-base-c), var(--a-text-emphasis-medium-opacity));
+}
+
+
+/* ==========================
+👉 Dark
+========================== */
+
+:root.dark {
+    --vp-c-bg-alt: var(--vp-background);
+    --vp-code-line-highlight-color: hsl(0, 0%, 12%);
+}
+
+.dark .VPSidebar::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 10%);
+    border-radius: 0.5rem;
+}
+
+/* code blocks */
+.vp-doc div[class*='language-']:not(:where(.vp-raw *)) {
+    border: 1px solid transparent;
+}
+
+.dark .vp-doc div[class*='language-']:not(:where(.vp-raw *)) {
+    border: 1px solid hsla(var(--a-base-c), var(--a-border-opacity));
+    opacity: 0.85;
+    font-weight: 500;
 }
 
 /* ==========================
 👉 Typography
 ========================== */
+
+body {
+    color: var(--a-body-color);
+    background-color: hsl(var(--a-body-bg-c));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--vp-font-family-heading);
+    color: hsla(var(--a-base-c), var(--a-text-emphasis-high-opacity, 0.87));
+}
 
 /* Remove border above headings */
 .vp-doc h2 {
@@ -39,6 +289,12 @@ div[class^='language-']+h3 {
 /* ==========================
 👉 Code snippet styles
 ========================== */
+
+.vp-doc div[class*='language-']:not(:where(.vp-raw *)) {
+    border-radius: 8px !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
 
 /* Custom scrollbar */
 .vp-doc [class*='language-'] pre:not(:where(.vp-raw *))::-webkit-scrollbar {
@@ -77,9 +333,9 @@ samp {
 👉 Home styles
 ========================== */
 
-.VPHomeHero .main {
-    /* padding-top: 50px; */
-    text-align: center;
+/* .VPHomeHero .main { */
+/* padding-top: 50px; */
+/* text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,4 +347,8 @@ samp {
 
 .VPFeature a {
     text-decoration: underline;
+} */
+
+.VPHome {
+    padding-bottom: 0 !important;
 }
