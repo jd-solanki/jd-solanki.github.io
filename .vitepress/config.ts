@@ -48,6 +48,7 @@ export default defineConfig({
           { text: 'Django', link: '/cheatsheet/django' },
           { text: 'Linux', link: '/cheatsheet/linux' },
           { text: 'Regex', link: '/cheatsheet/regex' },
+          { text: 'Prompts', link: '/cheatsheet/prompts' },
         ],
       },
     ],

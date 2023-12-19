@@ -1,8 +1,14 @@
 {
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "vite.port": 7777,
+    "vite.vitepressAutoRouting": true,
+    "vite.vitepressBase": "src",
     "cSpell.words": [
         "CAGR",
         "curr",
         "isoweekday",
+        "Nuxt",
         "Solanki",
         "timedelta"
     ]

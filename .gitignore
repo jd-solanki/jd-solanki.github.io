@@ -132,3 +132,4 @@ dist
 # ========================= Additional ========================= #
 
 .vitepress/cache
+src/.vitepress/cache
