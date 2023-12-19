@@ -46,7 +46,7 @@ As always credit goes to the legend [@antfu](https://github.com/antfu). 🫡
       // Set auto save delay to 500ms (Adjust as per your needs)
       "files.autoSaveDelay": 500,
 
-      // Set port for Browse Lite
+      // Set port for Browse Lite (It can be different for you because I changed the default port for Vite server)
       "vite.port": 7777,
 
       // Like Nuxt Studio, Page of currently open file will be opened in Browse Lite
@@ -57,7 +57,7 @@ As always credit goes to the legend [@antfu](https://github.com/antfu). 🫡
     }
     ```
 
-### Result 🎉
+## Result 🎉
 
 <video controls style="border-radius: 6px; margin: 1.5rem auto;">
   <source src="/nuxt-studio-like-env-for-vitepress.mov" type="video/mp4">
