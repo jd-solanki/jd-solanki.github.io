@@ -67,5 +67,7 @@ export default defineConfig({
     server: {
       port: 7777,
     },
+    publicDir: '../public/',
+    assetsInclude: ['**/*.mov'],
   },
 })
