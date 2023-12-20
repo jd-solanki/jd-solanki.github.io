@@ -823,3 +823,43 @@ Here's a basic overview of how decorators work:
    In this example, `parametrized_decorator` is a decorator factory that returns a decorator based on the provided parameter.
 
 Decorators are widely used in Python for various purposes, including code organization, code reuse, and aspect-oriented programming. Common use cases include logging, timing, access control, and memoization. Understanding decorators is essential for writing clean and modular code.
+
+## Q: `map`, `filter`, and `reduce` functions
+
+In functional programming, Python's `map`, `filter`, and `reduce` functions are powerful tools that allow for concise and expressive manipulation of data. Here's a brief overview of each:
+
+1. **`map` Function:**
+   - **Purpose:** `map` applies a given function to all items in an iterable (e.g., a list) and returns a new iterable with the results.
+   - **Example:**
+
+     ```python
+     numbers = [1, 2, 3, 4, 5]
+     squared_numbers = map(lambda x: x**2, numbers)
+     ```
+
+     This will result in `squared_numbers` containing `[1, 4, 9, 16, 25]`.
+
+2. **`filter` Function:**
+   - **Purpose:** `filter` constructs a list from those elements of the iterable for which a function returns true.
+   - **Example:**
+
+     ```python
+     numbers = [1, 2, 3, 4, 5]
+     even_numbers = filter(lambda x: x % 2 == 0, numbers)
+     ```
+
+     This will result in `even_numbers` containing `[2, 4]`.
+
+3. **`reduce` Function:**
+   - **Purpose:** `reduce` is not a built-in function in Python 3, but it can be imported from the `functools` module. It successively applies a binary function to the items of an iterable, reducing it to a single accumulated result.
+   - **Example:**
+
+     ```python
+     from functools import reduce
+     numbers = [1, 2, 3, 4, 5]
+     sum_all = reduce(lambda x, y: x + y, numbers)
+     ```
+
+     This will result in `sum_all` containing `15` (the sum of all elements).
+
+When discussing these functions in an interview, it's essential to demonstrate not only the syntax but also an understanding of how they fit into functional programming paradigms. Emphasize the immutability of data, the avoidance of side effects, and the benefits of writing more declarative and concise code.
