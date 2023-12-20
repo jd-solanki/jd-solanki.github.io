@@ -5,9 +5,6 @@ date: 2023-12-20
 
 # {{ $frontmatter.title }}
 
-<br />
-<br />
-
 ## Q: Static vs Class methods?
 
 Static methods and class methods are both methods that are associated with a class rather than an instance of the class.
