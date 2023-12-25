@@ -25,6 +25,7 @@ export default defineConfig({
         items: [
           { text: 'Programming', link: '/tips/programming' },
           { text: 'Python', link: '/tips/python' },
+          { text: 'FastAPI', link: '/tips/fastapi' },
           { text: 'Mac', link: '/tips/mac' },
           { text: 'Node', link: '/tips/node' },
           { text: 'SQLAlchemy', link: '/tips/sqlalchemy' },
