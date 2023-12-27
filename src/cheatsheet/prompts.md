@@ -51,12 +51,24 @@
 
 - Marketing action where you must grab your audience’s attention and convince them to take action
 
-    :::info Prompt
-    Craft a persuasive and succinct messaging strategy that highlights the key selling points of [product/service] and encourages customers to buy. Keep the content persuasive and to the point.
+    ```md
+    Craft a persuasive and succinct messaging strategy that highlights the key selling points of {product/service} and encourages customers to buy. Keep the content persuasive and to the point.
+    ```
 
-    [product/service] = [Insert here]
-    :::
+### Writing
 
+- Writing about technical concepts for a technical & non-technical audiences
+
+    ```md
+    I need to explain {technical_concept} to a developer who has a basic understanding of programming but may be unfamiliar with the specific concept I'm addressing. The explanation should be:
+
+    1. Clear, concise, and easy to understand, avoiding technical jargon or complex language that might confuse someone who isn't an expert in the field.
+    Accompanied by two examples:
+    a. A simple and minimal example that demonstrates the concept clearly without any extra content or complexities.
+    b. A real-world example that is still minimalistic but illustrates how the concept can be applied in practical scenarios. Ensure that this example is relevant to common development tasks and avoids unnecessary details.
+    3. Emphasize the practical application of the concept in everyday programming tasks, helping the developer to see the direct relevance and utility of the concept.
+    4. Where applicable, offer brief comparisons with similar concepts to provide context and deepen understanding, while keeping these comparisons concise and to the point.
+    ```
 
 <br />
 
