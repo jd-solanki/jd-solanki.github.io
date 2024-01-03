@@ -3,9 +3,12 @@ import { defineConfig } from 'vitepress'
 export const isDev = process.env.NODE_ENV !== 'production'
 
 export default defineConfig({
+  lang: 'en-US',
   title: 'JD Solanki',
   description: 'JD\' Personal Website',
   srcDir: 'src',
+  lastUpdated: true,
+  cleanUrls: true,
   head: [
     ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap' }],
