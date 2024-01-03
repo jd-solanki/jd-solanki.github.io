@@ -649,56 +649,71 @@ Multithreading in Python is particularly beneficial for I/O-bound tasks where th
 
 ## Q: asyncio vs multithreading?
 
-Coroutines in Python are a form of cooperative multitasking, allowing a function to yield control to other tasks without blocking the entire program. Coroutines use the `async` and `await` keywords and are a fundamental building block for asynchronous programming in Python. They enable the creation of non-blocking, concurrent code that can efficiently handle I/O-bound operations.
+1. **Concurrency Model**:
+    - `Asyncio` is a single-threaded, single-process design. It uses coroutines and an event loop to manage tasks.
+    - `Multithreading` involves multiple threads of execution within a single process. Each thread runs independently and can execute different parts of your program concurrently.
 
-Key features of coroutines:
+2. **Use Cases**:
+    - `Asyncio` is ideal for I/O-bound tasks, especially when you're dealing with many connections and each connection doesn't need to do much work.
+    - `Multithreading` is beneficial for CPU-bound tasks and can also be used for I/O-bound tasks if the number of connections is limited.
 
-1. **Syntax:**
-   - A coroutine is defined using the `async def` syntax.
+3. **Performance**:
+    - `Asyncio` can handle many open connections concurrently, making it suitable for building high-performance network servers.
+    - `Multithreading` can become less efficient with a large number of threads due to the overhead of context switching.
 
-   ```python
-   async def my_coroutine():
-       # Coroutine code
-   ```
+4. **Ease of Use**:
+    - `Asyncio` can be more complex to understand and implement due to its asynchronous nature.
+    - `Multithreading` can be easier to understand and implement, but it can be prone to synchronization issues.
 
-2. **`await` Expression:**
-   - The `await` keyword is used inside a coroutine to yield control to another coroutine or an asynchronous operation. It allows the event loop to schedule other tasks while waiting for the awaited result.
+Here's a simple example to illustrate the difference:
 
-   ```python
-   async def example_coroutine():
-       result = await some_async_function()
-       # Code after await
-   ```
+```python
+# Multithreading Example
+import threading
+import time
 
-3. **Event Loop:**
-   - Coroutines are typically executed within an event loop. The event loop schedules and runs coroutines, managing their execution and allowing them to yield control.
+def print_nums():
+    for i in range(5):
+        time.sleep(1)
+        print(i)
 
-   ```python
-   import asyncio
+def print_hello():
+    for _ in range(5):
+        time.sleep(1)
+        print("Hello")
 
-   async def main():
-       await asyncio.gather(coroutine1(), coroutine2())
+t1 = threading.Thread(target=print_nums)
+t2 = threading.Thread(target=print_hello)
 
-   asyncio.run(main())
-   ```
+t1.start()
+t2.start()
+```
 
-4. **Non-Blocking I/O:**
-   - Coroutines are well-suited for handling I/O-bound tasks without blocking the execution of other coroutines. While one coroutine is waiting for I/O, the event loop can execute other coroutines.
+```python
+# Asyncio Example
+import asyncio
 
-5. **Asynchronous Generators:**
-   - Coroutines can also be used to define asynchronous generators using the `async def` and `yield` syntax. Asynchronous generators produce a stream of values asynchronously.
+async def print_nums():
+    for i in range(5):
+        await asyncio.sleep(1)
+        print(i)
 
-   ```python
-   async def async_generator():
-       for i in range(5):
-           yield i
-           await asyncio.sleep(1)
+async def print_hello():
+    for _ in range(5):
+        await asyncio.sleep(1)
+        print("Hello")
 
-   async for value in async_generator():
-       print(value)
-   ```
+loop = asyncio.get_event_loop()
+loop.run_until_complete(asyncio.gather(print_nums(), print_hello()))
+loop.close()
+```
 
-Coroutines play a crucial role in asynchronous programming, especially with the `asyncio` module. They allow developers to write concurrent code that efficiently handles asynchronous tasks, making it well-suited for applications with many I/O-bound operations, such as network programming or web servers. Additionally, coroutines provide a cleaner and more readable way to structure asynchronous code compared to traditional callback-based approaches.
+In both examples, `print_nums` and `print_hello` run concurrently. However, the multithreading example uses threads, while the asyncio example uses coroutines¹².
+
+Source: Conversation with Bing, 12/31/2023
+(1) python - multiprocessing vs multithreading vs asyncio - Stack Overflow. <https://stackoverflow.com/questions/27435284/multiprocessing-vs-multithreading-vs-asyncio>.
+(2) Asyncio vs. Threading in Python: The Ultimate Comparison. <https://www.codingdeeply.com/asyncio-vs-threading-in-python/>.
+(3) concurrency - Asyncio vs Threading in python - Stack Overflow. <https://stackoverflow.com/questions/74559560/asyncio-vs-threading-in-python>.
 
 ## Q: Explain with statement in python
 
@@ -863,3 +878,29 @@ In functional programming, Python's `map`, `filter`, and `reduce` functions are 
      This will result in `sum_all` containing `15` (the sum of all elements).
 
 When discussing these functions in an interview, it's essential to demonstrate not only the syntax but also an understanding of how they fit into functional programming paradigms. Emphasize the immutability of data, the avoidance of side effects, and the benefits of writing more declarative and concise code.
+
+## Q: Monolithic vs Microservice architecture
+
+Monolithic and microservice architectures are two different approaches to structuring applications. Here's a detailed comparison:
+
+**Monolithic Architecture**:
+
+- A monolithic application is built as a single, unified unit.
+- All functionalities of a project exist in a single codebase.
+- It's often easier to develop and deploy due to its simplicity.
+- It's ideal for smaller, less complex applications or for businesses with limited resources.
+- However, it becomes too large and difficult to manage over time.
+- Any change requires updating the entire stack, making updates restrictive and time-consuming.
+- A single bug in any module can bring down the entire application.
+
+**Microservice Architecture**:
+
+- A microservices architecture is a collection of smaller, independently deployable services.
+- Each service handles a small portion of the functionality and data.
+- It's more appropriate for larger and more intricate applications that demand greater scalability and flexibility.
+- It allows for the use of different technologies and languages across services.
+- It's failure-resistant and fault-tolerant.
+- However, it's more complex to develop and requires managing inter-service communication.
+- It can also introduce challenges related to data consistency and managing distributed systems.
+
+In summary, the choice between monolithic and microservices architectures depends on the specific requirements of your project.
