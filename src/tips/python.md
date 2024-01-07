@@ -1,5 +1,21 @@
 # Python
 
+## General
+
+### Always install packages in virtual environment forcefully.
+
+```shell
+# ~/.zshrc 
+export PIP_REQUIRE_VIRTUALENV=true
+```
+
+Now if you try to install packages without activating virtual environment, it'll throw error.
+
+```shell
+pip install requests
+# ERROR: Could not find an activated virtualenv (required).
+```
+
 ## Performance
 
 ### Caching with `@lru_cache` decorator
