@@ -352,3 +352,11 @@ samp {
 .VPHome {
     padding-bottom: 0 !important;
 }
+
+/* ==========================
+👉 Others
+========================== */
+
+.edit-info .VPLastUpdated {
+    visibility: hidden;
+}

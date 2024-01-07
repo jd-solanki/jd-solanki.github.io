@@ -53,6 +53,7 @@ export default defineConfig({
           { text: 'Linux', link: '/cheatsheet/linux' },
           { text: 'Regex', link: '/cheatsheet/regex' },
           { text: 'Prompts', link: '/cheatsheet/prompts' },
+          { text: 'Memory', link: '/cheatsheet/memory' },
         ],
       },
     ],
