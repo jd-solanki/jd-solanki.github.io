@@ -57,8 +57,17 @@ SELECT * FROM customers WHERE counter_id BETWEEN 5 AND 10;
 -- Select all customers where country id is not between 11 and 14
 SELECT * FROM customers WHERE counter_id NOT BETWEEN 11 AND 14;
 
--- Select all customers where country name starts with "In"
+-- Select all customers where customer_name is between "John" and "Peter"
+SELECT * FROM customers WHERE customer_name BETWEEN "John" AND "Peter" ORDER BY customer_name;
+
+-- Select all customers who have created their account in 2019
+SELECT * FROM customers WHERE create_date BETWEEN '2019-01-01' AND '2019-12-31';
+
+-- Select all customers where country name starts with "In". Percent (%) is used to match any number of characters including zero.
 SELECT * FROM customers WHERE country LIKE 'In%';
+
+-- Select all customers where country name has 5 characters and first two are "In" and forth is "i". Underscore (_) is used to match a single character
+SELECT * FROM customers WHERE country LIKE 'In_i_';
 
 -- Select all customers where country name ends with "ia"
 SELECT * FROM customers WHERE country LIKE '%ia';
@@ -74,6 +83,9 @@ SELECT * FROM customers WHERE country IN ('India', 'USA');
 
 -- Select all customers where country name is not "India" or "USA"
 SELECT * FROM customers WHERE country NOT IN ('India', 'USA');
+
+-- Select all customers that have an order in the "orders" table
+SELECT * FROM customers WHERE customer_id IN (SELECT customer_id FROM orders);
 
 -- Select all customers from the country "India" and the city "Ahmedabad"
 SELECT * FROM customers WHERE country='India' AND city='Ahmedabad';
@@ -103,6 +115,8 @@ SELECT * FROM customers WHERE country='India' AND customer_name LIKE 'G%' OR cus
 | `IN`       | To specify multiple values  |
 | `AND`      | Logical operator AND        |
 | `OR`       | Logical operator OR         |
+
+## `LIKE`
 
 ## `ORDER BY`
 
@@ -270,7 +284,30 @@ SELECT SUM(price) FROM products WHERE rating>4;
 
 -- Writing expressions in SUM and AVG. Below, we are converting USD to INR roughly and then calculating the total price of all products
 SELECT SUM(price * 80) FROM products;
+
+-- Select all products where price is greater than the average price of all products
+SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products);
 ```
+
+## Aliases
+
+```sql
+-- Syntax: SELECT column_name AS column_alias_name FROM table_name;
+-- Syntax: SELECT column_name FROM table_name AS table_alias_name;
+
+-- Select all products and rename the column "name" to "product_name"
+SELECT name AS product_name FROM products;
+
+-- Select all products and rename the table "products" to "items"
+SELECT * FROM products AS items;
+
+-- Renaming multiple tables and referencing them in a query
+SELECT o.order_id, o.order_date, c.customer_name FROM customers as c, orders as o WHERE c.customer_id=o.customer_id;
+```
+
+## Joins
+
+🚧 _WIP_
 
 ---
 
