@@ -7,6 +7,7 @@ title: My books wishlist
 
 - [ ] [The 4-Hour Workweek](/blog/book-notes-the-4-thour-workweek.md)
 - [ ] Think and Grow Rich
+- [ ] The Almanack of Naval Ravikant: A Guide to Wealth and Happiness ([gift](https://www.amazon.in/Almanack-Naval-Ravikant-Wealth-Happiness/dp/1544514220))
 - [ ] The Alchemist
 - [ ] You can heal your life
 - [ ] Rich Dad, Poor dad (I read it before but didn't took notes)
