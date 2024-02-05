@@ -7,12 +7,22 @@ tags: api, tips
 
 <br />
 
-#### Your API endpoint should be resource not action
+#### API endpoint should be resource not action
 
 ```
 https://api.example.com/tasks // [!code ++]
 
 https://api.example.com/get-tasks // [!code --]
+```
+
+#### Collection name should be plural
+
+```
+https://api.example.com/tasks // [!code ++]
+https://api.example.com/tasks/{task_id} // [!code ++]
+
+https://api.example.com/task // [!code --]
+https://api.example.com/task/{task_id} // [!code --]
 ```
 
 #### Don't go deeper than 3 levels: `collection/resource/collection`
@@ -60,4 +70,32 @@ https://api.example.com/tasks?limit=10&offset=3 <- You can get 10 items starting
     ],
     "total": 2,
 }
+```
+
+#### Don't return map structure in response, instead return list of objects
+
+```py
+# --- Before
+{
+    "john": [
+        { "id": 1, "title": "Buy Tomato", "is_completed": False },
+        { "id": 2, "title": "Learn Sanskrit", "is_completed": False },
+    ],
+    "jane": [
+        { "id": 3, "title": "Buy Apple", "is_completed": False },
+        { "id": 4, "title": "Finish reading book", "is_completed": False },
+    ]
+}
+
+# --- After
+{
+    "tasks": [
+        { "id": 1, "title": "Buy Tomato", "is_completed": False, "user": "john" },
+        { "id": 2, "title": "Learn Sanskrit", "is_completed": False, "user": "john" },
+        { "id": 3, "title": "Buy Apple", "is_completed": False, "user": "jane" },
+        { "id": 4, "title": "Finish reading book", "is_completed": False, "user": "jane" },
+    ],
+    "total": 4
+}
+
 ```
