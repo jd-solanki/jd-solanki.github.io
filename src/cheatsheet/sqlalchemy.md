@@ -7,8 +7,38 @@
 - [Using Enum in SQLAlchemy](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#using-python-enum-or-pep-586-literal-types-in-the-type-map)
 - [`mapped_column()` API](https://docs.sqlalchemy.org/en/20/orm/mapping_api.html#sqlalchemy.orm.mapped_column)
 - [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
+- [What's new in SQLAlchemy 2](https://blog.miguelgrinberg.com/post/what-s-new-in-sqlalchemy-2-0)
 
 ## ORM
+
+### Define Models
+
+[Type annotation map](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
+
+```py
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy import String
+
+class Base(DeclarativeBase):
+    pass
+
+class User(Base):
+    # Define table name
+    __tablename__ = "users"
+
+    # Define primary key. `index=True` is optional when using `primary_key=True`
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    # Define column with length
+    name: Mapped[str] = mapped_column(String(30))
+
+    # Auto infer col type from python type
+    # `str | None` => `NULL` is allowed
+    fullname: Mapped[str | None]
+
+    # `str` => `NOT NULL`
+    required_fullname: Mapped[str]
+```
 
 ### Query data
 
