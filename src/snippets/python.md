@@ -14,6 +14,55 @@ def say():
     print(f"hello!")
 ```
 
+### Throttle function
+
+```py
+import time
+import functools
+
+def basic_throttle(calls_per_second):
+    def decorator(func):
+
+        last_called = 0.0
+        count = 0
+
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            nonlocal last_called, count
+            current_time = time.time()
+
+            # Reset counter if new second
+            if current_time - last_called >= 1:
+                last_called = current_time
+                count = 0
+
+            # Enforce the limit
+            if count < calls_per_second:
+                count += 1
+                return func(*args, **kwargs)
+
+            return None
+
+        return wrapper
+    return decorator
+
+@basic_throttle(5)
+def send_alert():
+    print(f"Alert !")
+
+for i in range(10):
+    send_alert()
+    time.sleep(0.1)
+
+'''
+Alert !
+Alert !
+Alert !
+Alert !
+Alert !
+'''
+```
+
 ## OS & I/O
 
 ### Prepending text to file
