@@ -7,7 +7,7 @@ export default defineConfig({
   title: 'JD Solanki',
   description: 'JD\' Personal Website',
   srcDir: 'src',
-  lastUpdated: true,
+  lastUpdated: !isDev,
   cleanUrls: true,
   head: [
     ['link', { rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
@@ -23,7 +23,7 @@ export default defineConfig({
         appId: 'G6Q3AYFJHT',
         apiKey: 'dd323d3540661a106029d7529940532c',
         indexName: 'jd-solankiio',
-      }
+      },
     },
     logo: {
       light: 'https://api.iconify.design/line-md:account.svg?color=%233c3c43',
