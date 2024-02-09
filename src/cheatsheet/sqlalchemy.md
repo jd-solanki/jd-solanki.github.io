@@ -57,14 +57,19 @@ class Address(Base):
 
 ### Query data
 
+🚧 _WIP_
+
 ```py
 from sqlalchemy import or_
 
 # Get user by id
-const id = 73
-user = db.query(User).get(id)
+user = db.get(User, 73)
+
+# Get all users
+stmt = session.execute(select(User)).scalars().all()
 
 # Filter user by email
+stmt = select(User).where(User.email == "john@mail.com")
 user = db.query(User).filter(User.email === data.email).first() # instead of `first` you can also use `one_or_none`
 
 # Filter with multiple conditions (AND)
@@ -72,4 +77,7 @@ user = db.query(User).filter(User.email === data.email, User.username === data.u
 
 # Filter with multiple conditions (OR)
 user = db.query(User).filter(or_(User.email === data.email, User.username === data.username)).first()
+
+# Order by id
+stmt = select(User).order_by(User.id)
 ```
