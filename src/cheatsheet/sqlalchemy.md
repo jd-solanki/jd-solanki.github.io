@@ -16,10 +16,11 @@
 [Type annotation map](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
 
 ```py
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import String
+from sqlalchemy.orm import MappedAsDataclass, DeclarativeBase, Mapped, mapped_column
+from sqlalchemy import String, ForeignKey, func
+from datetime import datetime
 
-class Base(DeclarativeBase):
+class Base(MappedAsDataclass, DeclarativeBase):
     pass
 
 class User(Base):
@@ -27,7 +28,8 @@ class User(Base):
     __tablename__ = "users"
 
     # Define primary key. `index=True` is optional when using `primary_key=True`
-    id: Mapped[int] = mapped_column(primary_key=True)
+    # When inheriting from `MappedAsDataclass`, `init=False` is required for primary key to be ignored in `__init__` method
+    id: Mapped[int] = mapped_column(primary_key=True, init=False)
 
     # Define column with length
     name: Mapped[str] = mapped_column(String(30))
@@ -38,7 +40,20 @@ class User(Base):
 
     # `str` => `NOT NULL`
     required_fullname: Mapped[str]
+
+    created_at: Mapped[datetime] = mapped_column(init=False, server_default=func.now())
+
+class Address(Base):
+    __tablename__ = "addresses"
+
+    id: Mapped[int] = mapped_column(primary_key=True, init=False)
+    email_address: Mapped[str]
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
 ```
+
+:::info
+`mapped_column()` receives the same arguments as `dataclasses.field()`. E.g. `default`, `init`, etc.
+:::
 
 ### Query data
 
