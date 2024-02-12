@@ -169,3 +169,14 @@ def is_valid_ip(ip):
 
 print(is_valid_ip("192.168.5.1")) # False
 ```
+
+## Weird Python
+
+```py
+# Booleans are subclass of integers in Python. True => 1, False => 0
+0 == False # True
+1 == True # True
+["hello", "world"][False] # "hello" (Explanation => ["hello", "world"][0])
+["hello", "world"][True] # "world" (Explanation => ["hello", "world"][1])
+isinstace(True, int) # True
+```
