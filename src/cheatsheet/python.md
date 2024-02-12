@@ -149,12 +149,12 @@ from functools import wraps
 
 def log[T, **P](func: Callable[P, T]) -> Callable[P, T]:
     @wraps(func)
-    def inner(*args: P.args, **kwargs: P.kwargs):
+    def wrapper(*args: P.args, **kwargs: P.kwargs):
         print("before")
         func(*args, **kwargs)
         print("after")
 
-    return inner
+    return wrapper
 
 @log
 def greet():
@@ -177,16 +177,16 @@ from collections.abc import Callable
 from functools import wraps
 
 def retry(max_retries: int):
-    def wrapper[T, **P](func: Callable[P, T]) -> Callable[P, T]:
+    def decorator[T, **P](func: Callable[P, T]) -> Callable[P, T]:
         @wraps(func)
-        def inner(*args: P.args, **kwargs: P.kwargs):
+        def wrapper(*args: P.args, **kwargs: P.kwargs):
             for _ in range(max_retries):
                 with suppress(Exception):
                     return func(*args, **kwargs)
             else:
                 raise Exception("Max retries limit reached!")
-        return inner
-    return wrapper
+        return wrapper
+    return decorator
 
 
 @retry(3)
