@@ -55,6 +55,37 @@ for key, value in names.items():
 
 ## Set
 
+### Basics
+
+```py
+s = {'a', 'b', 'c', 'd', 'e'}
+
+s = {} # 🚨 This will create an empty dict, not a set
+s = set() # This will create an empty set
+
+s.add('a') # {'a'}
+
+s.update(['a', 'b', 'c']) # {'a', 'b', 'c'}
+another_set = {'f', 'g'}
+s.update(['d', 'e'], another_set) # {'a', 'b', 'c', 'd', 'e', 'f', 'g'}
+
+s.remove('c') # {'a', 'b', 'd', 'e', 'f', 'g'}
+s.remove('h') # 🚨 KeyError: 'h'
+s.discard('h') # No error, Set value: {'a', 'b', 'd', 'e', 'f', 'g'}
+
+s1 = {"a", "b", "c"}
+s2 = {"b", "c", "d"}
+s3 = {"c", "d", "e"}
+s1.intersection(s2) # {'b', 'c'}
+s1.intersection(s2, s3) # {'c'}
+s1.difference(s2) # {'a'}
+s2.difference(s1) # {'d'}
+s1.symmetric_difference(s2) # {'a', 'd'}
+s2.symmetric_difference(s1) # {'a', 'd'}
+s2.difference(s1, s3) # set()
+s3.difference(s2, s1) # {'e'}
+```
+
 ### Difference between two sets
 
 > _Credits: [Tweet](https://twitter.com/driscollis/status/1701883431540687021/photo/1)_
