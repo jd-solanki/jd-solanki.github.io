@@ -149,12 +149,12 @@ from functools import wraps
 
 def log[T, **P](func: Callable[P, T]) -> Callable[P, T]:
     @wraps(func)
-    def wrapper(*args: P.args, **kwargs: P.kwargs):
+    def inner(*args: P.args, **kwargs: P.kwargs):
         print("before")
         func(*args, **kwargs)
         print("after")
 
-    return wrapper
+    return inner
 
 @log
 def greet():
@@ -167,6 +167,36 @@ before
 Hello
 after
 '''
+```
+
+```py
+import random
+from contextlib import suppress
+from functools import wraps
+from collections.abc import Callable
+from functools import wraps
+
+def retry(max_retries: int):
+    def wrapper[T, **P](func: Callable[P, T]) -> Callable[P, T]:
+        @wraps(func)
+        def inner(*args: P.args, **kwargs: P.kwargs):
+            for _ in range(max_retries):
+                with suppress(Exception):
+                    return func(*args, **kwargs)
+            else:
+                raise Exception("Max retries limit reached!")
+        return inner
+    return wrapper
+
+
+@retry(3)
+def only_roll_highs():
+    number = random.randint(1,6)
+    if number < 5:
+        raise ValueError(number)
+    return number
+
+print(only_roll_highs()) # 5/6/Exception
 ```
 
 ## Testing
