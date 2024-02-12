@@ -2,14 +2,10 @@
 
 ## Functions
 
-### Execute function immediately in python
+### Execute function immediately in python (IIFE)
 
-```python
-from typing import Callable, Any
-
-execute: Callable[[Callable[..., Any]], None] = lambda f: f()
-
-@execute
+```py
+@lambda f:f()
 def say():
     print(f"hello!")
 ```

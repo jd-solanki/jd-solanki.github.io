@@ -141,6 +141,34 @@ a, *b, c = [1, 2, 3, 4, 5]
 print(b) # [2, 3, 4]
 ```
 
+## Decorators
+
+```py
+from collections.abc import Callable
+from functools import wraps
+
+def log[T, **P](func: Callable[P, T]) -> Callable[P, T]:
+    @wraps(func)
+    def wrapper(*args: P.args, **kwargs: P.kwargs):
+        print("before")
+        func(*args, **kwargs)
+        print("after")
+
+    return wrapper
+
+@log
+def greet():
+    print("Hello")
+
+
+greet()
+'''
+before
+Hello
+after
+'''
+```
+
 ## Testing
 
 ## Patching env variables
