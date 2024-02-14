@@ -70,12 +70,21 @@ from sqlalchemy import or_
 # Get user by id
 user = db.get(User, 73)
 
-# Get all users
-stmt = session.execute(select(User)).scalars().all()
+# Get all users (Use this method instead of below three)
+users = db.scalars(
+  select(User)
+).all()
+
+# Get all users (Explicit)
+users = db.execute(
+    select(User)
+).scalars().all()
 
 # Filter user by email
-stmt = select(User).where(User.email == "john@mail.com")
-user = db.query(User).filter(User.email === data.email).first() # instead of `first` you can also use `one_or_none`
+user = db.scalars(
+  select(User).where(User.email == "john@mail.com")
+).first()
+# instead of `.first()` you can also use `.one()` & `.one_or_none()`
 
 # Filter with multiple conditions (AND)
 user = db.query(User).filter(User.email === data.email, User.username === data.username).first()
