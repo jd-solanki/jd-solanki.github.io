@@ -43,12 +43,16 @@ class User(Base):
 
     created_at: Mapped[datetime] = mapped_column(init=False, server_default=func.now())
 
+    addresses: Mapped[list["Address"]] = relationship(back_populates="user")
+
 class Address(Base):
     __tablename__ = "addresses"
 
     id: Mapped[int] = mapped_column(primary_key=True, init=False)
     email_address: Mapped[str]
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
+
+    user: Mapped["User"] = relationship(back_populates="addresses")
 ```
 
 :::info
