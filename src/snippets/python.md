@@ -274,9 +274,10 @@ class Logger(metaclass=Singleton):
 
 import os
 from importlib import import_module
+from pathlib import Path
 
-# Adjust the paths according to your project structure
-curr_dir = pathlib.Path(__file__).parent.resolve()
+# 🚨 Adjust the paths according to your project structure
+curr_dir = Path(__file__).parent.resolve()
 pkg_dir = curr_dir.parent / "pkg_name"
 root_dir = pkg_dir.parent
 
