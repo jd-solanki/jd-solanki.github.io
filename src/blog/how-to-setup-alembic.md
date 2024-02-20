@@ -137,7 +137,7 @@ We need to update the `target_metadata` variable. It is used to generate migrati
 In addition to this, **We also have to import all the models that we want to include in the migration so alembic can generate schema automatically**.
 
 ```py
-from app.db.base import Base # Update import path according to your `Base` // [!code ++]
+from app.db.base import Base # 🚨 Update import path according to your `Base` // [!code ++]
 
 from app.models.user import * # Allow auto generating schema // [!code ++]
 # import other models if you have any  // [!code ++]
