@@ -87,7 +87,11 @@ user = db.scalars(
 # instead of `.first()` you can also use `.one()` & `.one_or_none()`
 
 # Filter with multiple conditions (AND)
-user = db.query(User).filter(User.email === data.email, User.username === data.username).first()
+user = db.scalars(
+  select(User)
+    .where(User.email == "john@mail.com")
+    .where(User.username === data.username)
+).first()
 
 # Filter with multiple conditions (OR)
 user = db.query(User).filter(or_(User.email === data.email, User.username === data.username)).first()
