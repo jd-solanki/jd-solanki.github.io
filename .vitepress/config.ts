@@ -51,6 +51,7 @@ export default defineConfig({
       {
         text: 'Cheatsheet',
         items: [
+          { text: 'AI', link: '/cheatsheet/ai' },
           { text: 'Git', link: '/cheatsheet/git' },
           { text: 'Python', link: '/cheatsheet/python' },
           { text: 'Node', link: '/cheatsheet/node' },
