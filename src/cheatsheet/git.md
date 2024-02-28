@@ -62,6 +62,28 @@ git tag --force v1.0 <commit-sha>
 git push --force --tags
 ```
 
+## 🎯 Remotes
+
+### Push to multiple repositories with single codebase
+
+This can be useful when you want to push the same codebase to multiple repositories. For example, you have a main repo and you want to push the same codebase to another repo in different organization.
+
+You can also sync Github & GitLab repositories using this method 🤯
+
+```shell
+# 1. Clone main repo
+git clone https://github.com/firstorg/myrepo.git
+
+# 2. Add another remote
+git remote set-url --add https://github.com/secondorg/myrepo.git
+
+# 3. Verify the remotes
+git remote -v # Output should have two push urls
+
+# 4. Push to both remotes
+git push --all # I guess regular git push might work as well
+```
+
 ## 🧮 Misc
 
 ### Temporarily ignore folder/file in git

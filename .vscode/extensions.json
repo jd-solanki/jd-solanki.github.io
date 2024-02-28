@@ -11,6 +11,7 @@
         "matijao.vue-nuxt-snippets",
         "github.vscode-github-actions",
         "vue.volar",
-        "antfu.browse-lite"
+        "antfu.browse-lite",
+        "antfu.vite"
     ]
 }
