@@ -64,6 +64,7 @@ export default defineConfig({
           { text: 'Prompts', link: '/cheatsheet/prompts' },
           { text: 'Memory', link: '/cheatsheet/memory' },
           { text: 'SQL', link: '/cheatsheet/sql' },
+          { text: 'bash', link: '/cheatsheet/bash' },
         ],
       },
     ],
