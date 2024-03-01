@@ -246,6 +246,8 @@ function start_spinner() {
 
     # Save spinner process ID to kill it later
     SPINNER_PID=$!
+
+    trap 'stop_spinner; exit;' SIGINT # ℹ️ Stop the spinner when the script is interrupted
 }
 
 function stop_spinner() {
