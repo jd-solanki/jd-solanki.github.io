@@ -147,13 +147,15 @@ function greet() {
 greet John # Hello, John
 # In function scope, $1, $2, ... are used to access parameters and not the positional parameters
 
-# Function with default value
+# Function with default value & naming parameters
 function greet() {
-    local name=${1:-"World"}
-    echo "Hello $name"
+    local name=$1 # Assign the first parameter to `name`
+    local greeting=${2:-"Hello"} # Assign the second parameter to `greeting` with default value "Hello"
+    echo "$greeting $name"
 }
 
-greet # Hello World
+greet john # Hello john
+greet john Hi # Hi john
 ```
 
 <br/><br/>
@@ -225,7 +227,7 @@ else
 fi
 ```
 
-<!-- ## Tips -->
+<!-- ## ✨ Tips -->
 
 ## 📝 Snippets
 
@@ -252,6 +254,18 @@ function stop_spinner() {
     
     # Clear the spinner characters
     printf "\b \n"
+}
+
+# Usage: redirect_output_to_file "path/to/log/file.log"
+function redirect_output_to_file() {
+    local LOG_FILE_PATH=$1
+
+    exec 3>&1 4>&2 # Save the original file descriptors
+    exec > "$LOG_FILE_PATH" 2>&1 # Redirect stdout and stderr to the log file
+}
+
+function reset_output_redirection() {
+    exec 1>&3 2>&4
 }
 
 function blank_lines() {
@@ -299,4 +313,30 @@ function banner() {
         exit 1
     fi
 }
+```
+
+### Redirect output to file and resetting back with spinner
+
+```bash
+#!/bin/bash
+
+# 🚨 We'll be using utility function from the snippets section
+
+LOG_FILE_PATH=$(pwd)/exec-$(date +%H_%M_%S).log
+
+start_spinner
+
+redirect_output_to_file $LOG_FILE_PATH
+
+echo "Going for sleep" # This will be written to the log file
+sleep 2
+echo "Done sleeping" # This will be written to the log file
+
+# ❗ Order of the following two commands is important
+reset_output_redirection # From now on, all output will be printed to the terminal
+
+# Once we reset the stdout and stderr, allow stop_spinner to remove the spinner graphic from the terminal
+stop_spinner
+
+echo "This'll be printed to the terminal"
 ```
