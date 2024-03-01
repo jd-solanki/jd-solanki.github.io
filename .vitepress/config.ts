@@ -64,7 +64,6 @@ export default defineConfig({
           { text: 'Prompts', link: '/cheatsheet/prompts' },
           { text: 'Memory', link: '/cheatsheet/memory' },
           { text: 'SQL', link: '/cheatsheet/sql' },
-          { text: 'bash', link: '/cheatsheet/bash' },
         ],
       },
     ],
@@ -73,6 +72,7 @@ export default defineConfig({
       { icon: 'twitter', link: 'https://twitter.com/me_jd_solanki' },
       // { icon: 'mastodon', link: 'https://m.webtoo.ls/@jd-solanki' }
     ],
+    outline: 'deep',
   },
   markdown: {
     // ℹ️ We only enabled this in development so that we can highlight code lines by seeing line number without calculating it in our editor.

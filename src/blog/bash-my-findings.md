@@ -1,8 +1,17 @@
-# bash
+---
+title: Bash - My Findings
+tag: my-findings, bash
+---
 
-## Scripting
+# {{ $frontmatter.title }}
 
-### Variables & User Input
+## 📚 Cheatsheet
+
+### Scripting
+
+<br/>
+
+#### Variables & User Input
 
 ```bash
 #!/bin/bash
@@ -35,7 +44,9 @@ echo "First Name: ${NAMES[0]}"
 echo "All Names: ${NAMES[@]}"
 ```
 
-### Conditional Statements
+<br/><br/>
+
+#### Conditional Statements
 
 ```bash
 #!/bin/bash
@@ -83,7 +94,9 @@ fi
 # Other operators: -eq, -ne, -lt, -le, -ge
 ```
 
-### Loops
+<br/><br/>
+
+#### Loops
 
 ```bash
 #!/bin/bash
@@ -111,7 +124,9 @@ for INDEX in {1..5}; do
 done
 ```
 
-### Functions
+<br/><br/>
+
+#### Functions
 
 ```bash
 #!/bin/bash
@@ -141,7 +156,9 @@ function greet() {
 greet # Hello World
 ```
 
-### Positional Parameters
+<br/><br/>
+
+#### Positional Parameters
 
 ```bash
 #!/bin/bash
@@ -154,7 +171,9 @@ echo "First Argument: $1"
 echo "Second Argument: $2"
 ```
 
-### Piping & Redirection
+<br/><br/>
+
+#### Piping & Redirection
 
 ```bash
 #!/bin/bash
@@ -184,7 +203,9 @@ cat file.txt >> file2.txt
 wc -w << EOF
 ```
 
-### Testing File Conditions
+<br/><br/>
+
+#### Testing File Conditions
 
 ```bash
 #!/bin/bash
@@ -202,4 +223,80 @@ if [ -f ~/Downloads/file.txt ]; then
 else
     echo "File doesn't exist"
 fi
+```
+
+<!-- ## Tips -->
+
+## 📝 Snippets
+
+### Utility Functions
+
+```bash
+function start_spinner() {
+    # Create a spinner graphic
+    SPINNER="-\|/"
+
+    i=0
+    while : ; do
+        printf "\b%s" "${SPINNER:i++%${#SPINNER}:1}"
+        sleep 0.1
+    done &
+
+    # Save spinner process ID to kill it later
+    SPINNER_PID=$!
+}
+
+function stop_spinner() {
+    # Kill the spinner
+    kill $SPINNER_PID
+    
+    # Clear the spinner characters
+    printf "\b \n"
+}
+
+function blank_lines() {
+    local COUNT=$1
+    for ((i=0; i<COUNT; i++)); do
+        echo ""
+    done
+}
+
+function with_blank_lines() {
+    local VARIANT=$1
+    local MSG=$2
+    local BLANK_LINES_COUNT=${3:-1} # Default to 1 blank line
+
+    [ "$VARIANT" == "t" ] && blank_lines $BLANK_LINES_COUNT && echo $MSG
+    [ "$VARIANT" == "b" ] && echo $MSG && blank_lines $BLANK_LINES_COUNT
+    [ "$VARIANT" == "tb" ] && blank_lines $BLANK_LINES_COUNT && echo $MSG && blank_lines $BLANK_LINES_COUNT
+}
+
+function banner() {
+    local LABEL=$1
+    local LEVEL=$2
+
+    if [ "$LEVEL" -eq 1 ]; then
+        msg="# $LABEL #"
+        edge=$(echo "$msg" | sed 's/./#/g')
+
+        blank_lines 2
+        echo "####################################"
+        echo "# --- $LABEL"
+        echo "####################################"
+        echo ""
+    elif [ "$LEVEL" -eq 2 ]; then
+        echo ""
+        echo "#"
+        echo "# --- $LABEL"
+        echo "#"
+        echo ""
+    elif [ "$LEVEL" -eq 3 ]; then
+        echo ""
+        echo "# --- $LABEL"
+        echo ""
+    else
+        echo "🚨 ERROR: Invalid level"
+        exit 1
+    fi
+}
 ```
