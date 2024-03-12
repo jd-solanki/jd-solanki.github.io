@@ -24,11 +24,9 @@ This is for Indian residents only.
 ## 📚 Cheatsheet
 
 - UPI transactions upto 50K are exempt from tax [[Source](https://cleartax.in/s/tax-on-upi-transactions)]
-- Interest earned upto Rs 10,000 in a financial year is exempt from tax [[Source](https://cleartax.in/s/other-income-sources)]
+- Interest earned upto ₹ 10,000 in a financial year is exempt from tax [[Source](https://cleartax.in/s/other-income-sources)]
 
-## Tips 🚧
-
-<br>
+### Deductions
 
 - 80C deductions upto 1.5L
   - ELSS
@@ -36,13 +34,33 @@ This is for Indian residents only.
   - 25k for health insurance premium for self, spouse, dependent children
   - Upto 50k for senior citizens
   - 5k for preventive health checkup of self, spouse, dependent children or parents
-- HRA
-- Section 80TTA - 10k for interest received in saving bank account
+
+<br>
+
+:::details My Calculations
+
+Below total will be safe zone for tax exemption. Above this, tax will be applicable. For example, If you are earning 8L per year, then you can save 7.11L from tax and rest 89K will be taxable.
+
+| Deduction                          | Amount      |
+|------------------------------------|-------------|
+| Limit                              | ₹ 5,00,000  |
+| Standard Deduction                 | ₹ 50,000    |
+| 80C Deduction - ELSS               | ₹ 1,50,000  |
+| 80D Deduction - Term Insurance     | ₹ 11,954    |
+| Total                              | ₹ 7,11,954  |
+:::
+
+<!-- ## Tips -->
+
+<br>
 
 ---
 
-WIP
+<br>
+
+_WIP_ 🚧
 
 - Travel Allowance (LTA). I guess it's 19,200 per year.
 - Health Checkup
 - Medical Bills
+- HRA
