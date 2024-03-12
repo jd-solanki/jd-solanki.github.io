@@ -13,6 +13,9 @@ echo $MYTEMPDIR # print the path to the temporary directory
 # ---
 
 echo $RANDOM # print a random number
+
+# Read latest data of constantly updating file
+tail -f /var/log/syslog
 ```
 
 ## Security
