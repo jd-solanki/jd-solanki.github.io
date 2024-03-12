@@ -360,3 +360,9 @@ samp {
 .edit-info .VPLastUpdated {
     visibility: hidden;
 }
+
+/* Hide marker in task list (pluginFG) */
+ul:has(.task-list-item) {
+    list-style-type: none;
+    padding-left: 0;
+}

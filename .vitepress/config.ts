@@ -78,6 +78,9 @@ export default defineConfig({
     // ℹ️ We only enabled this in development so that we can highlight code lines by seeing line number without calculating it in our editor.
     lineNumbers: false,
     theme: 'dracula',
+    config: (md) => {
+      md.use(require('markdown-it-task-lists'))
+    }
   },
   vite: {
     server: {
