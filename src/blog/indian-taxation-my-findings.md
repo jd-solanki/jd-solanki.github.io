@@ -25,6 +25,7 @@ This is for Indian residents only.
 
 - UPI transactions upto 50K are exempt from tax [[Source](https://cleartax.in/s/tax-on-upi-transactions)]
 - Interest earned upto ₹ 10,000 in a financial year is exempt from tax [[Source](https://cleartax.in/s/other-income-sources)]
+- Term Insurance premium get tax exemption under 80C
 
 ### Deductions
 
@@ -46,8 +47,7 @@ Below total will be safe zone for tax exemption. Above this, tax will be applica
 | Limit                              | ₹ 5,00,000  |
 | Standard Deduction                 | ₹ 50,000    |
 | 80C Deduction - ELSS               | ₹ 1,50,000  |
-| 80D Deduction - Term Insurance     | ₹ 11,954    |
-| Total                              | ₹ 7,11,954  |
+| Total                              | ₹ 7,00,000  |
 :::
 
 <!-- ## Tips -->
