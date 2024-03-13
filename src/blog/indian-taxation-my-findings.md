@@ -25,6 +25,14 @@ This is for Indian residents only.
 
 - UPI transactions upto 50K are exempt from tax [[Source](https://cleartax.in/s/tax-on-upi-transactions)]
 - Interest earned upto ₹ 10,000 in a financial year is exempt from tax [[Source](https://cleartax.in/s/other-income-sources)]
+- LTA - Leave Travel Allowance [[Source](https://cleartax.in/s/lta-leave-travel-allowance), [YouTube Video](https://www.youtube.com/watch?v=BBuiTnB3ihk)]
+  - You can claim LTA twice in a block of 4 years.
+  - You can claim LTA for travel within India only.
+  - You can claim LTA for travel of self, spouse, children, parents, siblings who are dependent on you.
+  - You can claim LTA for travel by air, rail, bus, taxi, etc. but not for hotel stay, food, etc.
+  - Minimum of actual LTA by your employer or amount spent on travel is exempt from tax. For example, if your employer provides 40K as LTA and you spend 50K on travel, then 40K will be exempt from tax and 10K will be taxable.
+  - You won't able to claim LTA if you travel luxurious. For example, You can't claim LTA for travel by business class. There are other such rules for train and bus travel.
+  - Unused LTA can be carried forward to next block of 4 years. You have to spend it in first year of next block and you can only carry forward one LTA.
 
 ### Deductions
 
