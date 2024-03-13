@@ -33,6 +33,7 @@ This is for Indian residents only.
   - Minimum of actual LTA by your employer or amount spent on travel is exempt from tax. For example, if your employer provides 40K as LTA and you spend 50K on travel, then 40K will be exempt from tax and 10K will be taxable.
   - You won't able to claim LTA if you travel luxurious. For example, You can't claim LTA for travel by business class. There are other such rules for train and bus travel.
   - Unused LTA can be carried forward to next block of 4 years. You have to spend it in first year of next block and you can only carry forward one LTA.
+- Term Insurance premium get tax exemption under 80C
 
 ### Deductions
 
@@ -54,8 +55,7 @@ Below total will be safe zone for tax exemption. Above this, tax will be applica
 | Limit                              | ₹ 5,00,000  |
 | Standard Deduction                 | ₹ 50,000    |
 | 80C Deduction - ELSS               | ₹ 1,50,000  |
-| 80D Deduction - Term Insurance     | ₹ 11,954    |
-| Total                              | ₹ 7,11,954  |
+| Total                              | ₹ 7,00,000  |
 :::
 
 <!-- ## Tips -->
