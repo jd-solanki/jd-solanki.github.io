@@ -35,7 +35,6 @@ export default defineConfig({
         text: 'Tips',
         items: [
           { text: 'Programming', link: '/tips/programming' },
-          { text: 'Python', link: '/tips/python' },
           { text: 'FastAPI', link: '/tips/fastapi' },
           { text: 'Mac', link: '/tips/mac' },
           { text: 'Node', link: '/tips/node' },
@@ -43,17 +42,10 @@ export default defineConfig({
         ],
       },
       {
-        text: 'Snippets',
-        items: [
-          { text: 'Python', link: '/snippets/python' },
-        ],
-      },
-      {
         text: 'Cheatsheet',
         items: [
           { text: 'AI', link: '/cheatsheet/ai' },
           { text: 'Git', link: '/cheatsheet/git' },
-          { text: 'Python', link: '/cheatsheet/python' },
           { text: 'Node', link: '/cheatsheet/node' },
           { text: 'SQLModel', link: '/cheatsheet/sqlmodel' },
           { text: 'SQLAlchemy', link: '/cheatsheet/sqlalchemy' },
@@ -80,7 +72,7 @@ export default defineConfig({
     theme: 'dracula',
     config: (md) => {
       md.use(require('markdown-it-task-lists'))
-    }
+    },
   },
   vite: {
     server: {
