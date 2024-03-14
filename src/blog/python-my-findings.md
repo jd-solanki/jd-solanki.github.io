@@ -285,7 +285,6 @@ print(is_valid_ip("192.168.5.1")) # False
 isinstace(True, int) # True
 ```
 
-
 ## 📝 Snippets
 
 ### Functions
@@ -393,7 +392,7 @@ for p in path.rglob("*"):
      print(p.name)
 ```
 
-### Testing
+### Testing {#snippets-testing}
 
 #### Use `capsys` fixture with types in pytest
 
@@ -657,7 +656,7 @@ class EmailSender(Protocol):
     def __call__(self, to: str, subject: str, body: str) -> None: ...
 ```
 
-### List
+### List {#tips-list}
 
 #### List Comprehension vs `filter` vs `for` loop
 
@@ -667,7 +666,7 @@ class EmailSender(Protocol):
 
 ### Error Handling
 
-#### Exceptions
+#### Exceptions {#tips-error-handling-exceptions}
 
 - Write as minimum code as possible in `try` block to avoid catching unrelated exceptions
 - Only catch exceptions that you are expecting. Avoid catching `Exception` or `BaseException`
@@ -702,7 +701,7 @@ class EmailSender(Protocol):
 - [ArjanCodes](https://www.youtube.com/@ArjanCodes) YouTube channel
 - [anthonywritescode](https://www.youtube.com/@anthonywritescode) YouTube channel
 
-### Date, Time & Timezones
+### Date, Time & Timezones {#tips-date-time-&-timezones}
 
 - To pass date, time, etc around your application or save them, use iso format.
 

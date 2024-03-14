@@ -147,7 +147,7 @@ target_metadata = Base.metadata // [!code ++]
 ```
 
 :::details Auto import models instead of manually importing them
-I also created utility function that auto imports all the models from the project. You can find it [here](/snippets/python.html#auto-import-models-in-env-py-file-for-auto-generation-of-migrations).
+I also created utility function that auto imports all the models from the project. You can find it [here](/blog/python-my-findings.html#auto-import-models-in-env-py-file-for-auto-generation-of-migrations).
 
 With this utility function you can update the `alembic/env.py` file as below.
 

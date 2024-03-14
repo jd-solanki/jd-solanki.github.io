@@ -161,12 +161,12 @@ for tz in pytz.all_timezones:
 
 #### How to make naive datetime, timezone aware
 
-Refer to [this](/snippets/python.html#how-to-make-naive-datetime-timezone-aware) snippet.
+Refer to [this](/blog/python-my-findings.html#how-to-make-naive-datetime-timezone-aware) snippet.
 
 <br>
 
 :::tip
-Use iso format to pass datetime around or for saving. Refer to [this](/tips/python.html#date-time-timezones) tip.
+Use iso format to pass datetime around or for saving. Refer to [this](/blog/python-my-findings.html#tips-date-time-&-timezones) tip.
 :::
 
 <br>
