@@ -44,7 +44,6 @@ export default defineConfig({
       {
         text: 'Cheatsheet',
         items: [
-          { text: 'AI', link: '/cheatsheet/ai' },
           { text: 'Git', link: '/cheatsheet/git' },
           { text: 'Node', link: '/cheatsheet/node' },
           { text: 'SQLModel', link: '/cheatsheet/sqlmodel' },
