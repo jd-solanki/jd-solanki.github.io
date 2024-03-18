@@ -18,3 +18,23 @@ tag: my-findings, generative ai, ai
 ## 📚 Cheatsheet
 
 - AI > Machine Learning > Deep Learning > Generative AI
+
+### LangChain Prompt Templates
+
+```py
+# `PromptTemplate`
+from langchain.prompts import PromptTemplate
+prompt_template = PromptTemplate(
+  input_variables=["country"],
+  template="What is the capital of {country}."
+)
+prompt_template.format(country="India") # "What is the capital of India."
+
+# `PromptTemplate.from_template`
+from langchain.prompts import PromptTemplate
+
+prompt_template = PromptTemplate.from_template(
+    "What is the capital of {country}."
+)
+prompt_template.format(country="India") # "What is the capital of India."
+```
