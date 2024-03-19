@@ -155,9 +155,30 @@ print(response)
 
 # 2. Stream response in chunks
 for chunks in chain.stream({"topic": "Space travel"}):
-    print(chunks, end="")
+    print(chunks, end="", flush=True)
 
 # 3. Async stream response in chunks
 async for chunks in chain.astream({"topic": "Space travel"}):
-    print(chunks, end="")
+    print(chunks, end="", flush=True)
+```
+
+### Output Parsers
+
+```py
+
+```
+
+### Caching
+
+```py
+from langchain.cache import InMemoryCache, SQLiteCache
+
+# 1. In-memory cache
+set_llm_cache(InMemoryCache())
+
+# 2. SQLite cache
+set_llm_cache(SQLiteCache(database_path=".langchain.db"))
+
+llm.predict("Tell me a joke") # First time so it can take time
+llm.predict("Tell me a joke") # Cached response, so it will be faster
 ```
