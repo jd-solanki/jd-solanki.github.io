@@ -410,7 +410,31 @@ def test_app(capsys: CaptureFixture[str]): // [!code hl]
         print(f"result.stdout: {result.stdout}")
 ```
 
-### Exceptions
+### Decorators
+
+#### Timer/Performance decorator
+
+```py
+from time import perf_counter
+from functools import wraps
+
+def measure_exec_time(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = perf_counter
+        result = func(*args, **kwargs)
+        end_time = perf_counter
+        print(f"Execution time: {end_time - start_time}")
+        return result
+    return wrapper
+
+@measure_exec_time
+def slow_function():
+    time.sleep(2)
+    print("Done!")
+
+slow_function()
+```
 
 #### Retry decorator
 
