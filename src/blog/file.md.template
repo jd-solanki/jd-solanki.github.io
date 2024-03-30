@@ -1,0 +1,13 @@
+---
+title: Title
+tag: tags
+date: 2024-MM-DD
+---
+
+# {{ $frontmatter.title }}
+
+<!-- ## 📚 Cheatsheet -->
+
+<!-- ## ✨ Tips -->
+
+<!-- ## 📝 Snippets -->

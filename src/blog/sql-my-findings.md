@@ -1,4 +1,18 @@
-# SQL
+---
+title: SQL - My Findings
+tag: sql, my-findings
+date: 2024-03-30
+---
+
+# {{ $frontmatter.title }}
+
+:::warning
+This guide uses mysql syntax. Please refer to the documentation of the database you are using for any differences.
+:::
+
+## 📚 Cheatsheet
+
+### Common SQL Commands
 
 - `SELECT` - extracts data from a database
 - `UPDATE` - updates data in a database
@@ -12,7 +26,38 @@
 - `CREATE INDEX` - creates an index (search key)
 - `DROP INDEX` - deletes an index
 
-## `SELECT`
+### Common Data Types
+
+- `INT` - integer
+- `DECIMAL(M, N)` - Decimal number with `M` total digits and `N` digits after the decimal point
+- `VARCHAR(N)` - String of text with a maximum length of `N` characters
+- `BLOB` - Binary Large Object for storing binary data
+- `DATE` - Date format (YYYY-MM-DD)
+- `TIMESTAMP` - Date and time format (YYYY-MM-DD HH:MM:SS)
+
+### Table Related Commands
+
+```sql
+CREATE TABLE students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    major VARCHAR(20) UNIQUE,
+    city VARCHAR(20) DEFAULT 'Ahmedabad'
+    -- PRIMARY KEY (id) - Another way to define primary key (🚨 You've to add comma in above line if you uncomment this)
+);
+
+DESCRIBE students; -- To see the structure of the table
+
+ALTER TABLE students ADD gpa DECIMAL(3, 2); -- To add a new column
+
+ALTER TABLE students DROP COLUMN gpa; -- To delete a column
+
+ALTER TABLE students MODIFY COLUMN name VARCHAR(30); -- To modify a column
+
+DROP TABLE students; -- To delete the table
+```
+
+### `SELECT`
 
 ```sql
 -- Syntax: SELECT column1, column2, ... FROM table_name;
@@ -31,7 +76,7 @@ SELECT city, country FROM customers;
 SELECT DISTINCT city FROM customers;
 ```
 
-## `WHERE`
+### `WHERE`
 
 ```sql
 -- Syntax: SELECT column1, column2, ... FROM table_name WHERE condition;
@@ -100,7 +145,7 @@ SELECT * FROM customers WHERE country='India' AND (customer_name LIKE 'G%' OR cu
 SELECT * FROM customers WHERE country='India' AND customer_name LIKE 'G%' OR customer_name='R%';
 ```
 
-#### Operator Reference
+##### Operator Reference
 
 | Operator   | Description                 |
 |------------|-----------------------------|
@@ -116,9 +161,9 @@ SELECT * FROM customers WHERE country='India' AND customer_name LIKE 'G%' OR cus
 | `AND`      | Logical operator AND        |
 | `OR`       | Logical operator OR         |
 
-## `LIKE`
+### `LIKE`
 
-## `ORDER BY`
+### `ORDER BY`
 
 ```sql
 -- Syntax: SELECT column1, column2, ... FROM table_name ORDER BY column1, column2, ... ASC|DESC;
@@ -140,25 +185,28 @@ SELECT * FROM product ORDER BY price, product_name;
 
 -- Select all products and order them by price (DESC - descending) and then by product name (ASC - ascending)
 SELECT * FROM product ORDER BY price DESC, product_name;
+
+-- You can even order by column which you are not selecting.
+SELECT id, name FROM products ORDER BY price;
 ```
 
-## `INSERT INTO`
+### `INSERT INTO`
 
 ```sql
 -- Syntax: INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...);
 
 -- Insert a new record in the "customers" table. ID column is auto incremented & does not need to be specified
-INSERT INTO (customer_name, address, city, postal_code, country) VALUES ('Arjun', 'A-7, Satyam Complex', 'Ahmedabad', '382350', 'India');
+INSERT INTO customers (customer_name, address, city, postal_code, country) VALUES ('Arjun', 'A-7, Satyam Complex', 'Ahmedabad', '382350', 'India');
 
 -- Insert multiple records in the "customers" table.
-INSERT INTO
+INSERT INTO customers
     (customer_name, address, city, postal_code, country)
     VALUES
     ('Arjun', 'A-7, Satyam Complex', 'Ahmedabad', '382350', 'India'),
     ('Ashwatthama', 'A-13, Satyam Complex', 'Ahmedabad', '382350', 'India');
 ```
 
-## `NULL` Values
+### `NULL` Values
 
 A field with a `NULL` value is a field with no value.
 
@@ -176,7 +224,7 @@ SELECT * FROM customers WHERE address IS NULL;
 SELECT * FROM customers WHERE address IS NOT NULL;
 ```
 
-## `UPDATE`
+### `UPDATE`
 
 ```sql
 -- Syntax: UPDATE table_name SET column1=value1, column2=value2, ... WHERE condition;
@@ -189,9 +237,12 @@ UPDATE customers SET city='Gandhinagar' WHERE address LIKE '%Sanatan Complex%';
 
 -- Update city and postal code of all customers who lives in Sana Complex to "Gandhinagar"
 UPDATE customers SET city='Gandhinagar', postal_code='380011' WHERE address LIKE '%Sanatan Complex%';
+
+-- Update all the rows. This will set the city to "Unknown" for all the customers
+UPDATE customers SET city='Unknown';
 ```
 
-## `DELETE`
+### `DELETE`
 
 ```sql
 -- Syntax: DELETE FROM table_name WHERE condition;
@@ -206,7 +257,7 @@ DELETE FROM products;
 DROP TABLE products;
 ```
 
-## `LIMIT` & `OFFSET`
+### `LIMIT` & `OFFSET`
 
 `LIMIT` is used to specify the number of records to return. `OFFSET` is used to specify the number of records to skip before starting to return the records.
 
@@ -229,7 +280,7 @@ SELECT * FROM customers LIMIT 5 OFFSET 3;
 SELECT salary FROM employees ORDER BY salary DESC LIMIT 1 OFFSET 1;
 ```
 
-## `MIN` & `MAX`
+### `MIN` & `MAX`
 
 ```sql
 -- Syntax: SELECT MIN(column_name) FROM table_name WHERE condition;
@@ -249,7 +300,7 @@ SELECT MIN(price) AS lowest_price FROM products;
 SELECT MAX(price) AS highest_price FROM products;
 ```
 
-## `COUNT`
+### `COUNT`
 
 ```sql
 -- Syntax: SELECT COUNT(column_name) FROM table_name WHERE condition;
@@ -267,7 +318,7 @@ SELECT COUNT(customer_name) FROM customers;
 SELECT COUNT(DISTINCT country) FROM customers;
 ```
 
-## `SUM` & `AVG`
+### `SUM` & `AVG`
 
 ```sql
 -- Syntax: SELECT SUM(column_name) FROM table_name WHERE condition;
@@ -289,7 +340,7 @@ SELECT SUM(price * 80) FROM products;
 SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products);
 ```
 
-## Aliases
+### Aliases
 
 ```sql
 -- Syntax: SELECT column_name AS column_alias_name FROM table_name;
@@ -305,10 +356,12 @@ SELECT * FROM products AS items;
 SELECT o.order_id, o.order_date, c.customer_name FROM customers as c, orders as o WHERE c.customer_id=o.customer_id;
 ```
 
-## Joins
+### Joins
 
 🚧 _WIP_
 
----
+## ✨ Tips
 
-_Credits: [W3Schools](https://www.w3schools.com/sql/default.asp)_
+- You can do order by even if you're not selecting that column. For example, `SELECT id, name FROM products ORDER BY price;`
+
+<!-- ## 📝 Snippets -->

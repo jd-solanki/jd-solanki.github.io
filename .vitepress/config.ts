@@ -53,7 +53,6 @@ export default defineConfig({
           { text: 'Regex', link: '/cheatsheet/regex' },
           { text: 'Prompts', link: '/cheatsheet/prompts' },
           { text: 'Memory', link: '/cheatsheet/memory' },
-          { text: 'SQL', link: '/cheatsheet/sql' },
         ],
       },
     ],
