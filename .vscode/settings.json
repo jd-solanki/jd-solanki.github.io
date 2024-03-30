@@ -39,6 +39,7 @@
         "setenv",
         "Solanki",
         "timedelta",
+        "urlpatterns",
         "Yakko"
     ]
 }

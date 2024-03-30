@@ -1,6 +1,6 @@
 ---
 title: Generative AI - My Findings
-tag: my-findings, generative ai, ai
+tag: my-findings, generative ai
 ---
 
 # {{ $frontmatter.title }}
