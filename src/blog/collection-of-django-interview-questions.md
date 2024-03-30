@@ -5,10 +5,6 @@ date: 2023-12-31
 
 # {{ $frontmatter.title }}
 
-:::details Resources
-- [Django Cheatsheet](/cheatsheet/django.md)
-:::
-
 ## Q: Does django have MVC architecture?
 
 Unlike other popular web frameworks such as Ruby on Rails, Django does not have a strict Model-View-Controller (MVC) architecture. Instead, Django uses a Model-View-Template (MVT) architecture, which is a variation of MVC. In this architecture, the controller is replaced by the template, which is a layer between the view and the user. The template is responsible for rendering the view and displaying it to the user.
