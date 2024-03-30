@@ -18,6 +18,13 @@ tag: my-findings, generative ai
 :::details Langchain useful links
 
 - [Concepts](https://python.langchain.com/docs/modules/model_io/concepts)
+- [LangChain Crash Course For Beginners](https://www.youtube.com/watch?v=nAmC7SoVLd8)
+- [LangChain Expression Language (LCEL) Explained](https://www.youtube.com/watch?v=O0dUOtOIrfs)
+- [LangChain Project with explanation of concepts](https://www.youtube.com/watch?v=MoqgmWV1fm8&t=3534s)
+:::
+
+:::tip
+Watch [this](https://www.youtube.com/watch?v=O0dUOtOIrfs) video on LCEL before starting with Langchain
 :::
 
 ## 📚 Cheatsheet
@@ -44,7 +51,7 @@ tag: my-findings, generative ai
 
 ```py
 # Imports
-from langchain_community.chat_models import ChatOllama
+from langchain_community.chat_models.ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -146,7 +153,11 @@ partial_prompt = PromptTemplate(
 print(partial_prompt.format(adjective="funny")) # "Tell me a funny joke about the day 10/12/2021, 14:30:00"
 ```
 
-### Chain Invocation
+### Chain
+
+<br>
+
+#### Invocation
 
 ```py
 # 1. Invoke chain to get full response
@@ -162,12 +173,6 @@ async for chunks in chain.astream({"topic": "Space travel"}):
     print(chunks, end="", flush=True)
 ```
 
-### Output Parsers
-
-```py
-
-```
-
 ### Caching
 
 ```py
@@ -181,4 +186,49 @@ set_llm_cache(SQLiteCache(database_path=".langchain.db"))
 
 llm.predict("Tell me a joke") # First time so it can take time
 llm.predict("Tell me a joke") # Cached response, so it will be faster
+```
+
+### Memory
+
+<br>
+
+#### Conversation Buffer
+
+This will store whole the conversation history in memory.
+
+:::warning
+It's not recommended for long conversations because as we'll send whole conversation it'll consume more tokens and can be expensive.
+:::
+
+```py
+from langchain.memory import ConversationBufferMemory
+
+
+memory = ConversationBufferMemory()
+chain = (
+    RunnablePassthrough.assign(
+        history=RunnableLambda(memory.load_memory_variables) | itemgetter("history")
+    )
+    | prompt
+    | model
+)
+```
+
+#### Conversation Buffer Window
+
+Only preserves the last `n` messages in memory.
+
+```py
+from langchain.memory import ConversationBufferWindowMemory
+
+
+# Only last 5 messages will be stored in memory
+memory = ConversationBufferWindowMemory(k=5)
+chain = (
+    RunnablePassthrough.assign(
+        history=RunnableLambda(memory.load_memory_variables) | itemgetter("history")
+    )
+    | prompt
+    | model
+)
 ```
