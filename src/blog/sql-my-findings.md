@@ -356,9 +356,30 @@ SELECT * FROM products AS items;
 SELECT o.order_id, o.order_date, c.customer_name FROM customers as c, orders as o WHERE c.customer_id=o.customer_id;
 ```
 
+### Union
+
+- Resulting columns should have the same data type. For example, This is not allowed `SELECT name FROM products UNION SELECT price FROM products;`
+- Resulting columns should have the same number of columns. For example, This is not allowed `SELECT id, name FROM products UNION SELECT name FROM products;`
+
+```sql
+-- Syntax: SELECT column1, column2, ... FROM table1 UNION SELECT column1, column2, ... FROM table2;
+
+-- Select all customers from the "customers" table and all customers from the "old_customers" table
+SELECT * FROM customers UNION SELECT * FROM old_customers;
+
+-- Get first & last record from the "customers" table
+(SELECT * FROM customers LIMIT 1) UNION (SELECT * FROM customers ORDER BY id DESC LIMIT 1);
+```
+
 ### Joins
 
 🚧 _WIP_
+
+### Nested Queries
+
+```sql
+SELECT * FROM customers WHERE country_id IN (SELECT country_id FROM countries WHERE country_name='India');
+```
 
 ## ✨ Tips
 
