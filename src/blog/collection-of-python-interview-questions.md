@@ -710,11 +710,6 @@ loop.close()
 
 In both examples, `print_nums` and `print_hello` run concurrently. However, the multithreading example uses threads, while the asyncio example uses coroutines¹².
 
-Source: Conversation with Bing, 12/31/2023
-(1) python - multiprocessing vs multithreading vs asyncio - Stack Overflow. <https://stackoverflow.com/questions/27435284/multiprocessing-vs-multithreading-vs-asyncio>.
-(2) Asyncio vs. Threading in Python: The Ultimate Comparison. <https://www.codingdeeply.com/asyncio-vs-threading-in-python/>.
-(3) concurrency - Asyncio vs Threading in python - Stack Overflow. <https://stackoverflow.com/questions/74559560/asyncio-vs-threading-in-python>.
-
 ## Q: Explain with statement in python
 
 The `with` statement in Python is used to simplify resource management by providing a convenient way to acquire and release resources, such as files, sockets, or locks. It ensures that certain operations are properly set up and cleaned up, even if an exception occurs during the execution of the block of code.
