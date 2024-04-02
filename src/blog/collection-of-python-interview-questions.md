@@ -904,3 +904,55 @@ Monolithic and microservice architectures are two different approaches to struct
 - It can also introduce challenges related to data consistency and managing distributed systems.
 
 In summary, the choice between monolithic and microservices architectures depends on the specific requirements of your project.
+
+## Q: Mean, Median, and Mode in Python
+
+- **Mean**: The mean is the average of a set of numbers. It is calculated by summing all the numbers in the set and dividing by the total count of numbers.
+
+  ```python
+    def mean(data: list[int]):
+        return sum(data) / len(data)
+  ```
+
+- **Median**: The median is the middle value of a set of numbers when they are ordered. If the set has an odd number of elements, the median is the middle value. If the set has an even number of elements, the median is the average of the two middle values.
+
+  ```python
+    def median(data: list[int]):
+        sorted_data = sorted(data)
+        length = len(sorted_data)
+        middle_index = length // 2
+
+        if length % 2 == 0:
+            return (sorted_data[middle_index - 1] + sorted_data[middle_index]) / 2
+        else:
+            return sorted_data[middle_index]
+  ```
+
+- **Mode**: The mode is the value that appears most frequently in a set of numbers.
+
+  ```python
+    from collections import defaultdict
+
+    def mode(data: list[int]):
+        freq = defaultdict(int)
+        for i in data:
+            freq[i] += 1
+
+        max_freq = max(freq.values())
+        
+        for i in data:
+            if freq[i] == 2:
+                return i
+  ```
+
+Python's `statistics` module also provides functions for calculating the mean, median, and mode:
+
+```python
+import statistics
+
+data = [1, 2, 3, 4, 5, 5, 6, 7, 8, 9]
+
+mean = statistics.mean(data)
+median = statistics.median(data)
+mode = statistics.mode(data)
+```
