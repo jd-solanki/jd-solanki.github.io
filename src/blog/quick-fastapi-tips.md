@@ -27,12 +27,13 @@ async def root():
 ### Writing prefix while including router
 
 - Prefer no prefix for including router in the main app.
+- Instead of prefix use `tags` if needed to group the endpoints.
 
 ```py
 router =  APIRouter()
 
-# Prefer this
-router.include_router(products_router, prefix="/")
+# Prefer this (No prefix defined)
+router.include_router(products_router)
 ```
 
 Above will gives you more clarity when you read the product router
