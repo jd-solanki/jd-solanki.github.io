@@ -9,6 +9,7 @@ tag: my-findings, python
 
 - [Python Cheatsheet](https://www.pythoncheatsheet.org/)
 - [Effective Python Async like a PRO](https://guicommits.com/effective-python-async-like-a-pro/)
+- [Developing an Asynchronous Task Queue in Python](https://testdriven.io/blog/developing-an-asynchronous-task-queue-in-python/)
 :::
 
 ## 📚 Cheatsheet

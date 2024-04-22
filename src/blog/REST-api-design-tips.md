@@ -7,7 +7,12 @@ tags: api, tips
 
 <br />
 
-#### API endpoint should be resource not action
+:::details Resource
+
+- [Deep Dive into REST API Design and Implementation Best Practices](https://www.youtube.com/watch?v=7nm1pYuKAhY)
+:::
+
+### API endpoint should be resource not action
 
 ```
 https://api.example.com/tasks // [!code ++]
@@ -15,7 +20,7 @@ https://api.example.com/tasks // [!code ++]
 https://api.example.com/get-tasks // [!code --]
 ```
 
-#### Collection name should be plural
+### Collection name should be plural
 
 ```
 https://api.example.com/tasks // [!code ++]
@@ -25,14 +30,14 @@ https://api.example.com/task // [!code --]
 https://api.example.com/task/{task_id} // [!code --]
 ```
 
-#### Don't go deeper than 3 levels: `collection/resource/collection`
+### Don't go deeper than 3 levels: `collection/resource/collection`
 
 ```
 https://api.example.com/tasks/1/comments // [!code ++]
 https://api.example.com/tasks/1/comments/1/replies // [!code --]
 ```
 
-#### Filter, Sorting & Pagination
+### Filter, Sorting & Pagination
 
 ```md
 <!-- Filter: Use key-value pair -->
@@ -53,7 +58,7 @@ https://api.example.com/tasks?limit=10&offset=0
 https://api.example.com/tasks?limit=10&offset=3 <- You can get 10 items starting from 4th item with limit-offset
 ```
 
-#### Instead of returning list return object with name for making your response future proof
+### Instead of returning list return object with name for making your response future proof
 
 ```py
 # --- Before
@@ -72,7 +77,7 @@ https://api.example.com/tasks?limit=10&offset=3 <- You can get 10 items starting
 }
 ```
 
-#### Don't return map structure in response, instead return list of objects
+### Don't return map structure in response, instead return list of objects
 
 ```py
 # --- Before
@@ -99,3 +104,37 @@ https://api.example.com/tasks?limit=10&offset=3 <- You can get 10 items starting
 }
 
 ```
+
+### Async/Longer Operations
+
+- For longer processes (`POST` `{ processId: 99 }` => `/long-process/create`) Send `202` status code to indicate that request has been accepted for processing
+  - Add status endpoint URL in response header `Location` to check the status of the operation
+- Expose `GET` (`/long-process/status/99`) endpoint to check the status of the operation
+  - Return **`200` status** code if operation isn't completed with any of the below response:
+    - Provide status of the operation
+
+        ```
+        { status: "In Progress" }
+        ```
+
+    - Provide estimated time to complete
+
+        ```
+        { "time_to_complete_in_minutes": "15" }
+        ```
+
+    - You can also provide link to cancel/stop the operation
+
+        ```
+        {
+            "rel": "cancel",
+            "method": "delete",
+            "href": "/long-process/cancel/99"
+        }
+        ````
+
+  - Return 303 status code with `Location` header with URL to created resource once operation is completed
+
+    ```
+    { "status": "completed" }
+    ```
