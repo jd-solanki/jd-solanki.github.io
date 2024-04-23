@@ -8,6 +8,7 @@
 - Users having UID >= 1000 are normal users & < 1000 are system users
 - System users are helpful when we want to run something/cron in background
 - View users in `/etc/passwd` file & groups in `/etc/group` file
+- If someone has permission like `rw-` for directory, it means user can view the content of the directory and add files to it but can't navigate to it.
 
 ```shell
 sudo useradd myuser # create a user
@@ -44,6 +45,41 @@ sudo gpasswd -d myuser mygroup # Remove user "myuser" from the group "mygroup"
 
 cat /etc/group # list all groups
 # groupname:password:GID:users
+```
+
+### Permissions
+
+| type    | #    |
+|---------|------|
+| read    | 4    |
+| write   | 2    |
+| execute | 1    |
+
+- `rwx` => 7
+- `rw-` => 6
+- `r-x` => 5
+
+
+```shell
+chmod +w file.txt # add execute permission to file.txt for all
+
+chmod -w file.txt # remove execute permission from file.txt for all
+
+chmod u+w file.txt # add execute permission to file.txt for user
+
+chmod g+w file.txt # add execute permission to file.txt for group
+
+chmod o+w file.txt # add execute permission to file.txt for others
+
+chmod g+rw file.txt # add read & write permission to file.txt for group
+
+chmod 770 file.txt # add read, write & execute permission to file.txt. User & group have full permission & others have no permission
+
+chmod -R 755 mydir # Recursively update permission
+
+chown -R myuser:mygroup mydir # Change owner of directory "mydir" to "myuser" & group to "mygroup"
+
+chown -R $USER:$USER mydir # Change owner of directory "mydir" to current user & group to current user
 ```
 
 ### Utility
