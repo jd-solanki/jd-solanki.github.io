@@ -2,7 +2,51 @@
 
 ## Commands
 
-#### Utility
+### Users & Groups
+
+- Users having UID 0 are superusers (root)
+- Users having UID >= 1000 are normal users & < 1000 are system users
+- System users are helpful when we want to run something/cron in background
+- View users in `/etc/passwd` file & groups in `/etc/group` file
+
+```shell
+sudo useradd myuser # create a user
+
+sudo userdel myuser # delete a user
+
+sudo useradd -m myuser # create a user with home directory
+
+sudo userdel -r myuser # delete a user along with home directory
+
+sudo useradd -r mybot # create a system user using `-r` flag
+
+passwrd # change password of currently logged in user
+
+sudo passwd myuser # change password of a user "myuser"
+
+cat /etc/passwd # list all users
+# username:password:UID:GID:comment:home:shell
+
+# --- Group ---
+
+groups # list groups of current user
+
+groups myuser # list groups of user "myuser"
+
+sudo groupadd mygroup # create a group
+
+sudo groupdel mygroup # delete a group
+
+sudo usermod -aG mygroup myuser # add user "myuser" to group "mygroup" (logout & login required)
+# sudo gpasswd -a myuser mygroup # Same thing as above but using `gpasswd`
+
+sudo gpasswd -d myuser mygroup # Remove user "myuser" from the group "mygroup"
+
+cat /etc/group # list all groups
+# groupname:password:GID:users
+```
+
+### Utility
 
 ```bash
 mktemp # create a temporary directory
@@ -20,7 +64,7 @@ tail -f /var/log/syslog
 
 ## Security
 
-#### ufw - Uncomplicated Firewall
+### ufw - Uncomplicated Firewall
 
 ```bash
 # Enable firewall
@@ -82,7 +126,7 @@ sudo tail -f /var/log/nginx/access.log
 
 ## Systemd
 
-#### Useful Commands
+### Useful Commands
 
 ```bash
 # --- Working with systemd service ---
