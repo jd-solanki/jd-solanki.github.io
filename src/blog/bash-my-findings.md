@@ -207,6 +207,78 @@ wc -w << EOF
 
 <br/><br/>
 
+#### String Manipulation
+
+```bash
+#!/bin/bash
+
+str="Hello, World"
+
+# Length of the string
+echo ${#str} # 12
+
+# Convert first character to lowercase
+echo ${string,} # hello, World
+
+# Convert all to lowercase
+echo ${string,,} # hello, world
+
+# Update str variable for further examples
+str="hello, World"
+
+# Convert first character to uppercase
+echo ${str^} # Hello, World
+
+# Convert all to uppercase
+echo ${str^^} # HELLO, WORLD
+
+str="Hello, World"
+
+# Indexing
+
+# Get substring from index 1 to end
+echo ${str:1} # ello, World
+
+# Get substring from index 1 to 3 characters
+echo ${str:7:3} # Wor
+
+# Get substring from end
+echo ${str:-1} # Hello, World
+
+# Get substring from end of length 1
+echo ${str: -1} # d
+
+# Get substring from end of length 5
+echo ${str: -5} # World
+
+# From start, Replace shortest match
+echo ${str#*l} # lo, World
+
+# From start, Replace longest match
+echo ${str##*l} # d
+
+# From end, Replace shortest match
+echo ${str%l*} # Hello, Wor
+
+# From end, Replace longest match
+echo ${str%%l*} # He
+
+# Find and Replace
+echo ${str/World/John} # Hello, John
+echo ${str/l/L} # HeLlo, World
+
+# Multiple Find and Replace
+echo ${str//l/L} # HeLLo, WorLd
+
+# Remove match single
+echo ${str/l} # Helo, World
+
+# Remove match all
+echo ${str//l} # Heo, Word
+```
+
+<br/><br/>
+
 #### Testing File Conditions
 
 ```bash
