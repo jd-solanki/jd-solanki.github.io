@@ -1,6 +1,14 @@
-# SQLAlchemy
+---
+title: SQLAlchemy - My Findings
+tag: python, database
+date: 2024-04-25
+---
 
-## Useful Links
+# {{ $frontmatter.title }}
+
+## 📚 Cheatsheet
+
+### Useful Links
 
 - [ORM migration usage](https://docs.sqlalchemy.org/en/20/changelog/migration_20.html#migration-orm-usage)
 - [ORM Querying Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html#orm-querying-guide)
@@ -10,9 +18,9 @@
 - [Default type mapping for `Mapped`](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
 - [What's new in SQLAlchemy 2](https://blog.miguelgrinberg.com/post/what-s-new-in-sqlalchemy-2-0)
 
-## ORM
+### ORM
 
-### Define Models
+#### Define Models
 
 [Type annotation map](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
 
@@ -60,7 +68,7 @@ class Address(Base):
 `mapped_column()` receives the same arguments as `dataclasses.field()`. E.g. `default`, `init`, etc.
 :::
 
-### Query data
+#### Query data
 
 🚧 _WIP_
 
@@ -99,3 +107,40 @@ user = db.query(User).filter(or_(User.email === data.email, User.username === da
 # Order by id
 stmt = select(User).order_by(User.id)
 ```
+
+
+## ✨ Tips
+
+### Django like [signals](https://docs.djangoproject.com/en/4.2/topics/signals/) in SQLAlchemy
+
+```py
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+
+# Define the function to run after insertion
+def after_insert_listener(mapper, connection, target):
+    # Your custom logic here
+    print("New user added to the DB:", target)
+
+# Attach the event listener to the after_insert event
+listens_for(User, 'after_insert', after_insert_listener)
+```
+
+### Use `dataclass` for base class
+
+Making your model's base class a `dataclass` using `MappedAsDataclass` will provide autocompletion & type hints while creating record and help you find errors:
+
+```py
+from sqlalchemy.orm import DeclarativeBase, MappedAsDataclass
+
+class Base(MappedAsDataclass, DeclarativeBase):
+    pass
+```
+
+### SQLAlchemy Query Optimization
+
+Please refer to [this](/blog/sql-query-optimization) blog post
+
+<!-- ## 📝 Snippets -->

@@ -38,7 +38,6 @@ export default defineConfig({
           { text: 'FastAPI', link: '/tips/fastapi' },
           { text: 'Mac', link: '/tips/mac' },
           { text: 'Node', link: '/tips/node' },
-          { text: 'SQLAlchemy', link: '/tips/sqlalchemy' },
         ],
       },
       {
@@ -47,7 +46,6 @@ export default defineConfig({
           { text: 'Git', link: '/cheatsheet/git' },
           { text: 'Node', link: '/cheatsheet/node' },
           { text: 'SQLModel', link: '/cheatsheet/sqlmodel' },
-          { text: 'SQLAlchemy', link: '/cheatsheet/sqlalchemy' },
           { text: 'TypeScript', link: '/cheatsheet/typescript' },
           { text: 'Linux', link: '/cheatsheet/linux' },
           { text: 'Regex', link: '/cheatsheet/regex' },
