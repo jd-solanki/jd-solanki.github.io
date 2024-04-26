@@ -17,6 +17,8 @@ date: 2024-04-25
 - [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
 - [Default type mapping for `Mapped`](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
 - [What's new in SQLAlchemy 2](https://blog.miguelgrinberg.com/post/what-s-new-in-sqlalchemy-2-0)
+- [Select API reference](https://docs.sqlalchemy.org/en/20/core/selectable.html#sqlalchemy.sql.expression.Select)
+- [Session API reference](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session)
 
 ### ORM
 
@@ -79,33 +81,48 @@ from sqlalchemy import or_
 user = db.get(User, 73)
 
 # Get all users (Use this method instead of below three)
-users = db.scalars(
-  select(User)
-).all()
+statement = select(User)
+result = db.scalars(statement)
+users = result.all()
 
 # Get all users (Explicit)
 users = db.execute(
     select(User)
 ).scalars().all()
 
+
+# (async) Get all users with limit & offset
+statement = select(User).offset(skip).limit(limit)
+result = await db.scalars(result)
+users = result.unique().all()
+
 # Filter user by email
-user = db.scalars(
-  select(User).where(User.email == "john@mail.com")
-).first()
+statement = select(User).where(User.email == "john@mail.com")
+result = db.scalars(statement)
+user = result.first()
 # instead of `.first()` you can also use `.one()` & `.one_or_none()`
 
 # Filter with multiple conditions (AND)
-user = db.scalars(
-  select(User)
-    .where(User.email == "john@mail.com")
-    .where(User.username === data.username)
-).first()
+statement = select(User).where(User.email == "john@mail.com").where(User.username == data.username)
+result = db.scalars(statement)
+user = result.first()
 
 # Filter with multiple conditions (OR)
-user = db.query(User).filter(or_(User.email === data.email, User.username === data.username)).first()
+statement = select(User).where(or_(User.email == data.email, User.username == data.username))
+result = db.scalars(statement)
+user = result.first()
 
 # Order by id
-stmt = select(User).order_by(User.id)
+statement = select(User).order_by(User.id.desc())
+result = db.scalars(statement)
+users = result.all()
+
+# Get count
+statement = select(func.count()).select_from(User)
+count = db.scalar(statement)
+
+statement = select(func.count(User.id))
+count = db.scalar(statement)
 ```
 
 
