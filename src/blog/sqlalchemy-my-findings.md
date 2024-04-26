@@ -19,6 +19,7 @@ date: 2024-04-25
 - [What's new in SQLAlchemy 2](https://blog.miguelgrinberg.com/post/what-s-new-in-sqlalchemy-2-0)
 - [Select API reference](https://docs.sqlalchemy.org/en/20/core/selectable.html#sqlalchemy.sql.expression.Select)
 - [Session API reference](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session)
+- [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
 
 ### ORM
 

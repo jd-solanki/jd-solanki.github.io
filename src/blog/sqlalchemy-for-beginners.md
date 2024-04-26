@@ -102,4 +102,25 @@ with engine.connect() as conn:
     conn.commit()
 ```
 
+### Metadata
+
+Metadata is python objects that represent database concepts like tables and columns.
+
+```py
+from sqlalchemy import MetaData, Table, Column, Integer, String
+
+metadata_obj = MetaData()
+
+user_table = Table(
+    "user_account",
+    metadata_obj, # 🚨 Notice we're passing `metadata_obj` here
+    Column("id", Integer, primary_key=True),
+    Column("name", String(30)),
+    Column("fullname", String),
+)
+
+metadata_obj.create_all(engine) # Create tables in the database
+metadata_obj.drop_all(engine) # Drop tables from the database
+```
+
 ### ORM
