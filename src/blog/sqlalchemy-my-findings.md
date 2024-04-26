@@ -72,17 +72,15 @@ class Address(Base):
 
 #### Query data
 
-🚧 _WIP_
-
 ```py
 from sqlalchemy import or_
 
 # Get user by id
-user = db.get(User, 73)
+user = await db.get(User, 73)
 
 # Get all users (Use this method instead of below three)
 statement = select(User)
-result = db.scalars(statement)
+result = await db.scalars(statement)
 users = result.all()
 
 # Get all users (Explicit)
@@ -91,40 +89,39 @@ users = db.execute(
 ).scalars().all()
 
 
-# (async) Get all users with limit & offset
+# Get all users with limit & offset
 statement = select(User).offset(skip).limit(limit)
 result = await db.scalars(result)
 users = result.unique().all()
 
 # Filter user by email
 statement = select(User).where(User.email == "john@mail.com")
-result = db.scalars(statement)
+result = await db.scalars(statement)
 user = result.first()
 # instead of `.first()` you can also use `.one()` & `.one_or_none()`
 
 # Filter with multiple conditions (AND)
 statement = select(User).where(User.email == "john@mail.com").where(User.username == data.username)
-result = db.scalars(statement)
+result = await db.scalars(statement)
 user = result.first()
 
 # Filter with multiple conditions (OR)
 statement = select(User).where(or_(User.email == data.email, User.username == data.username))
-result = db.scalars(statement)
+result = await db.scalars(statement)
 user = result.first()
 
 # Order by id
 statement = select(User).order_by(User.id.desc())
-result = db.scalars(statement)
+result = await db.scalars(statement)
 users = result.all()
 
 # Get count
 statement = select(func.count()).select_from(User)
-count = db.scalar(statement)
+count = await db.scalar(statement)
 
 statement = select(func.count(User.id))
-count = db.scalar(statement)
+count = await db.scalar(statement)
 ```
-
 
 ## ✨ Tips
 
