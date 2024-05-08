@@ -902,52 +902,33 @@ In summary, the choice between monolithic and microservices architectures depend
 
 ## Q: Mean, Median, and Mode in Python
 
-- **Mean**: The mean is the average of a set of numbers. It is calculated by summing all the numbers in the set and dividing by the total count of numbers.
+_Please refer to [this](/blog/python-interview-code-challenges.md#mean-median-and-mode)._
 
-  ```python
-    def mean(data: list[int]):
-        return sum(data) / len(data)
-  ```
+## Q: What is the purpose of asterisk (`*`) & forward slash (`/`) in function arguments?
 
-- **Median**: The median is the middle value of a set of numbers when they are ordered. If the set has an odd number of elements, the median is the middle value. If the set has an even number of elements, the median is the average of the two middle values.
+asterisk (`*`) and forward slash (`/`) controls how you pass values to the function.
 
-  ```python
-    def median(data: list[int]):
-        sorted_data = sorted(data)
-        length = len(sorted_data)
-        middle_index = length // 2
+- Arguments before `/` are positional-only.
+- Arguments between `/` and `*` can be positional or keyword.
+- Arguments after `*` are keyword-only.
 
-        if length % 2 == 0:
-            return (sorted_data[middle_index - 1] + sorted_data[middle_index]) / 2
-        else:
-            return sorted_data[middle_index]
-  ```
+```py
+def my_func(position_only, /, positional_or_keyword, *, keyword_only):
+    print(position_only, positional_or_keyword, keyword_only)
 
-- **Mode**: The mode is the value that appears most frequently in a set of numbers.
+my_func(1, 2, keyword_only=3) # ✅ Valid
+my_func(1, positional_or_keyword=2, keyword_only=3) # ✅ Valid
 
-  ```python
-    from collections import defaultdict
+my_func(position_only=1, positional_or_keyword=2, keyword_only=3) # ❌ Invalid
+my_func(1, 2, 3) # ❌ Invalid
+```
 
-    def mode(data: list[int]):
-        freq = defaultdict(int)
-        for i in data:
-            freq[i] += 1
+You can even use `*` or `/` alone in function arguments.
 
-        max_freq = max(freq.values())
-        
-        for i in data:
-            if freq[i] == 2:
-                return i
-  ```
+```py
+def my_func(*, keyword_only):
+    print(keyword_only)
 
-Python's `statistics` module also provides functions for calculating the mean, median, and mode:
-
-```python
-import statistics
-
-data = [1, 2, 3, 4, 5, 5, 6, 7, 8, 9]
-
-mean = statistics.mean(data)
-median = statistics.median(data)
-mode = statistics.mode(data)
+def my_func(position_only, /):
+    print(position_only)
 ```
