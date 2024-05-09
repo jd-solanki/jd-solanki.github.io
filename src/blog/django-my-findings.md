@@ -118,6 +118,34 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+### ORM
+
+```py
+from django.db import models
+
+class Product(models.Model):
+    # Fields
+
+
+# Create
+Product.objects.create(title="Denim Jeans", price=1000) # Create a new product
+
+# Read
+Product.objects.all() # Get all products
+Product.objects.get(id=1) # Get product with id 1
+Product.objects.first() # Get the first product
+Product.objects.last() # Get the last product
+Product.objects.count() # Get the count of products
+
+# Filter
+Product.objects.filter(name="Product 1") # Get products with name "Product 1"
+Product.objects.exclude(name="Product 1") # Get products without name "Product 1"
+
+# Sort
+Product.objects.order_by("price") # Sort by price
+Product.objects.order_by("-price") # Sort by price in descending order
+```
+
 ## ✨ Tips
 
 ### Queryset
