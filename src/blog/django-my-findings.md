@@ -118,6 +118,42 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+### Middleware
+
+#### Custom Middleware
+
+```py
+from django.http import HttpRequest
+
+def simple_middleware(get_response):
+    def middleware(request: HttpRequest):
+        # Code to be executed for each request before
+        # the view (and later middleware) are called.
+        print("In middleware")
+        response = get_response(request)
+        return response
+
+    return middleware
+
+# Or use a class-based middleware
+
+class SimpleMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        print("In middleware")
+        response = self.get_response(request)
+        return response
+
+# Finally, add the middleware to the `settings.py`
+# 📄 settings.py
+MIDDLEWARE = [
+    # ...
+    "app.middleware.SimpleMiddleware",
+]
+```
+
 ## ✨ Tips
 
 ### Queryset
