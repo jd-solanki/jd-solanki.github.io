@@ -27,7 +27,8 @@ docker build -t <image-name> .
 # `--name` flag is used to give a name to the container
 # `-p` flag is used to map a port from the host to the container
 # `-d` flag is used to run the container in detached mode (in the background)
-docker run -p <host-port>:<container-port> -d --name <container-name> <image-name>
+# docker run -p <host-port>:<container-port> -d --name <container-name> <image-name>
+docker run -p 3000:3000 -d --name my-app my-image
 
 docker images                             # List all images
 docker image rm <image-id/image-name>     # Remove an image
@@ -140,6 +141,42 @@ CMD ["npm", "run", "dev"]
 ```
 
 Now, If we change the source code, Docker will use cached layers for `npm install` step and rebuild the steps after `COPY ./ ./` step saving us some time.
+
+### Volumes
+
+- Used to share files between container and host machine.
+  - Nice example can be source code, It's useful for development because we can see changes in the container without rebuilding the image.
+- It's two way sync, changes in container will reflect in host machine and vice versa.
+- You can map host directory to container directory using `-v` flag in `docker run` command.
+
+```shell
+docker run -p <host-port>:<container-port> -v <host-directory>:<container-directory> -d --name <container-name> <image-name>
+```
+
+- You can also map container to host directory using `-v` flag in `docker run` command.
+
+```shell
+# docker run -p <host-port>:<container-port> -v <container-directory> -d --name <container-name> <image-name>
+
+docker run -p 3000:3000 -v /app/node_modules -v /app/node_modules -d --name my-app my-image
+```
+
+### Docker Compose
+
+- Used to run multiple containers at once
+- Instead of writing long `docker run` command even for single container, we can define all the configurations in a `docker-compose.yml` file
+
+```yaml
+version: '1'
+services:
+  my-app:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - .:/app
+```
 
 <!-- ## ✨ Tips -->
 
