@@ -45,7 +45,8 @@ docker rm $(docker ps -a -q)              # Remove all containers
 # No need to do port mapping and other configuration we did earlier because it's already done when we ran "docker run" command
 docker start <container-id/container-name>
 
-
+docker compose up     # Run containers defined in `docker-compose.yml` file
+docker compose down   # Stop and remove containers defined in `docker-compose.yml` file
 ```
 
 ## Glossary
@@ -176,6 +177,12 @@ services:
     volumes:
       - /app/node_modules
       - .:/app
+```
+
+You can run the containers using below command:
+
+```shell
+docker-compose up
 ```
 
 <!-- ## ✨ Tips -->
