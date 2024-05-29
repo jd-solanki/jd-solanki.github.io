@@ -55,6 +55,8 @@ ALTER TABLE students DROP COLUMN gpa; -- To delete a column
 ALTER TABLE students MODIFY COLUMN name VARCHAR(30); -- To modify a column
 
 DROP TABLE students; -- To delete the table
+DROP TABLE students, teachers; -- Drop multiple tables
+DROP TABLE IF EXISTS students; -- Drop table if exists
 ```
 
 ### `SELECT`
@@ -374,6 +376,47 @@ SELECT * FROM customers UNION SELECT * FROM old_customers;
 ### Joins
 
 🚧 _WIP_
+
+#### Join 3 or more tables
+
+We have three tables: `students`, `courses`, and `enrollments`.
+
+**Table: students**
+| student_id | student_name |
+|------------|---------------|
+| 1          | John Doe      |
+| 2          | Jane Smith    |
+| 3          | Sam Brown     |
+| 4          | Alice Johnson |
+
+**Table: courses**
+| course_id | course_name       |
+|-----------|-------------------|
+| 1         | Math              |
+| 2         | Science           |
+| 3         | History           |
+| 4         | Literature        |
+
+**Table: enrollments**
+| enrollment_id | student_id | course_id | enrollment_date |
+|---------------|------------|-----------|-----------------|
+| 1             | 1          | 1         | 2024-01-10      |
+| 2             | 1          | 2         | 2024-02-12      |
+| 3             | 2          | 1         | 2024-03-15      |
+| 4             | 3          | 3         | 2024-04-20      |
+
+**Challenge:** Write an SQL query to list all students along with the names of the courses they are enrolled in. If a student is not enrolled in any course, their name should still appear with the course name as `NULL`.
+
+```sql
+SELECT s.student_name, c.course_name
+FROM students AS s
+LEFT JOIN enrollments AS e ON s.student_id = e.student_id
+LEFT JOIN courses AS c ON c.course_id = e.course_id;
+```
+
+- The first `LEFT JOIN` ensures that all students are included, even if they haven't enrolled in any courses.
+- The second `LEFT JOIN` connects enrolled students with their courses, allowing us to retrieve the course names for each student.
+- Using `LEFT JOIN` twice ensures that we get all combinations of students and courses, including cases where students are not enrolled in any courses.
 
 ### Nested Queries
 
