@@ -138,3 +138,9 @@ https://api.example.com/tasks?limit=10&offset=3 <- You can get 10 items starting
     ```
     { "status": "completed" }
     ```
+
+### API response should be generic and agnostic
+
+- Even if you are building API for a specific client, make sure your API response is generic and agnostic
+- Don't return client specific data in response. Doing so will make your API tightly coupled with the client and requires changing both client and server code whenever requirement changes.
+- E.g. For chat page, instead of single endpoint for chat details, chat messages, meta data, etc. create separate endpoints for each of them.
