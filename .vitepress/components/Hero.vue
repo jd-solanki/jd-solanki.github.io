@@ -74,7 +74,7 @@ const projects = [
             <div class="details">
                 <h1>Hi, I am JD Solanki.</h1>
                 <ul>
-                    <li>Experienced full-stack developer and team lead, skilled in Python, Vue, Nuxt, and TypeScript.</li>
+                    <li>Experienced full-stack developer and team lead, skilled in Python, Vue.js, Cloud Services, and GenAI.</li>
                     <li>Crafting the future of technology with a passion for AI.</li>
                     <li>Open source enthusiast.</li>
                 </ul>
