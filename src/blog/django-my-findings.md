@@ -37,6 +37,14 @@ def index(request: HttpRequest):
 
 _I recommend directly checking out the [docs](https://docs.djangoproject.com/en/5.0/ref/models/fields) as it's pretty straightforward._
 
+#### Relationships
+
+<br>
+
+##### Many to Many
+
+_Refer to [docs](https://docs.djangoproject.com/en/5.0/topics/db/examples/many_to_many/)_
+
 ### Templates
 
 ```html

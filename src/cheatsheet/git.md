@@ -10,6 +10,29 @@
 git reset $(git commit-tree HEAD^{tree} -m "Initial commit")
 ```
 
+### Change commit message of already pushed commit
+
+```shell
+# prompt you to enter new commit message (of latest commit only)
+git commit --amend -m "an updated commit message"
+
+# force push
+git push -f
+```
+
+### Add more changes to the already pushed commit
+
+```shell
+# 1. Perform the changes (I know you pushed the commit)
+
+git add .                        # 2. Stag changes
+
+git commit --amend --no-edit     # 3. Amend the commit
+
+git push -f                      # 4. Force push
+```
+
+
 ## 🎋 Branches
 
 ### Orphan Branche
