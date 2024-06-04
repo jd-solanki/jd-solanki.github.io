@@ -76,4 +76,35 @@ class ProductDeleteAPIView(DestroyAPIView):
     # def perform_destroy(self, instance: Product): ...
 ```
 
+### Permissions
+
+#### Custom Permission
+
+```py
+class IsStaffEditorPermission(permissions.BasePermission):
+    # Error message when user doesn't have permission
+    message = "You must be a staff or editor to perform this action."
+
+    def has_permission(self, request, view):
+        user = request.user
+
+        # `.has_perm()` is a method provided by Django to check if user has a specific permission
+        # Format: <app_name>.<verb>_<model_name>
+        required_permissions = [
+            "product.add_product",
+            "product.delete_product",
+            "product.change_product",
+            "product.view_product"
+        ]
+
+        # TIP: There is also `user.has_perm('product.add_product')` method to check for single permission
+        
+        if user.is_staff and user.has_perms(required_permissions):
+            return True
+
+        return False
+
+        
+```
+
 <!-- ## ✨ Tips -->
