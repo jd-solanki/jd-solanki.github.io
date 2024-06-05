@@ -68,3 +68,22 @@ async def get_products(): ...
 @router.get("/{id}")
 async def get_product(id: int): ...
 ```
+:::
+
+### Use async client instead of requests library to make API call in FastAPI
+
+_Check more details on it in [this](https://www.youtube.com/watch?v=row-SdNdHFE) video_
+
+```py
+import requests // [!code --]
+from httpx import AsyncClient // [!code ++]
+
+def get_data(): // [!code --]
+    response = requests.get("https://api.example.com/data") // [!code --]
+    return response.json() // [!code --]
+
+async def get_data(): // [!code ++]
+    async with AsyncClient() as client: // [!code ++]
+        response = await client.get("https://api.example.com/data") // [!code ++]
+        return response.json() // [!code ++]
+```
