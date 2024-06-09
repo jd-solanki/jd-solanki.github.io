@@ -34,6 +34,7 @@ This is for Indian residents only.
   - You won't able to claim LTA if you travel luxurious. For example, You can't claim LTA for travel by business class. There are other such rules for train and bus travel.
   - Unused LTA can be carried forward to next block of 4 years. You have to spend it in first year of next block and you can only carry forward one LTA.
 - Term Insurance premium get tax exemption under 80C
+- You don't have to pay any taxes on long term capital gains from equity mutual funds if the gains are less than ₹ 1 lakh in a financial year.
 
 ### Deductions
 
@@ -42,7 +43,9 @@ This is for Indian residents only.
 - 80D deductions upto 25K
   - 25k for health insurance premium for self, spouse, dependent children
   - Upto 50k for senior citizens
-  - 5k for preventive health checkup of self, spouse, dependent children or parents
+  - 5k for preventive health checkup of self, spouse, dependent children or parents _[(Source)](https://www.youtube.com/shorts/LvdwMqkuems)_
+- 54F deductions
+  - If you invest the capital gains in a residential property, you don't have to pay any taxes on it. Hence, You can sell your mutual funds for buying house without paying any tax. _[(Source)](https://www.youtube.com/shorts/5ntL-yvx23k)_
 
 <br>
 

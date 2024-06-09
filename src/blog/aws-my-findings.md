@@ -8,7 +8,7 @@ date: 2024-05-30
 
 ## 📚 Cheatsheet
 
-### Services Table
+### Services
 
 | Service | Full Form | Description |
 | --- | --- | --- |
