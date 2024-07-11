@@ -422,9 +422,9 @@ from functools import wraps
 def measure_exec_time(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        start_time = perf_counter
+        start_time = perf_counter()
         result = func(*args, **kwargs)
-        end_time = perf_counter
+        end_time = perf_counter()
         print(f"Execution time: {end_time - start_time}")
         return result
     return wrapper
