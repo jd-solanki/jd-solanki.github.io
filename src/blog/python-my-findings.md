@@ -418,15 +418,17 @@ def test_app(capsys: CaptureFixture[str]): // [!code hl]
 ```py
 from time import perf_counter
 from functools import wraps
+from typing import Callable
 
-def measure_exec_time(func):
+def measure_exec_time[T, **P](func: Callable[P, T]) -> Callable[P, T]:
     @wraps(func)
-    def wrapper(*args, **kwargs):
-        start_time = perf_counter
+    def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
+        start_time = perf_counter()
         result = func(*args, **kwargs)
-        end_time = perf_counter
+        end_time = perf_counter()
         print(f"Execution time: {end_time - start_time}")
         return result
+
     return wrapper
 
 @measure_exec_time
