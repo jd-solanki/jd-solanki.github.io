@@ -150,6 +150,7 @@ Making your model's base class a `dataclass` using `MappedAsDataclass` will prov
 ```py
 from sqlalchemy.orm import DeclarativeBase, MappedAsDataclass
 
+# Use `MappedAsDataclass` to make models dataclasses and get autocompletion
 class Base(MappedAsDataclass, DeclarativeBase):
     pass
 ```
@@ -158,4 +159,64 @@ class Base(MappedAsDataclass, DeclarativeBase):
 
 Please refer to [this](/blog/sql-query-optimization) blog post
 
-<!-- ## 📝 Snippets -->
+## 📝 Snippets
+
+### type annotations for JSONB Column
+
+```py
+from typing import Any
+from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import text
+
+type JSONValue = str | int | float | bool | None | JSONDict | JSONList
+type JSONDict = dict[str, JSONValue]
+type JSONList = list[JSONValue]
+type JSONType = JSONDict | JSONList
+
+# Use `MappedAsDataclass` to make models dataclasses and get autocompletion
+class Base(DeclarativeBase, MappedAsDataclass):
+    # Thanks: https://stackoverflow.com/a/75678968
+    type_annotation_map = {
+        JSONType: JSONB,
+        JSONDict: JSONB,
+        JSONList: JSONB,
+    }
+
+class MyModel(Base):
+    settings: Mapped[JSONDict] = mapped_column(server_default=text("'{}'::jsonb"))
+```
+
+### Helper columns
+
+```py
+from datetime import datetime
+
+from sqlalchemy import func
+from sqlalchemy.orm import Mapped, mapped_column
+
+
+class ColIdInt:
+    id: Mapped[int] = mapped_column(primary_key=True, init=False)
+
+
+class ColCreatedAt:
+    created_at: Mapped[datetime] = mapped_column(init=False, server_default=func.now())
+
+
+class ColUpdatedAt:
+    updated_at: Mapped[datetime | None] = mapped_column(init=False, onupdate=func.now())
+
+
+class ColLastActivityAt:
+    last_activity_at: Mapped[datetime | None] = mapped_column(
+        init=False,
+        server_default=func.now(),
+        onupdate=func.now(),
+    )
+
+# You can use them as mixins
+class User(Base, ColIdInt, ColCreatedAt, ColUpdatedAt, ColLastActivityAt):
+    __tablename__ = "users"
+
+    name: Mapped[str]
+```
