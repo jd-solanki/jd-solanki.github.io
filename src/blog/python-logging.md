@@ -15,8 +15,6 @@ Logging demonstrated below is fine for single module/file logging. But, for larg
 - [YouTube Video - Python Tutorial: Logging Basics - Logging to Files, Setting Levels, and Formatting](https://www.youtube.com/watch?v=-ARI4Cz-awo)
 :::
 
-## 📚 Cheatsheet
-
 - 5 levels of logging in Python:
   - `DEBUG`: Detailed information, typically of interest only when diagnosing problems.
   - `INFO`: Confirmation that things are working as expected.
