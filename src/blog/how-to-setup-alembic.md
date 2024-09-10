@@ -146,3 +146,5 @@ alembic upgrade head
 <br>
 
 It's done my friend 🥂
+
+Also checkout my other findings on alembic [here](/blog/alembic-my-findings.html).
