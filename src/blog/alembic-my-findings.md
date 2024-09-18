@@ -14,6 +14,8 @@ I use postgresql (most of the time async) as my database and sqlalchemy as my OR
 
 ## ✨ Tips
 
+- If you're using postgresql & enum, install this library: [alembic-postgresql-enum](https://pypi.org/project/alembic-postgresql-enum). Check [why](https://github.com/sqlalchemy/alembic/issues/278).
+
 #### Enable date & time in alembic revision file name
 
 Uncomment file_template in `alembic.ini`
