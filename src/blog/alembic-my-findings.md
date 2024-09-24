@@ -14,6 +14,8 @@ I use postgresql (most of the time async) as my database and sqlalchemy as my OR
 
 ## ✨ Tips
 
+- If you're using postgresql & enum, install this library: [alembic-postgresql-enum](https://pypi.org/project/alembic-postgresql-enum). Check [why](https://github.com/sqlalchemy/alembic/issues/278).
+
 #### Enable date & time in alembic revision file name
 
 Uncomment file_template in `alembic.ini`
@@ -25,11 +27,12 @@ file_template = %%(year)d_%%(month).2d_%%(day).2d_%%(hour).2d%%(minute).2d-%%(re
 #### Enable comparing server default values in `env.py`
 
 ```py
-# * Add this to either `run_migrations_online` or `run_migrations_online`. Whichever you are using.
 # Enable comparing server default
 context.configure(
     compare_server_default=True,  # Allow alembic to compare server default // [!code ++]
 )
+
+# I don't know exact place but I add it before `config = context.config`
 ```
 
 #### Enable comparing JSONB column's server default value
@@ -60,7 +63,7 @@ def custom_compare_server_default(
 Afterwards, use above callable in `compare_server_default` param in `context.configure`.
 
 ```py
-# * Add this to either `run_migrations_online` or `run_migrations_online`. Whichever you are using.
+# * Add this to either `do_run_migrations`.
 context.configure(
     compare_server_default=custom_compare_server_default, // [!code ++]
 )
@@ -69,7 +72,7 @@ context.configure(
 #### Auto import models in `env.py` file for auto generation of migrations
 
 ```py
-# File: repo_root/pkg_name/utils/imports.py
+# File: repo_root/src/utils/imports.py
 
 import os
 from importlib import import_module
@@ -77,14 +80,13 @@ from pathlib import Path
 
 # 🚨 Adjust the paths according to your project structure
 curr_dir = Path(__file__).parent.resolve()
-pkg_dir = curr_dir.parent / "pkg_name"
-root_dir = pkg_dir.parent
+src_dir = curr_dir.parent
 
 
 def import_models_for_alembic():
     # Consider modules.py & all files in models directory as models
-    models_file_glob = pkg_dir.glob("**/models.py")
-    models_dir_glob = pkg_dir.glob("**/models/*.py")
+    models_file_glob = src_dir.glob("**/models.py")
+    models_dir_glob = src_dir.glob("**/models/*.py")
 
     # Combine the two generators
     models_file_glob = [*models_file_glob, *models_dir_glob]
@@ -94,7 +96,7 @@ def import_models_for_alembic():
         if file.name == "__init__.py":
             continue
 
-        relative_path = file.relative_to(root_dir)
+        relative_path = file.relative_to(src_dir)
         module = str(relative_path).replace(os.sep, ".").replace(".py", "")
         import_module(module)
 ```
