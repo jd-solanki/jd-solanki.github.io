@@ -17,6 +17,7 @@ date: 2024-04-25
 - [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
 - [Default type mapping for `Mapped`](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
 - [What's new in SQLAlchemy 2](https://blog.miguelgrinberg.com/post/what-s-new-in-sqlalchemy-2-0)
+- [Using Dataclass via `MappedAsDataclass`](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html)
 - [Dataclass Known Issues](https://github.com/sqlalchemy/sqlalchemy/issues/9410)
 - [Select API reference](https://docs.sqlalchemy.org/en/20/core/selectable.html#sqlalchemy.sql.expression.Select)
 - [Session API reference](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session)
