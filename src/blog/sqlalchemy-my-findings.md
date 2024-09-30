@@ -161,6 +161,33 @@ class Base(MappedAsDataclass, DeclarativeBase):
 
 Please refer to [this](/blog/sql-query-optimization) blog post
 
+### Using with Pydantic
+
+#### `.model_dump()` and `exclude_unset=None`
+
+When you have optional fields like `name: str | None = None` and you use `MappedAsDataclass`, you might get `__init__` got unexpected param or it misses some param. In this case, best practice will be using `.model_dump()` (_without `exclude_unset=None`_) and `.model_dump(exclude_unset=True)` when you update the SQLAlchemy model.
+
+#### Serializing `HttpUrl` for compatibility with SQLAlchemy model
+
+When you use `HttpUrl` from `pydantic`, you can't directly use it with SQLAlchemy model. You need to convert it to `str` before saving it to the database.
+
+```py
+class MyModel(BaseModel):
+    uploaded_url: HttpUrl
+
+class MyModelDB(Base):
+    uploaded_url: Mapped[str]
+
+data = MyModel(uploaded_url="https://example.com")
+db.add(MyModelDB(**data.model_dump())) # Error: SQLAlchemy don't accept Url type from pydantic
+
+# Tell pydantic how to serialize the HttpUrl field
+class MyModel(BaseModel):
+    uploaded_url: Annotated[HttpUrl, PlainSerializer(str)]
+
+db.add(MyModelDB(**data.model_dump())) # Works
+```
+
 ## 📝 Snippets
 
 ### type annotations for JSONB Column
