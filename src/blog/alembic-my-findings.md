@@ -10,6 +10,11 @@ date: 2024-08-03
 I use postgresql (most of the time async) as my database and sqlalchemy as my ORM.
 :::
 
+:::details Resources
+
+- [How to Add a Non-Nullable Field to a Populated Table](https://medium.com/the-andela-way/alembic-how-to-add-a-non-nullable-field-to-a-populated-table-998554003134)
+:::
+
 <!-- ## 📚 Cheatsheet -->
 
 ## ✨ Tips
