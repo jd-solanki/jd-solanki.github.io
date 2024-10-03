@@ -57,7 +57,7 @@ class User(Base):
 
     created_at: Mapped[datetime] = mapped_column(init=False, server_default=func.now())
 
-    addresses: Mapped[list["Address"]] = relationship(back_populates="user")
+    addresses: Mapped[list["Address"]] = relationship(init=False, back_populates="user")
 
 class Address(Base):
     __tablename__ = "addresses"
@@ -66,7 +66,7 @@ class Address(Base):
     email_address: Mapped[str]
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
 
-    user: Mapped["User"] = relationship(back_populates="addresses")
+    user: Mapped["User"] = relationship(init=False, back_populates="addresses")
 ```
 
 :::info
@@ -233,14 +233,11 @@ class ColCreatedAt:
 
 
 class ColUpdatedAt:
-    updated_at: Mapped[datetime | None] = mapped_column(init=False, onupdate=func.now())
-
-
-class ColLastActivityAt:
-    last_activity_at: Mapped[datetime | None] = mapped_column(
+    updated_at: Mapped[datetime | None] = mapped_column(
         init=False,
         server_default=func.now(),
         onupdate=func.now(),
+        kw_only=True,
     )
 
 # You can use them as mixins
