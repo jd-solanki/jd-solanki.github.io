@@ -211,23 +211,17 @@ db.add(MyModelDB(**data.model_dump())) # Works
 from typing import Any
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import text
+from sqlalchemy.types import JSON
+from sqlalchemy.dialects.postgresql import JSONB
 
-type JSONValue = str | int | float | bool | None | JSONDict | JSONList
-type JSONDict = dict[str, JSONValue]
-type JSONList = list[JSONValue]
-type JSONType = JSONDict | JSONList
+type JSONType = str | int | float | bool | None | dict[str, "JSONType"] | list["JSONType"]
 
 # Use `MappedAsDataclass` to make models dataclasses and get autocompletion
 class Base(DeclarativeBase, MappedAsDataclass):
-    # Thanks: https://stackoverflow.com/a/75678968
-    type_annotation_map = {
-        JSONType: JSONB,
-        JSONDict: JSONB,
-        JSONList: JSONB,
-    }
+    type_annotation_map = {JSONType: JSON}
 
 class MyModel(Base):
-    settings: Mapped[JSONDict] = mapped_column(server_default=text("'{}'::jsonb"))
+    settings: Mapped[JSONType] = mapped_column(JSONB, default=dict, server_default=text("'{}'::jsonb"))
 ```
 
 ### Helper columns
