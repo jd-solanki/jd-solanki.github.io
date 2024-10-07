@@ -128,6 +128,21 @@ count = await db.scalar(statement)
 
 ## ✨ Tips
 
+### `default` & `server_default`
+
+It's good idea to define both `default` & `server_default`. `default` is for python side and `server_default` is for database side
+
+Setting both ensures that the default value is used when creating a new record regardless of whether the value is set via model (ORM or python) or directly in the database (using SQL).
+
+```py{4,5}
+attachments: Mapped[JSONType] = mapped_column(
+    JSONB,
+    nullable=False,
+    default=list,
+    server_default=text("'[]'::jsonb"),
+)
+```
+
 ### Django like [signals](https://docs.djangoproject.com/en/4.2/topics/signals/) in SQLAlchemy
 
 ```py
