@@ -12,6 +12,12 @@ tags: api, tips
 - [Deep Dive into REST API Design and Implementation Best Practices](https://www.youtube.com/watch?v=7nm1pYuKAhY)
 :::
 
+### Tips
+
+- Always have separate delete endpoint to delete a resource even for soft delete where you just set is_deleted flag to true.
+- Never allow PATCH to delete resource.
+- Send 204 to already deleted resource without raising exception of resource already deleted ( Idempotency principles)
+
 ### API endpoint should be resource not action
 
 ```
