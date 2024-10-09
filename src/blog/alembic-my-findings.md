@@ -15,7 +15,39 @@ I use postgresql (most of the time async) as my database and sqlalchemy as my OR
 - [How to Add a Non-Nullable Field to a Populated Table](https://medium.com/the-andela-way/alembic-how-to-add-a-non-nullable-field-to-a-populated-table-998554003134)
 :::
 
-<!-- ## 📚 Cheatsheet -->
+## 📚 Cheatsheet
+
+### 🚨 Gotchas
+
+### Alembic can't detect String length changes
+
+Assume you have mobile number col having `String(15)` and you decide to remove the length restriction.
+
+```diff
+- mobile_number: Mapped[str] = mapped_column(String(15))
++ mobile_number: Mapped[str] = mapped_column(String)
+```
+
+Now, if you generate the migration, alembic won't detect the change and won't generate any migration.
+
+To fix this issue, you need to manually add the migration.
+
+```py
+def upgrade() -> None:
+    op.alter_column('table_name', 'mobile_number',
+        existing_type=sa.String(length=15),
+        type_=sa.String(),
+        existing_nullable=True
+    )
+
+
+def downgrade() -> None:
+    op.alter_column('table_name', 'mobile_number',
+        existing_type=sa.String(),
+        type_=sa.String(length=15),
+        existing_nullable=True
+    )
+```
 
 ## ✨ Tips
 
