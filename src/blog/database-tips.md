@@ -14,17 +14,17 @@ wip: true
 
 ## Recommended type & length of columns
 
-| Column Name   | Type   | Length |
-|---------------|--------|--------|
-| `username`    | string | 50     |
-| `email`       | string | 254    |
-| `password`    | string | 128    |
-| `name`        | string | 50     |
-| `first_name`  | string | 50     |
-| `last_name`   | string | 50     |
-| `phone_number`| string | 15     |
-| `address`     | string | 255    |
-| `zip_code`    | string | 10     |
-| `title`       | string | 255    |
-| `url`         | string |        |
-| `url`         | text   | -      |
+| Column Name     | Type   | Length |
+|-----------------|--------|--------|
+| `username`      | string | 50     |
+| `email`         | string | 254    |
+| `password`      | string | 128    |
+| `name`          | string | 50     |
+| `first_name`    | string | 50     |
+| `last_name`     | string | 50     |
+| `contact_number`| string | 15     |
+| `address`       | string | 255    |
+| `zip_code`      | string | 10     |
+| `title`         | string | 255    |
+| `url`           | string |        |
+| `url`           | text   | -      |
