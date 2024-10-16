@@ -23,6 +23,7 @@ date: 2024-04-25
 - [Session API reference](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session)
 - [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
 - [YouTube - Relationship loading techniques](https://www.youtube.com/watch?v=KNxVG4OcboY)
+- [Filtering Soft Deletes Globally](https://theshubhendra.medium.com/mastering-soft-delete-advanced-sqlalchemy-techniques-4678f4738947)
 
 ### ORM
 
@@ -128,6 +129,12 @@ count = await db.scalar(statement)
 ```
 
 ## ✨ Tips
+
+### FastAPI, Pydantic Schemas & Relationship
+
+Check this blog [post](/blog/loading-relationship-data-via-pydantic-schema-in-fastapi.md).
+
+
 
 ### `default` & `server_default`
 
