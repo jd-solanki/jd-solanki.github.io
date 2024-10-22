@@ -89,6 +89,19 @@ def do_run_migrations(connection: Connection) -> None:
     # Rest of the func code
 ```
 
+Now, whenever you run `alembic revision --autogenerate -m "<msg>"` and alembic can't detect any changes, it won't create a new migration script.
+
+However, in some known cases you might want to generate script to manually add some changes. In that case, you can use `alembic revision -m "<msg>"`.
+
+```shell
+# Alembic auto-generate migration script
+# It won't create a new migration script if there are no changes detected
+alembic revision --autogenerate -m "<msg>"
+
+# Alembic create a new empty migration script
+alembic revision -m "<msg>"
+```
+
 ### Enable date & time in alembic revision file name
 
 Uncomment file_template in `alembic.ini`
