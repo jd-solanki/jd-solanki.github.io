@@ -53,7 +53,43 @@ def downgrade() -> None:
 
 - If you're using postgresql & enum, install this library: [alembic-postgresql-enum](https://pypi.org/project/alembic-postgresql-enum). Check [why](https://github.com/sqlalchemy/alembic/issues/278).
 
-#### Enable date & time in alembic revision file name
+### Don't generate empty migration
+
+- [Source](https://alembic.sqlalchemy.org/en/latest/cookbook.html#cookbook-no-empty-migrations)
+
+```py
+# File: alembic/env.py
+from alembic.operations import MigrationScript
+from collections.abc import Iterable
+
+# Don't generate empty migrations
+# Docs: https://alembic.sqlalchemy.org/en/latest/cookbook.html#cookbook-no-empty-migrations
+def process_revision_directives(
+    context: MigrationContext,
+    revision: str | Iterable[str | None] | Iterable[str],
+    directives: list[MigrationScript],
+):
+    assert config.cmd_opts is not None
+    if getattr(config.cmd_opts, "autogenerate", False):
+        script = directives[0]
+        assert script.upgrade_ops is not None
+        if script.upgrade_ops.is_empty():
+            directives[:] = []
+
+# Other code
+
+def do_run_migrations(connection: Connection) -> None:
+    context.configure(
+        connection=connection,
+        target_metadata=target_metadata,
+        compare_server_default=custom_compare_server_default,
+        process_revision_directives=process_revision_directives, // [!code ++]
+    )
+
+    # Rest of the func code
+```
+
+### Enable date & time in alembic revision file name
 
 Uncomment file_template in `alembic.ini`
 
@@ -61,7 +97,7 @@ Uncomment file_template in `alembic.ini`
 file_template = %%(year)d_%%(month).2d_%%(day).2d_%%(hour).2d%%(minute).2d-%%(rev)s_%%(slug)s
 ```
 
-#### Enable comparing server default values in `env.py`
+### Enable comparing server default values in `env.py`
 
 ```py
 # Enable comparing server default
@@ -72,7 +108,7 @@ context.configure(
 # I don't know exact place but I add it before `config = context.config`
 ```
 
-#### Enable comparing JSONB column's server default value
+### Enable comparing JSONB column's server default value
 
 ```py
 from alembic.migration import MigrationContext
@@ -106,7 +142,7 @@ context.configure(
 )
 ```
 
-#### Auto import models in `env.py` file for auto generation of migrations
+### Auto import models in `env.py` file for auto generation of migrations
 
 ```py
 # File: repo_root/src/utils/imports.py
