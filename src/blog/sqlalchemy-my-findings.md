@@ -134,6 +134,10 @@ count = await db.scalar(statement)
 
 statement = select(func.count(User.id))
 count = await db.scalar(statement)
+
+# Exist Query
+statement = select(exists().where(User.email = "admin@mail.com"))
+has_admin_email: bool | None = await db.scalar(statement)
 ```
 
 ## ✨ Tips
