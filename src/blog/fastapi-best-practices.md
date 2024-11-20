@@ -8,6 +8,31 @@ date: 2024-11-20
 
 ## Naming Conventions
 
+### Prefer Singular Over Plural When Possible
+
+Instead of ending up like "categories" or "items", prefer singular names like "category" or "item". Not all aware of plural form of words, so it's better to stick with singular.
+
+```py
+# API Router
+user_router = APIRouter()
+
+# CRUD
+user_crud = UserCRUD[...]()
+
+# Schema
+class User(BaseModel):
+    name: str
+    email: EmailStr
+
+# Database Model
+class User(Base):
+    __tablename__ = "user"
+
+# This is fine as plural is best practice for endpoints
+@app.get("/items")
+async def get_items(): ...
+```
+
 ### Resource Name in FastAPI Operations
 
 Use below prefixes to resource name schema for different operations.
@@ -90,24 +115,26 @@ Prefer using "**CRUD**" as order for writing your operations and schemas.
 ```py
 # File: router.py
 
-@app.post( "/items")                # Create
+@item_router.post("/items")                # Create
 async def create_item(): ...
 
-@app.get( "/items")                 # Read All
+@item_router.get("/items")                 # Read All
 async def get_items(): ...
 
-@app.get( "/items/{item_id}")       # Read One
+@item_router.get("/items/{item_id}")       # Read One
 async def get_item(): ...
 
-@app.put( "/items/{item_id}")       # Update
+@item_router.put("/items/{item_id}")       # Update
 async def update_item(): ...
 
-@app.patch( "/items/{item_id}")     # Partial Update
+@item_router.patch("/items/{item_id}")     # Partial Update
 async def patch_item(): ...
 
-@app.delete( "/items/{item_id}")    # Delete
+@item_router.delete("/items/{item_id}")    # Delete
 async def delete_item(): ...
 ```
+
+<br>
 
 ```py
 # File: schemas.py
@@ -125,4 +152,38 @@ class ItemUpdateDB(ItemUpdate): ...            # Update DB
 
 class ItemPatch(BaseModel): ...               # Partial Update
 class ItemPatchDB(ItemPatch): ...             # Partial Update DB
+```
+
+If you've other Non-CRUD operations besides regular resource CRUD, Following existing order of HTTP methods is recommended.
+
+For example, if you want to add POST operation to trigger a workflow, you can add it after POST operation for creating a workflow.
+
+This will help you with two things:
+
+- Your CRUD operations will be in order according to "CRUD"
+- Your non-CRUD operations will be in order according to HTTP methods
+
+```py
+# File: router.py
+
+@app.post( "/workflows")                          # Create
+async def create_workflow(): ...
+
+@app.post("/workflows/{workflow_id}/trigger")    # Create workflow Review
+async def trigger_workflow(): ...
+
+@app.get("/workflows")                          # Read All
+async def get_workflows(): ...
+
+@app.get("/workflows/{workflow_id}")           # Read One
+async def get_workflow(): ...
+
+@app.put("/workflows/{workflow_id}")           # Update
+async def update_workflow(): ...
+
+@app.patch("/workflows/{workflow_id}")        # Partial Update
+async def patch_workflow(): ...
+
+@app.delete("/workflows/{workflow_id}")       # Delete
+async def delete_workflow(): ...
 ```
