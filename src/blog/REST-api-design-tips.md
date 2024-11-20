@@ -12,6 +12,12 @@ tags: api, tips
 - [Deep Dive into REST API Design and Implementation Best Practices](https://www.youtube.com/watch?v=7nm1pYuKAhY)
 :::
 
+### Tips
+
+- Always have separate delete endpoint to delete a resource even for soft delete where you just set is_deleted flag to true.
+- Never allow PATCH to delete resource.
+- Send 204 to already deleted resource without raising exception of resource already deleted ( Idempotency principles)
+
 ### API endpoint should be resource not action
 
 ```
@@ -28,6 +34,26 @@ https://api.example.com/tasks/{task_id} // [!code ++]
 
 https://api.example.com/task // [!code --]
 https://api.example.com/task/{task_id} // [!code --]
+```
+
+### Entity CRUD endpoints conventions
+
+```shell
+GET    /tasks           # Get all tasks
+POST   /tasks           # Create new task
+GET    /tasks/{task_id} # Get task by id
+PUT    /tasks/{task_id} # Update task by id (Replace)
+PATCH  /tasks/{task_id} # Partial update task by id
+DELETE /tasks/{task_id} # Delete task by id
+
+POST   /tasks/batch     # Create multiple tasks
+
+GET    /tasks/{task_id}/comments  # Get all comments for task
+POST   /tasks/{task_id}/comments  # Create new comment for task
+GET    /comments/{comment_id}     # Get comment by id for task
+PUT    /comments/{comment_id}     # Update comment by id for task
+PATCH  /comments/{comment_id}     # Partial update comment by id for task
+DELETE /comments/{comment_id}     # Delete comment by id for task
 ```
 
 ### Don't go deeper than 3 levels: `collection/resource/collection`

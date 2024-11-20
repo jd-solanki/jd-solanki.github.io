@@ -6,23 +6,34 @@ date: 2024-04-25
 
 # {{ $frontmatter.title }}
 
+:::details Resource
+
+- SQLAlchemy Docs:
+  - [Using Enum in SQLAlchemy](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#using-python-enum-or-pep-586-literal-types-in-the-type-map)
+  - [ORM migration usage](https://docs.sqlalchemy.org/en/20/changelog/migration_20.html#migration-orm-usage)
+  - [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
+  - [Default type mapping for `Mapped`](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
+  - [`mapped_column()` API](https://docs.sqlalchemy.org/en/20/orm/mapping_api.html#sqlalchemy.orm.mapped_column)
+  - [ORM Querying Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html#orm-querying-guide)
+  - [Using Dataclass via `MappedAsDataclass`](https://docs.sqlalchemy.org/en/20/orm/dataclasses.html)
+  - [Select API reference](https://docs.sqlalchemy.org/en/20/core/selectable.html#sqlalchemy.sql.expression.Select)
+  - [Session API reference](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session)
+  - [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
+
+- Other:
+
+  - [Mastering Soft Delete: Advanced SQLAlchemy Techniques](https://theshubhendra.medium.com/mastering-soft-delete-advanced-sqlalchemy-techniques-4678f4738947)
+  - [What's new in SQLAlchemy 2](https://blog.miguelgrinberg.com/post/what-s-new-in-sqlalchemy-2-0)
+  - [Dataclass Known Issues](https://github.com/sqlalchemy/sqlalchemy/issues/9410)
+  - [YouTube - Relationship loading techniques](https://www.youtube.com/watch?v=KNxVG4OcboY)
+  - [Filtering Soft Deletes Globally](https://theshubhendra.medium.com/mastering-soft-delete-advanced-sqlalchemy-techniques-4678f4738947)
+:::
+
 ## 📚 Cheatsheet
 
-### Useful Links
-
-- [ORM migration usage](https://docs.sqlalchemy.org/en/20/changelog/migration_20.html#migration-orm-usage)
-- [ORM Querying Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html#orm-querying-guide)
-- [Using Enum in SQLAlchemy](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#using-python-enum-or-pep-586-literal-types-in-the-type-map)
-- [`mapped_column()` API](https://docs.sqlalchemy.org/en/20/orm/mapping_api.html#sqlalchemy.orm.mapped_column)
-- [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
-- [Default type mapping for `Mapped`](https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#mapped-column-derives-the-datatype-and-nullability-from-the-mapped-annotation)
-- [What's new in SQLAlchemy 2](https://blog.miguelgrinberg.com/post/what-s-new-in-sqlalchemy-2-0)
-- [Dataclass Known Issues](https://github.com/sqlalchemy/sqlalchemy/issues/9410)
-- [Select API reference](https://docs.sqlalchemy.org/en/20/core/selectable.html#sqlalchemy.sql.expression.Select)
-- [Session API reference](https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session)
-- [SQL Datatype Objects](https://docs.sqlalchemy.org/en/20/core/types.html)
-
 ### ORM
+
+<br>
 
 #### Define Models
 
@@ -56,7 +67,7 @@ class User(Base):
 
     created_at: Mapped[datetime] = mapped_column(init=False, server_default=func.now())
 
-    addresses: Mapped[list["Address"]] = relationship(back_populates="user")
+    addresses: Mapped[list["Address"]] = relationship(init=False, back_populates="user")
 
 class Address(Base):
     __tablename__ = "addresses"
@@ -65,7 +76,7 @@ class Address(Base):
     email_address: Mapped[str]
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
 
-    user: Mapped["User"] = relationship(back_populates="addresses")
+    user: Mapped["User"] = relationship(init=False, back_populates="addresses")
 ```
 
 :::info
@@ -123,9 +134,32 @@ count = await db.scalar(statement)
 
 statement = select(func.count(User.id))
 count = await db.scalar(statement)
+
+# Exist Query
+statement = select(exists().where(User.email = "admin@mail.com"))
+has_admin_email: bool | None = await db.scalar(statement)
 ```
 
 ## ✨ Tips
+
+### FastAPI, Pydantic Schemas & Relationship
+
+Check this blog [post](/blog/loading-relationship-data-via-pydantic-schema-in-fastapi.md).
+
+### `default` & `server_default`
+
+It's good idea to define both `default` & `server_default`. `default` is for python side and `server_default` is for database side
+
+Setting both ensures that the default value is used when creating a new record regardless of whether the value is set via model (ORM or python) or directly in the database (using SQL).
+
+```py{4,5}
+attachments: Mapped[JSONType] = mapped_column(
+    JSONB,
+    nullable=False,
+    default=list,
+    server_default=text("'[]'::jsonb"),
+)
+```
 
 ### Django like [signals](https://docs.djangoproject.com/en/4.2/topics/signals/) in SQLAlchemy
 
@@ -160,6 +194,33 @@ class Base(MappedAsDataclass, DeclarativeBase):
 
 Please refer to [this](/blog/sql-query-optimization) blog post
 
+### Using with Pydantic
+
+#### `.model_dump()` and `exclude_unset=None`
+
+When you have optional fields like `name: str | None = None` and you use `MappedAsDataclass`, you might get `__init__` got unexpected param or it misses some param. In this case, best practice will be using `.model_dump()` (_without `exclude_unset=None`_) and `.model_dump(exclude_unset=True)` when you update the SQLAlchemy model.
+
+#### Serializing `HttpUrl` for compatibility with SQLAlchemy model
+
+When you use `HttpUrl` from `pydantic`, you can't directly use it with SQLAlchemy model. You need to convert it to `str` before saving it to the database.
+
+```py
+class MyModel(BaseModel):
+    uploaded_url: HttpUrl
+
+class MyModelDB(Base):
+    uploaded_url: Mapped[str]
+
+data = MyModel(uploaded_url="https://example.com")
+db.add(MyModelDB(**data.model_dump())) # Error: SQLAlchemy don't accept Url type from pydantic
+
+# Tell pydantic how to serialize the HttpUrl field
+class MyModel(BaseModel):
+    uploaded_url: Annotated[HttpUrl, PlainSerializer(str)]
+
+db.add(MyModelDB(**data.model_dump())) # Works
+```
+
 ## 📝 Snippets
 
 ### type annotations for JSONB Column
@@ -168,23 +229,17 @@ Please refer to [this](/blog/sql-query-optimization) blog post
 from typing import Any
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import text
+from sqlalchemy.types import JSON
+from sqlalchemy.dialects.postgresql import JSONB
 
-type JSONValue = str | int | float | bool | None | JSONDict | JSONList
-type JSONDict = dict[str, JSONValue]
-type JSONList = list[JSONValue]
-type JSONType = JSONDict | JSONList
+type JSONType = str | int | float | bool | None | dict[str, "JSONType"] | list["JSONType"]
 
 # Use `MappedAsDataclass` to make models dataclasses and get autocompletion
 class Base(DeclarativeBase, MappedAsDataclass):
-    # Thanks: https://stackoverflow.com/a/75678968
-    type_annotation_map = {
-        JSONType: JSONB,
-        JSONDict: JSONB,
-        JSONList: JSONB,
-    }
+    type_annotation_map = {JSONType: JSON}
 
 class MyModel(Base):
-    settings: Mapped[JSONDict] = mapped_column(server_default=text("'{}'::jsonb"))
+    settings: Mapped[JSONType] = mapped_column(JSONB, default=dict, server_default=text("'{}'::jsonb"))
 ```
 
 ### Helper columns
@@ -205,14 +260,11 @@ class ColCreatedAt:
 
 
 class ColUpdatedAt:
-    updated_at: Mapped[datetime | None] = mapped_column(init=False, onupdate=func.now())
-
-
-class ColLastActivityAt:
-    last_activity_at: Mapped[datetime | None] = mapped_column(
+    updated_at: Mapped[datetime] = mapped_column(
         init=False,
         server_default=func.now(),
         onupdate=func.now(),
+        kw_only=True,
     )
 
 # You can use them as mixins
