@@ -113,7 +113,7 @@ async def delete_item(): ...
 # File: schemas.py
 
 class ItemCreate(BaseModel): ...                # Create
-class ItemCreateDB(BaseModel): ...              # Create DB
+class ItemCreateDB(ItemCreate): ...              # Create DB
 
 class ItemListItem(BaseModel): ...             # Read All
 ItemList = RootModel[Sequence[ItemListItem]]   # Read All (RootModel)
@@ -121,8 +121,8 @@ ItemList = RootModel[Sequence[ItemListItem]]   # Read All (RootModel)
 class ItemDetails(BaseModel): ...              # Read One
 
 class ItemUpdate(BaseModel): ...              # Update
-class ItemUpdateDB(BaseModel): ...            # Update DB
+class ItemUpdateDB(ItemUpdate): ...            # Update DB
 
 class ItemPatch(BaseModel): ...               # Partial Update
-class ItemPatchDB(BaseModel): ...             # Partial Update DB
+class ItemPatchDB(ItemPatch): ...             # Partial Update DB
 ```
