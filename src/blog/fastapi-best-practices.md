@@ -55,7 +55,7 @@ async def create_item(
 ):
     return await item_crud.create(db, new_item)
 
-@app.put(
+@app.patch(
     "/items/{item_id}",
     response_model=schemas.ItemDetails,
 )
@@ -66,7 +66,7 @@ async def patch_item(
     db: AsyncSession = Depends(get_db),
 ):
     db_item = await item_crud.get_or_404(db, item_id)
-    return await item_crud.update(db, db_item, patched_item)
+    return await item_crud.patch(db, db_item, patched_item)
 ```
 
 ### Naming DB records in FastAPI Operations
@@ -78,13 +78,13 @@ Use `db_` prefix for retrieved record from DB
     "/items/{item_id}",
     response_model=schemas.ItemDetails,
 )
-async def update_item(
+async def patch_item(
     item_id: PositiveInt,
     patched_item: schemas.ItemPatch,
     db: AsyncSession = Depends(get_db),
 ):
     db_item = await item_crud.get_or_404(db, item_id) // [!code hl]
-    return await item_crud.update(db, db_item, patched_item)
+    return await item_crud.patch(db, db_item, patched_item)
 ```
 
 ### Provide valid types for `id` parameters
