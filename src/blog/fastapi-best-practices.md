@@ -40,13 +40,13 @@ async def patch_item(
     patched_item: schemas.ItemPatch, // [!code ++]
     db: AsyncSession = Depends(get_db),
 ):
-    item_db = await item_crud.get_or_404(db, item_id)
-    return await item_crud.update(db, item_db, patched_item)
+    db_item = await item_crud.get_or_404(db, item_id)
+    return await item_crud.update(db, db_item, patched_item)
 ```
 
 ### Naming DB records in FastAPI Operations
 
-Use `_db` suffix for retrieved record from DB to separate it from received data
+Use `db_` prefix for retrieved record from DB
 
 ```py
 @app.patch(
@@ -58,8 +58,8 @@ async def update_item(
     patched_item: schemas.ItemPatch,
     db: AsyncSession = Depends(get_db),
 ):
-    item_db = await item_crud.get_or_404(db, item_id) // [!code hl]
-    return await item_crud.update(db, item_db, patched_item)
+    db_item = await item_crud.get_or_404(db, item_id) // [!code hl]
+    return await item_crud.update(db, db_item, patched_item)
 ```
 
 ### Provide valid types for `id` parameters
