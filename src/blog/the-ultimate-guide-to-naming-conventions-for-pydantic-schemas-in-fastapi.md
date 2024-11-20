@@ -36,7 +36,7 @@ Here’s a structured naming convention to solve these issues. The goal is to en
 | `WorkflowCreateDB?`       | Internal schema for **database operations** (e.g., auto-assigning `owner_id`).                |
 | `WorkflowListItem`        | Schema for **individual workflow items** in a list (e.g., `GET /workflows`).                  |
 | `WorkflowList`            | Root model schema for **the entire list** of workflows.                                       |
-| `WorkflowDetails`         | Schema for **detailed view** of a workflow (e.g., `GET /workflows/{id}`).                     |
+| `WorkflowDetails`         | Schema for **detailed view** of a workflow (e.g., `GET /workflows/{workflow_id}`).                     |
 | `WorkflowUpdate?`         | Schema for **full updates** (via PUT, replacing the entire workflow).                         |
 | `WorkflowUpdateDB?`       | Internal schema for **database operations** during full updates.                              |
 | `WorkflowPatch`           | Public-facing schema for **partial updates** (via PATCH).                                     |
@@ -87,7 +87,7 @@ WorkflowList = RootModel[Sequence[WorkflowListItem]]
 
 #### 5. **WorkflowDetails**  
 
-This schema is for endpoints like `GET /workflows/{id}` that return detailed information about a specific workflow.  
+This schema is for endpoints like `GET /workflows/{workflow_id}` that return detailed information about a specific workflow.  
 
 ```python
 class WorkflowDetails(BaseModel):
