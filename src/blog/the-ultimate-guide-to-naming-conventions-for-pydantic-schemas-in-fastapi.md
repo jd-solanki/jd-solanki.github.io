@@ -1,5 +1,5 @@
 ---
-title: The Ultimate Guide To Naming Conventions For Pydantic Schemas In Fast Api
+title: The Ultimate Guide To Naming Conventions For Pydantic Schemas In FastAPI
 tag: FastAPI, Pydantic
 date: 2024-11-20
 ---
