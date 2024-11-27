@@ -48,3 +48,15 @@ interface Context {
   }
 }
 ```
+
+## Beware with `Sequence`
+
+```py
+from collections.abc import Sequence
+
+
+def my_func(errors: Sequence[str]): ...
+
+my_func(["Some Error"])
+my_func("Some Error") # Valid, Because strings are sequence as well
+```
