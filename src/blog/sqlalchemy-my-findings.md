@@ -142,6 +142,40 @@ has_admin_email: bool | None = await db.scalar(statement)
 
 ## ✨ Tips
 
+### Using `default` vs `init` for `MappedAsDataclass`
+
+Beware when using `init=False` on column that means you'll be never able to set that column value while creating the record. So, use `default` instead of `init=False` for columns for flexibility.
+
+In below example, We have `id` column which is primary key and we don't want to set it while creating the record. So, we use `init=False` for `id` column. This is fine for regular usage however, while testing or debugging, you might need to set `id` manually. In this case, you can't set `id` because it's not allowed in `__init__`.
+
+```py
+from sqlalchemy.orm import (
+    DeclarativeBase,
+    Mapped,
+    MappedAsDataclass,
+    mapped_column,
+)
+
+
+class Base(DeclarativeBase, MappedAsDataclass):
+    pass
+
+class MyModel(Base):
+    __tablename__ = "awesome"
+
+    id: Mapped[int] = mapped_column(primary_key=True, kw_only=True, init=False)
+
+MyModel(id=2) # 🚨 Error: `id` is not allowed in __init__
+```
+
+To fix this, you can use `default` instead of `init=False`:
+
+```py
+id: Mapped[int] = mapped_column(primary_key=True, kw_only=True, init=False) // [!code --]
+id: Mapped[int] = mapped_column(primary_key=True, kw_only=True, default=None) // [!code ++]
+```
+
+
 ### FastAPI, Pydantic Schemas & Relationship
 
 Check this blog [post](/blog/loading-relationship-data-via-pydantic-schema-in-fastapi.md).
