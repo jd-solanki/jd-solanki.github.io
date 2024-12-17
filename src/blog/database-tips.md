@@ -28,3 +28,9 @@ wip: true
 | `title`         | string | 255    |
 | `url`           | string |        |
 | `url`           | text   | -      |
+
+## TIP: Use `SELECT 1 + LIMIT N` over `COUNT(*)` for checking existence
+
+When we only want to check if a record exists and don't want to get the count of records, using `SELECT 1 + LIMIT N` is more efficient than `COUNT(*)`.
+
+Thi is because `COUNT(*)` has to count all the records, while `SELECT 1 + LIMIT N` will stop as soon as it finds the first record.
