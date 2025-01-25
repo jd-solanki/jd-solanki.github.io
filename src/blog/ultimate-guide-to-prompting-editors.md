@@ -15,10 +15,10 @@ Create `.prompts` directory in root of your project. Inside `.prompts` directory
 Now for each editors (VSCode, Cursor, Windsurf) create symlink to this prompt:
 
 ```sh
-# Working directory: .prompts
-ln -s ./common.md ../.cursorrules
-ln -s ./common.md ../.windsurfrules
-ln -s ./common.md ../.github/copilot-instructions.md
+# Working directory: <root>
+ln -s .prompts/common.md .cursorrules
+ln -s .prompts/common.md .windsurfrules
+cd .github && ln -s ../.prompts/common.md copilot-instructions.md
 ```
 
 Now whenever you'll update your common prompt, all editors will get updated automatically due to symlinks.
