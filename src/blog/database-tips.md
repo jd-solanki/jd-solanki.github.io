@@ -5,6 +5,10 @@ wip: true
 
 # {{ $frontmatter.title }}
 
+## General
+
+- Store datetime in UTC timezone & ISO format and let the client/frontend handle the conversion to the user's timezone.
+
 ## Table Definition
 
 - Use plural names for table name (e.g. `users`, `posts`)
