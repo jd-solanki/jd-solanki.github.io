@@ -42,7 +42,7 @@ This file can be `.prompts/common.md` if you follow the prompt setup.
 :::
 
 ```md
-# Knowledge
+# Your Project Title
 
 ## Project Overview
 <!-- Write about the project overview here -->
@@ -61,6 +61,9 @@ This file can be `.prompts/common.md` if you follow the prompt setup.
 
 ## Process: Building <!-- Optional -->
 <!-- Write about the process of building -->
+
+## Tips & Comments <!-- Optional -->
+<!-- For less important stuff -->
 
 ## IMPORTANT
 <!-- Write most important instructions -->

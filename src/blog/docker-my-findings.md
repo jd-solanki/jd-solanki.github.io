@@ -185,6 +185,10 @@ You can run the containers using below command:
 docker-compose up
 ```
 
-<!-- ## ✨ Tips -->
+## ✨ Tips
+
+- While working on multiple projects use single container for specific service/image. E.g. Postgres container.
+  - For development, You use single container across multiple projects to save space
+  - For Production, Have separate container even for same version for each project
 
 <!-- ## 📝 Snippets -->
