@@ -16,10 +16,10 @@ Now for each editors (VSCode, Cursor, Windsurf) create symlink to this prompt:
 
 ```sh
 # Working directory: <root>
-ln -s .prompts .cursor/rules
-ln -s .prompts/common.md .windsurfrules
+ln -s ../.prompts .cursor/rules
+ln -s .prompts/base.md .windsurfrules
 
-ln -s .prompts .github/prompts # VSCode >version 1.97 (Jan 2025)
+ln -s ../.prompts .github/prompts # VSCode >version 1.97 (Jan 2025)
 cd .github && ln -s ../.prompts/common.md copilot-instructions.md
 
 
