@@ -8,11 +8,12 @@ wip: true
 ## General
 
 - Store datetime in UTC timezone & ISO format and let the client/frontend handle the conversion to the user's timezone.
+- Instead of using `is_deleted` or `is_active` boolean columns, use `deleted_at` or `deactivated_at` timestamp columns to indicate soft deletion or deactivation. This allows for better tracking of when the record was deleted or deactivated.
 
 ## Table Definition
 
-- Use plural names for table name (e.g. `users`, `posts`)
-- User underscore to separate words for table & column names (e.g. `user_id`, `first_name`)
+- Use singular names for table name (e.g. `user`, `post`)
+- Use underscore to separate words for table & column names (e.g. `user_id`, `first_name`)
 - Email column should be of length `254`
 - Use `timestamp` for created_at and updated_at
 
