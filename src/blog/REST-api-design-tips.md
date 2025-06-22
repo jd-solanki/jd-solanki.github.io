@@ -36,6 +36,18 @@ https://api.example.com/task // [!code --]
 https://api.example.com/task/{task_id} // [!code --]
 ```
 
+### Group auth related endpoints under `/auth` prefix
+
+```
+/auth/register
+/auth/login
+/auth/send-verification-email
+/auth/verify-email
+/auth/resend-verification-email
+/auth/forgot-password
+/auth/reset-password
+```
+
 ### Entity CRUD endpoints conventions
 
 ```shell
