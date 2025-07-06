@@ -42,6 +42,10 @@ docker stop <container-id/container-name> # Stop a container
 docker rm <container-id/container-name>   # Remove a container
 docker rm $(docker ps -a -q)              # Remove all containers
 
+docker volume ls                          # List all volumes
+docker volume rm <volume-name>            # Remove a volume
+docker volume rm $(docker volume ls -q)   # Remove all volumes
+
 # Restart the container
 # No need to do port mapping and other configuration we did earlier because it's already done when we ran "docker run" command
 docker start <container-id/container-name>
