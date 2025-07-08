@@ -55,6 +55,52 @@ date: 2024-05-30
 - Used to send emails. You can also send emails in bulk.
 - You can verify your domain and email address in SES. You can only send emails from verified domain and email address.
 
-<!-- ## ✨ Tips -->
+### CloudWatch
+
+#### Alarms
+
+If you want to set email alerts for lambda fails. Here's best config I'm aware of:
+
+- Period: 15 minutes or 1 minute _(select based on your requirement)_
+- Statistic: Sum
+- Metric: Errors
+- Conditions: Greater than 0
+- Notification: Select SNS topic to send email alerts
+
+### DynamoDB
+
+#### Querying
+
+- At most you can query 2 cols, partition key and sort key. If you want to query more than 2 cols, you have to use scan which is not recommended for large datasets. Instead prefer RDS if you have more tables like these.
+
+### S3
+
+- When you upload file with same key in S3, it will overwrite the existing file with new file.
+
+### Lambda
+
+#### Logging
+
+Use below logging setup to get clean logs in CloudWatch:
+
+```py
+import logging 
+
+# Logging Setup
+logger = logging.getLogger()
+logger.handlers = []  # remove pre-configured handlers
+handler = logging.StreamHandler(sys.stdout)
+handler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s")) # Remove datetime as cloudwatch already adds that
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
+
+def lambda_handler(event: dict[str, Any], context: Any) -> None:
+    logger.info("Event: %s", event)
+```
+
+## ✨ Tips
+
+- Use CloudFormation to deploy your AWS resources. It allows you to define your infrastructure as code, making it easier to manage and version control.
+- Prefer `layer_<layer_name>` for Lambda layers. It helps in identifying from which layer the function is using the code.
 
 <!-- ## 📝 Snippets -->
