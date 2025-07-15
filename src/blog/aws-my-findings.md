@@ -102,5 +102,7 @@ def lambda_handler(event: dict[str, Any], context: Any) -> None:
 
 - Use CloudFormation to deploy your AWS resources. It allows you to define your infrastructure as code, making it easier to manage and version control.
 - Prefer `layer_<layer_name>` for Lambda layers. It helps in identifying from which layer the function is using the code.
+- Always use cloudformation with versioning to setup your AWS resources. It allows you to track changes and roll back if needed.
+  - Use cloudformation designer & related tool to visualize your AWS infra.
 
 <!-- ## 📝 Snippets -->
