@@ -37,10 +37,12 @@ docker rmi $(docker images -q)            # Remove all images
 
 docker ps                                 # List of running containers
 docker ps -a                              # List all containers
+docker ps -aq                             # List all container IDs
 docker start <container-id/container-name> # Start a container
+docker start $(docker ps -aq)             # Start all containers
 docker stop <container-id/container-name> # Stop a container
 docker rm <container-id/container-name>   # Remove a container
-docker rm $(docker ps -a -q)              # Remove all containers
+docker rm $(docker ps -aq)              # Remove all containers
 
 docker volume ls                          # List all volumes
 docker volume rm <volume-name>            # Remove a volume

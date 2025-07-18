@@ -16,20 +16,18 @@ tags: api, tips
 
 - Always have separate delete endpoint to delete a resource even for soft delete where you just set is_deleted flag to true.
 - Never allow PATCH to delete resource.
-- Send 204 to already deleted resource without raising exception of resource already deleted ( Idempotency principles). Hence, avoid hyphens in query keys.
+- Send 204 to already deleted resource without raising exception of resource already deleted ( Idempotency principles).
 
 ## Naming Conventions
 
 - Use **kebab-case** for URL paths and **snake_case** or **camelCase** for query parameters.
-- When using hyphens in query params, it can clash with minus‑sign semantics in some contexts. most libraries won't parse them as identifiers.
+- When using hyphens in query params, it can clash with minus‑sign semantics in some contexts. most libraries won't parse them as identifiers. Hence, avoid hyphens in query keys.
 
   ```shell
   POST /sign-in
   POST /sign-in?redirectUrl=https://example.com/dashboard # camelCase query params when JS frameworks
   POST /sign_in?redirect_url=https://example.com/dashboard # snake_case query params when Python, Ruby, etc.
   ```
-
----
 
 ## 2. **Query** Parameters
 
@@ -60,7 +58,6 @@ You have two main, equally valid options—pick one and be consistent:
 - Hyphens can clash with minus‑sign semantics in some contexts; most libraries won't parse them as identifiers.
 - For that reason, **avoid** hyphens in query keys.
 
----
 
 ## 3. General Tips
 

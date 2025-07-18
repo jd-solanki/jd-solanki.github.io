@@ -32,7 +32,6 @@ git commit --amend --no-edit     # 3. Amend the commit
 git push -f                      # 4. Force push
 ```
 
-
 ## 🎋 Branches
 
 ### Orphan Branche
@@ -148,4 +147,17 @@ Never rename files using `mv` command or manually. Instead use `git mv` command 
 
 ```bash
 git mv Readme.md README.md
+```
+
+### View git ignored & untracked files
+
+```bash
+# Shows all gitignored files that exist in your working directory
+git ls-files --others --ignored --exclude-standard
+
+# Shows only top-level gitignored items
+git ls-files --others --ignored --exclude-standard | cut -d'/' -f1 | sort -u
+
+# Shows only top-level files (excludes directories)
+git ls-files --others --ignored --exclude-standard | grep -v '/'
 ```
