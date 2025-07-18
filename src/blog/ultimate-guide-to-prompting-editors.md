@@ -18,9 +18,7 @@ Now for each editors (VSCode, Cursor, Windsurf) create symlink to this prompt:
 # Working directory: <root>
 mkdir -p .cursor && ln -s ../.prompts .cursor/rules
 mkdir -p .windsurf && ln -s ../.prompts .windsurf/rules
-
-# Unfortunately, Copilot only support single file for instructions, so we need to create symlink to the common prompt.
-mkdir -p .github && ln -s ../.prompts/common.md .github/copilot-instructions.md
+mkdir -p .github && ln -s ../.prompts .github/prompts
 ```
 
 Now whenever you'll update your common prompt, all editors will get updated automatically due to symlinks.
