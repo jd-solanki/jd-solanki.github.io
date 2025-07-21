@@ -104,5 +104,6 @@ def lambda_handler(event: dict[str, Any], context: Any) -> None:
 - Prefer `layer_<layer_name>` for Lambda layers. It helps in identifying from which layer the function is using the code.
 - Always use cloudformation with versioning to setup your AWS resources. It allows you to track changes and roll back if needed.
   - Use cloudformation designer & related tool to visualize your AWS infra.
+- Enable AWS Cost Anomaly Detection to monitor your spending and receive alerts for unusual spending patterns. Generally, I prefer 10% threshold on AWS account.
 
 <!-- ## 📝 Snippets -->
