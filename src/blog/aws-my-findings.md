@@ -43,6 +43,7 @@ date: 2024-05-30
 | Redshift | Amazon Redshift | Data warehousing service |
 | ElastiCache | Amazon ElastiCache | In-memory data store and cache service |
 | CloudFormation | AWS CloudFormation | Infrastructure as code service |
+| AWS Backup | AWS Backup | Fully managed backup service for AWS resources |
 
 ### EC2 (Elastic Compute Cloud)
 
@@ -97,6 +98,17 @@ logger.setLevel(logging.INFO)
 def lambda_handler(event: dict[str, Any], context: Any) -> None:
     logger.info("Event: %s", event)
 ```
+
+### AWS Backup
+
+It's two part job:
+
+1. Create a backup plan
+2. Assign resources to the backup plan
+
+For s3 buckets, you have to enable bucket versioning to use AWS Backup. You can enable versioning from S3 bucket properties.
+
+Ref: [YouTube Video](https://www.youtube.com/watch?v=BvJWhzMuNlg)
 
 ## ✨ Tips
 
