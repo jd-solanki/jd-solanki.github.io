@@ -43,6 +43,7 @@ date: 2024-05-30
 | Redshift | Amazon Redshift | Data warehousing service |
 | ElastiCache | Amazon ElastiCache | In-memory data store and cache service |
 | CloudFormation | AWS CloudFormation | Infrastructure as code service |
+| AWS Backup | AWS Backup | Fully managed backup service for AWS resources |
 
 ### EC2 (Elastic Compute Cloud)
 
@@ -98,11 +99,23 @@ def lambda_handler(event: dict[str, Any], context: Any) -> None:
     logger.info("Event: %s", event)
 ```
 
+### AWS Backup
+
+It's two part job:
+
+1. Create a backup plan
+2. Assign resources to the backup plan
+
+For s3 buckets, you have to enable bucket versioning to use AWS Backup. You can enable versioning from S3 bucket properties.
+
+Ref: [YouTube Video](https://www.youtube.com/watch?v=BvJWhzMuNlg)
+
 ## ✨ Tips
 
 - Use CloudFormation to deploy your AWS resources. It allows you to define your infrastructure as code, making it easier to manage and version control.
 - Prefer `layer_<layer_name>` for Lambda layers. It helps in identifying from which layer the function is using the code.
 - Always use cloudformation with versioning to setup your AWS resources. It allows you to track changes and roll back if needed.
   - Use cloudformation designer & related tool to visualize your AWS infra.
+- Enable AWS Cost Anomaly Detection to monitor your spending and receive alerts for unusual spending patterns. Generally, I prefer 10% threshold on AWS account.
 
 <!-- ## 📝 Snippets -->
