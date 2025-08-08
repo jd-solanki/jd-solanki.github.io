@@ -117,5 +117,6 @@ Ref: [YouTube Video](https://www.youtube.com/watch?v=BvJWhzMuNlg)
 - Always use cloudformation with versioning to setup your AWS resources. It allows you to track changes and roll back if needed.
   - Use cloudformation designer & related tool to visualize your AWS infra.
 - Enable AWS Cost Anomaly Detection to monitor your spending and receive alerts for unusual spending patterns. Generally, I prefer 10% threshold on AWS account.
+- Always tag your s3 objects. Examples can be by resource owner, by department, etc.
 
 <!-- ## 📝 Snippets -->
