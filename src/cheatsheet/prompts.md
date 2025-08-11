@@ -60,7 +60,7 @@
 ```md
 ### A Guide to Crafting High-Impact LinkedIn Posts
 
-Welcome to the team! As you embark on your journey as a social media intern, one of your key responsibilities will be to create compelling content for our LinkedIn audience. Think of LinkedIn as a professional networking event, not a sales pitch. Our goal is to build a community by providing value, sharing expertise, and fostering meaningful conversations. This guide will walk you through the core principles, tactics, and rules I've honed over my career to create engaging, valuable, and high-quality LinkedIn posts.
+Think of LinkedIn as a professional networking event, not a sales pitch. Our goal is to build a community by providing value, sharing expertise, and fostering meaningful conversations. This guide will walk you through the core principles, tactics, and rules I've honed over my career to create engaging, valuable, and high-quality LinkedIn posts.
 
 ### The Core Principles: Your Content Compass
 
@@ -106,6 +106,95 @@ The LinkedIn algorithm's primary goal is to show users the most relevant content
 * **Credibility:** The algorithm assesses the professional background of the person posting to gauge the credibility of the content.
 
 By consistently applying these principles and tactics, you'll not only create high-performing posts but also contribute to building a strong and engaged community around our brand.
+```
+
+### X (Twitter) Prompt
+
+```md
+Forget everything you think you know about just "tweeting." We're not here to shout into the void. We're here to build, engage, and provide value.
+
+### The Philosophy: Be the Community You Want to See
+
+Before we get into tactics, remember this: social media is about being *social*. Our goal isn't just to rack up followers; it's to create a space where people feel seen, heard, and helped. Every post should aim to do one of four things for our audience:
+*   **Educate:** Teach them something useful.
+*   **Entertain:** Make them laugh, smile, or feel something.
+*   **Inspire:** Motivate them with stories or powerful ideas.
+*   **Help:** Solve a problem or answer a question.
+
+If a post doesn't do at least one of these, we should question why we're posting it.
+
+---
+
+### Part 1: The Anatomy of a Perfect Post - The Core Rules
+
+Think of every post as a mini-package of value. Here are the non-negotiable components.
+
+#### **Rule #1: Start with a Powerful Hook**
+You have less than a second to stop someone from scrolling. The first line of your tweet is the most critical part.
+*   **Ask a provocative question:** "Why do most marketing strategies fail within 6 months?"
+*   **Make a bold statement:** "Most people are using X all wrong. Here's how to fix it."
+*   **Share a surprising fact:** "Did you know that 80% of New Year's resolutions are abandoned by February?"
+
+A strong hook makes a promise that the rest of the post (or thread) will fulfill.
+
+#### **Rule #2: Provide Clear, Concise Value**
+Twitter's beauty is its brevity. Get straight to the point.
+*   Use simple language. Avoid jargon that your audience might not understand.
+*   Break up text with spacing and bullet points for readability.
+*   If you need more space, use a thread. Threads are fantastic for step-by-step guides, storytelling, or breaking down complex topics.
+
+#### **Rule #3: Visuals are a Must**
+Tweets with images, GIFs, or videos consistently get more engagement. They make your content stand out in a crowded feed.
+*   **Images & Infographics:** Use high-quality, vibrant visuals. Infographics are perfect for breaking down data.
+*   **Videos:** Keep them short and engaging. The first few seconds are crucial. Videos up to 45 seconds tend to hold attention best. Ensure your video is high-resolution (up to 1920x1200 is supported).
+*   **GIFs:** Use them in replies to add personality and humor.
+
+#### **Rule #4: Encourage Interaction**
+Don't just talk *at* your audience; talk *with* them.
+*   **Ask Questions:** Invite your followers to share their opinions and experiences. This turns your post into a conversation.
+*   **Run Polls:** Polls are a simple, low-effort way for your audience to engage and for you to gather valuable feedback.
+*   **Use a Call-to-Action (CTA):** Tell people exactly what you want them to do next. "Retweet if you agree," "Share your thoughts below," or "Click the link for the full guide" are simple but effective CTAs.
+
+---
+
+### Part 2: Advanced Tactics - From Good to Great
+
+Once you've mastered the fundamentals, it's time to elevate your strategy.
+
+#### **Tactic #1: Master the Art of the Thread**
+Threads are your secret weapon for delivering immense value.
+*   **Structure is Key:** Your first tweet is the hook. Each subsequent tweet should build on the last. The final tweet should summarize the key takeaway or include a strong CTA.
+*   **Signal It:** Add "(Thread)" or a "👇" emoji to your first tweet so people know there's more to come.
+*   **Add Value in Every Tweet:** Each part of the thread should be useful on its own. Avoid filler content.
+
+#### **Tactic #2: Use Hashtags Strategically, Not Desperately**
+Forget stuffing your posts with a dozen hashtags. That looks spammy.
+*   **The Rule of 1-3:** Use one to three highly relevant hashtags per post. This is crucial for discoverability in specific conversations.
+*   **Niche & Trending:** Mix broad hashtags with niche ones specific to your community. Participate in relevant trending topics, but only if you can add genuine value.
+
+#### **Tactic #3: It's a Two-Way Street: Proactive Engagement**
+Building a community means you can't just post and ghost.
+*   **Respond Quickly:** Make time to reply to comments and DMs. This shows you're listening and turns casual followers into loyal fans.
+*   **Engage with Others:** Follow and interact with leaders and peers in your niche. Retweet their valuable content with your own insights (use the "Quote Tweet" feature). This builds relationships and puts you in front of new audiences.
+
+#### **Tactic #4: Consistency and Timing are Everything**
+*   **Post Regularly:** It's better to post 1-3 high-quality tweets per day than ten low-effort ones. Consistency keeps your audience engaged and tells the algorithm you're an active presence.
+*   **Find Your Optimal Times:** Use X Analytics to see when your audience is most active and schedule your posts for those peak times.
+
+---
+
+### Your Pre-Post Checklist:
+
+Before you hit that "Post" button, run through this quick list:
+
+*   **[ ] Is there a strong hook?** (Does the first line make me want to read more?)
+*   **[ ] Is the value clear?** (What will someone learn or feel from this?)
+*   **[ ] Is it easy to read?** (Is it concise? Is it formatted well?)
+*   **[ ] Is there a visual element?** (Image, GIF, or video?)
+*   **[ ] Is there an interactive element?** (A question, poll, or CTA?)
+*   **[ ] Are the hashtags relevant and minimal?** (1-3 max)
+
+Don't be afraid to experiment, track what works, and most importantly, be human. This is about connection, not perfection. Now, go create something valuable
 ```
 
 ### Writing
