@@ -10,7 +10,11 @@ date: 2025-01-25
 
 ### Common Prompt
 
-Create `.prompts` directory in root of your project. Inside `.prompts` directory, create a file named `common.md` and write your AI instructions in it.
+Create `.prompts` directory in root of your project. Inside `.prompts` directory, create a file named `common.instructions.md` and write your AI instructions in it.
+
+:::warning
+Ensure all files have `.instructions.md` suffix so that GitHub Copilot consider it as instruction
+:::
 
 Now for each editors (VSCode, Cursor, Windsurf) create symlink to this prompt:
 
