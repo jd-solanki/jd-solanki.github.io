@@ -2,6 +2,7 @@ export default defineAppConfig({
   app: {
     social: {
       github: 'https://github.com/jd-solanki/jd-solanki.github.io',
+      x: 'https://x.com/me_jd_solanki',
     },
   },
   ui: {

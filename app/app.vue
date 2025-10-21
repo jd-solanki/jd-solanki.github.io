@@ -25,6 +25,8 @@ const items = computed<NavigationMenuItem[]>(() => [
           :items="items"
         />
 
+        <BlogSearch />
+
         <UColorModeButton />
 
         <UButton
@@ -34,6 +36,15 @@ const items = computed<NavigationMenuItem[]>(() => [
           target="_blank"
           icon="i-simple-icons-github"
           aria-label="GitHub"
+        />
+
+        <UButton
+          color="neutral"
+          variant="ghost"
+          :to="appConfig.app.social.x"
+          target="_blank"
+          icon="i-simple-icons-x"
+          aria-label="X (Twitter)"
         />
       </template>
     </UHeader>
@@ -55,6 +66,14 @@ const items = computed<NavigationMenuItem[]>(() => [
           :to="appConfig.app.social.github"
           target="_blank"
           aria-label="GitHub"
+        />
+        <UButton
+          icon="i-simple-icons-x"
+          color="neutral"
+          variant="ghost"
+          :to="appConfig.app.social.x"
+          target="_blank"
+          aria-label="X (Twitter)"
         />
       </template>
     </UFooter>
