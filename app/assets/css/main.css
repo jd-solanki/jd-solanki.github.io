@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* TODO: Handle light mode */
+
+:root {
+    --ui-bg: white;
+    --ui-text: hsla(265, 10%, 20%, 0.61);
+    --ui-text-heading: hsla(265, 10%, 20%, 0.87);
+}
+
+.dark {
+    --ui-bg: hsl(261, 15%, 5%);
+    --ui-text: hsla(261, 0%, 94%, 0.68);
+    --ui-text-heading: hsla(261, 0%, 94%, 0.87);
+}
+
+@theme static {
+    --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Rubik", sans-serif;
+    color: var(--ui-text-heading);
+}
+
+pre {
+    background-color: #141415;
+    border-color: var(--ui-border)
+}
