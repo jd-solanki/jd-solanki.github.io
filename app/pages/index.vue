@@ -17,8 +17,8 @@ const appConfig = useAppConfig()
   <UPage>
     <UContainer>
       <UPageBody>
-        <div class="grid grid-cols-12 gap-8">
-          <UCard class="col-span-3">
+        <div class="grid md:grid-cols-12 gap-8">
+          <UCard class="md:col-span-4 xl:col-span-3">
             <NuxtImg
               :src="appConfig.app.author.avatar"
               class="w-full h-auto rounded"
@@ -74,7 +74,7 @@ const appConfig = useAppConfig()
               />
             </div>
           </UCard>
-          <UCard class="col-span-4">
+          <UCard class="md:col-span-6 xl:col-span-4">
             <template #header>
               <h4 class="text-lg font-medium">
                 What I'm Shipping
