@@ -1,12 +1,15 @@
 <script setup lang="ts">
-const route = useRoute()
+import { withoutTrailingSlash } from 'ufo'
 
-const { data: post } = await useAsyncData(route.path, () => {
-  return queryCollection('blog').path(route.path).where('private', '<>', true).first()
+const route = useRoute()
+const routePath = withoutTrailingSlash(route.path)
+
+const { data: post } = await useAsyncData(routePath, () => {
+  return queryCollection('blog').path(routePath).where('private', '<>', true).first()
 })
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings('blog', route.path).where('private', '<>', true)
+const { data: surround } = await useAsyncData(`${routePath}-surround`, () => {
+  return queryCollectionItemSurroundings('blog', routePath).where('private', '<>', true)
 })
 
 if (!post.value) {
