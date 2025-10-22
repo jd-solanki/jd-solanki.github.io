@@ -19,6 +19,15 @@ const items = computed<NavigationMenuItem[]>(() => [
       title="JD Solanki"
       to="/"
     >
+      <template #title>
+        <NuxtImg
+          src="https://avatars.githubusercontent.com/u/47495003?v=4"
+          class="size-8 rounded-full outline-(--ui-text) outline-2 outline-offset-2 me-2"
+        />
+        <h1>
+          JD Solanki
+        </h1>
+      </template>
       <template #right>
         <UNavigationMenu
           variant="link"
