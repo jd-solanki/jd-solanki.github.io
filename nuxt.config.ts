@@ -37,6 +37,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxtjs/seo',
+    'nuxt-llms',
   ],
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -44,6 +45,15 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       standalone: false,
+    },
+  },
+  llms: {
+    domain: 'https://jd-solanki.github.io',
+    title: 'JD Solanki\'s Personal Website',
+    description: 'My personal website where I share my learning journey and thoughts on various topics including technology, programming, and more.',
+    full: {
+      title: 'JD Solanki - Personal Website',
+      description: 'My personal website where I share my learning journey and thoughts on various topics including technology, programming, and more.',
     },
   },
 })
