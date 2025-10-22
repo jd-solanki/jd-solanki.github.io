@@ -11,12 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - run: corepack enable
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          run_install: false
       - uses: actions/setup-node@v6
         with:
           node-version: "22"
+          cache: 'pnpm'
           
       # Pick your own package manager and build script
-      - run: npm install
+      - run: pnpm install
       - run: pnpm nuxt build --preset github_pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
