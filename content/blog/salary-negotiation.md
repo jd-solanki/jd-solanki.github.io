@@ -1,6 +1,6 @@
 ---
 title: Salary Negotiation Tips
-private: false
+private: true
 date: 2024-05-16
 ---
 

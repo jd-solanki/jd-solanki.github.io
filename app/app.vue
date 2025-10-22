@@ -9,6 +9,11 @@ const items = computed<NavigationMenuItem[]>(() => [
     to: '/blog',
     // active: route.path.startsWith('/blog')
   },
+  {
+    label: 'YouTube',
+    to: appConfig.app.author.social.youtube,
+    target: '_blank',
+  },
 ])
 </script>
 
@@ -21,19 +26,19 @@ const items = computed<NavigationMenuItem[]>(() => [
     >
       <template #title>
         <NuxtImg
-          src="https://avatars.githubusercontent.com/u/47495003?v=4"
+          :src="appConfig.app.author.avatar"
           class="size-8 rounded-full outline-(--ui-text) outline-2 outline-offset-2 me-2"
         />
         <h1>
           JD Solanki
         </h1>
       </template>
+
       <template #right>
         <UNavigationMenu
           variant="link"
           :items="items"
         />
-
         <BlogSearch />
 
         <UColorModeButton />
@@ -41,7 +46,7 @@ const items = computed<NavigationMenuItem[]>(() => [
         <UButton
           color="neutral"
           variant="ghost"
-          :to="appConfig.app.social.github"
+          :to="appConfig.app.author.social.github"
           target="_blank"
           icon="i-simple-icons-github"
           aria-label="GitHub"
@@ -50,7 +55,7 @@ const items = computed<NavigationMenuItem[]>(() => [
         <UButton
           color="neutral"
           variant="ghost"
-          :to="appConfig.app.social.x"
+          :to="appConfig.app.author.social.x"
           target="_blank"
           icon="i-simple-icons-x"
           aria-label="X (Twitter)"
@@ -72,7 +77,7 @@ const items = computed<NavigationMenuItem[]>(() => [
           icon="i-simple-icons-github"
           color="neutral"
           variant="ghost"
-          :to="appConfig.app.social.github"
+          :to="appConfig.app.author.social.github"
           target="_blank"
           aria-label="GitHub"
         />
@@ -80,7 +85,7 @@ const items = computed<NavigationMenuItem[]>(() => [
           icon="i-simple-icons-x"
           color="neutral"
           variant="ghost"
-          :to="appConfig.app.social.x"
+          :to="appConfig.app.author.social.x"
           target="_blank"
           aria-label="X (Twitter)"
         />
