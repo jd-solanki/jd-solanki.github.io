@@ -1,6 +1,7 @@
 ---
 title: Clever way to show two banners at the same time
 description: Learn how to display announcement & temporary information banner simultaneously on your website
+date: 2025-10-22
 ---
 
 ::note

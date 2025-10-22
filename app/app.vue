@@ -34,11 +34,12 @@ const items = computed<NavigationMenuItem[]>(() => [
         </h1>
       </template>
 
+      <UNavigationMenu
+        variant="link"
+        :items="items"
+      />
+
       <template #right>
-        <UNavigationMenu
-          variant="link"
-          :items="items"
-        />
         <BlogSearch />
 
         <UColorModeButton />
@@ -59,6 +60,14 @@ const items = computed<NavigationMenuItem[]>(() => [
           target="_blank"
           icon="i-simple-icons-x"
           aria-label="X (Twitter)"
+        />
+      </template>
+
+      <template #body>
+        <UNavigationMenu
+          :items="items"
+          orientation="vertical"
+          class="-mx-2.5"
         />
       </template>
     </UHeader>
