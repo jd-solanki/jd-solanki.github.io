@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   site: {
+    url: 'https://jd-solanki.github.io',
     name: 'JD Solanki',
   },
   content: {
