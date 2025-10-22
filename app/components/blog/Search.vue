@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('blog'))
-const { data: files } = await useAsyncData('search', () => queryCollectionSearchSections('blog'))
+const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('blog').where('private', '<>', true))
+const { data: files } = await useAsyncData('search', () => queryCollectionSearchSections('blog').where('private', '<>', true))
 
 const searchTerm = ref('')
 </script>
