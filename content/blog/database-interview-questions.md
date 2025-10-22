@@ -39,4 +39,4 @@ CTE is Common Table Expression which is used to create a temporary result set th
 
 ## Q: How to optimize a SQL query?
 
-Check the blog post on [Sql Query Optimization](/blog/sql-query-optimization.md)
+Check the blog post on [Sql Query Optimization](/blog/database-my-findings#sql-query-optimization)

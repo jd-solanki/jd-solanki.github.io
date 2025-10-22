@@ -222,7 +222,7 @@ class Base(MappedAsDataclass, DeclarativeBase):
 
 ### SQLAlchemy Query Optimization
 
-Please refer to [this](/blog/sql-query-optimization) blog post
+Please refer to [this](/blog/database-my-findings#sql-query-optimization) blog post
 
 ### Using with Pydantic
 
