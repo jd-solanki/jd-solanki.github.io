@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  site: {
+    name: 'JD Solanki',
+  },
   content: {
     build: {
       markdown: {
@@ -33,6 +36,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/scripts',
+    '@nuxtjs/seo',
   ],
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },

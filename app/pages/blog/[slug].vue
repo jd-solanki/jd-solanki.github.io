@@ -15,6 +15,18 @@ const { data: surround } = await useAsyncData(`${routePath}-surround`, () => {
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found' })
 }
+
+// SEO
+const title = post.value.seo?.title || post.value.title
+const description = post.value.seo?.description || post.value.description
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogType: 'article',
+})
+defineOgImageComponent('NuxtSeo')
 </script>
 
 <template>

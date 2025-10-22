@@ -7,6 +7,18 @@ const links = computed(() => {
     to: post.path,
   }))
 })
+
+// SEO
+const title = 'Blog'
+const description = 'My thoughts & learning'
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogType: 'website',
+})
+defineOgImageComponent('NuxtSeo')
 </script>
 
 <template>

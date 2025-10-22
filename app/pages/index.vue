@@ -1,5 +1,14 @@
 <script lang="ts" setup>
-
+const title = 'JD Solanki'
+const description = 'Welcome to JD Solanki\'s personal website.'
+useSeoMeta({
+  title,
+  ogTitle: title,
+  description,
+  ogDescription: description,
+  ogType: 'website',
+})
+defineOgImageComponent('NuxtSeo')
 </script>
 
 <template>
