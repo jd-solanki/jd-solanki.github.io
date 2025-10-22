@@ -51,6 +51,9 @@ importers:
       '@iconify-json/lucide':
         specifier: ^1.2.70
         version: 1.2.70
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.55
+        version: 1.2.55
       eslint-plugin-harlanzw:
         specifier: ^0.1.0
         version: 0.1.0(eslint@9.38.0(jiti@2.6.1))
@@ -578,6 +581,9 @@ packages:
 
   '@iconify-json/lucide@1.2.70':
     resolution: {integrity: sha512-56s9NdBKgshywVY1e4gOcxzAbU1J649e/jLHBJU1tyNqRs7mFLVEGwj2mmzHJ5YAZB5Tsngi4f/ocTBPlG06ZA==}
+
+  '@iconify-json/simple-icons@1.2.55':
+    resolution: {integrity: sha512-9vc04pmup/zcef8hDypWU8nMwMaFVkWuUzWkxyL++DVp5AA8baoJHK6RyKN1v+cvfR2agxkUb053XVggzFFkTA==}
 
   '@iconify/collections@1.0.608':
     resolution: {integrity: sha512-uMbaErE6TzDb04peWVFYjc9cweBD+j1nFBHi5EEcA1u1mXJAyePF01VzH6dimurrhivvU+nRmuYfiC8GPDyG6g==}
@@ -6194,6 +6200,10 @@ snapshots:
   '@humanwhocodes/retry@0.4.3': {}
 
   '@iconify-json/lucide@1.2.70':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/simple-icons@1.2.55':
     dependencies:
       '@iconify/types': 2.0.0
 
