@@ -35,5 +35,6 @@ h6 {
 
 pre {
     background-color: #141415;
-    border-color: var(--ui-border)
+    border-color: var(--ui-border);
+    text-wrap-mode: nowrap;
 }
