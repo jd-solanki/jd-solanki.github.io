@@ -65,7 +65,7 @@ This will give you visibility on from which layer specific code comes
 def some_common_util(): ...
 ```
 
-```plaintext [layers/common_layer/requirements.txt]
+```txt [layers/common_layer/requirements.txt]
 pandas
 httpx
 ```
@@ -81,7 +81,7 @@ class Hubspot:
   ...
 ```
 
-```plaintext [layers/integrations_layer/requirements.txt]
+```txt [layers/integrations_layer/requirements.txt]
 hubspot-api-client
 ```
 
