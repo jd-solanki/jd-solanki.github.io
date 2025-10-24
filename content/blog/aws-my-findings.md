@@ -27,6 +27,9 @@ handler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s"))
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
+# # Boto3 Clients
+# s3_client = boto3.client("s3")
+
 def lambda_handler(event: dict[str, Any], context: Any):
   logger.info("Event: %s", event)
 
@@ -48,6 +51,9 @@ handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s"))
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
+
+# # Boto3 Clients
+# s3_client = boto3.client("s3")
 
 def lambda_handler(event: dict[str, Any], context: Any):
   logger.info("Event: %s", event)
@@ -217,6 +223,9 @@ handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(logging.Formatter("[%(levelname)s] %(message)s"))
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
+
+# # Boto3 Clients
+# s3_client = boto3.client("s3")
 
 
 def lambda_handler(event: dict[str, Any], context: Any):
