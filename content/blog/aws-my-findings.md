@@ -253,5 +253,6 @@ Ref: [YouTube Video](https://www.youtube.com/watch?v=BvJWhzMuNlg)
   - Use cloudformation designer & related tool to visualize your AWS infra.
 - Enable AWS Cost Anomaly Detection to monitor your spending and receive alerts for unusual spending patterns. Generally, I prefer 10% threshold on AWS account.
 - Always tag your s3 objects. Examples can be by resource owner, by department, etc.
+- Don't add custom resource names (e.g. lambda name, SQS queue name, table name, etc) when using CloudFormation like `LambdaNameTableName: !Sub "${AWS::StackName}-step-function-locks"`. Allow CloudFormation to generate the unique names so that on next deployment when it tries to deploy existing stack with update when there was error in previous deployment you don't get unwanted errors like resource name is already taken.
 
 <!-- ## 📝 Snippets -->
