@@ -4,6 +4,10 @@ description: A comprehensive guide on setting up and using prompts effectively i
 date: 2025-01-25
 ---
 
+::collapsible
+- [VSCode Prompting](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+::
+
 ## Prompts Setup
 
 ### Common Prompt
