@@ -1,6 +1,7 @@
 ---
 title: AWS - My Findings
-description: Learn useful tips and best practices for using various AWS services effectively.
+description: Learn useful tips and best practices for using various AWS services
+  effectively.
 ---
 
 ## Recommendeda Directory Structure
@@ -9,8 +10,7 @@ description: Learn useful tips and best practices for using various AWS services
 I prefer using SAM CLI for working with AWS to version control your AWS infra and CI/CD.
 ::
 
-::code-tree{defaultValue="lambdas/my_lambda/lambda_function.py"}
-
+::code-tree{default-value="lambdas/my_lambda/lambda_function.py"}
 ```py [lambdas/my_lambda/lambda_function.py]
 import logging
 import sys
@@ -113,10 +113,10 @@ Description: Your Stack
 Resources:
   # Your resources
 ```
-
 ::
 
 With this structure you can deploy your stack with SAM CLI. This imposes best practices like:
+
 - Avoid ambiguity when importing code from layers by namespacing them with directory same as layer name. This also avoid name collision and overriding of same module in multiple layers.
   ```py
   # You don't know which layer has this module
@@ -128,45 +128,44 @@ With this structure you can deploy your stack with SAM CLI. This imposes best pr
 - SAM CLI compatible layers directory structure which handles installation of `requirements.txt`
 - Keep `.venv`, `README.md`, `.gitignore`, `ruff.toml`, etc at root level.
 
-
 ## 📚 Cheatsheet
 
 ### Services
 
-| Service | Full Form | Description |
-| --- | --- | --- |
-| IAM | Identity and Access Management | Used to manage users, groups, and roles |
-| S3 | Simple Storage Service | Used to store files |
-| EC2 | Elastic Compute Cloud | Provide remote/cloud servers |
-| SES | Simple Email Service | Used to send emails |
-| DynamoDB | Amazon Dynamo Database | NoSQL database service |
-| RDS | Relational Database Service | Managed relational database service |
-| Lambda | AWS Lambda | Serverless computing service |
-| API Gateway | Amazon API Gateway | Create, publish, maintain, monitor, and secure APIs |
-| CloudFront | Amazon CloudFront | Content delivery network (CDN) service |
-| Route 53 | Amazon Route 53 | Domain Name System (DNS) web service |
-| CloudWatch | Amazon CloudWatch | Monitor AWS resources and applications |
-| SNS | Simple Notification Service | Pub/sub messaging and mobile notifications |
-| SQS | Simple Queue Service | Fully managed message queuing service |
-| AppSync | AWS AppSync | Managed GraphQL service |
-| Cognito | Amazon Cognito | User authentication and authorization service |
-| Amazon Auto Scaling | Amazon Auto Scaling | Automatically adjust the number of EC2 instances |
-| Amazon Inspector | Amazon Inspector | Automated security assessment service |
-| AWS Firewall Manager | AWS Firewall Manager | Central management of AWS WAF and VPC security groups |
-| AWS Key Management Service (KMS) | AWS Key Management Service | Managed service to create and control encryption keys |
-| Amazon SageMaker | Amazon SageMaker | Managed service to build, train, and deploy machine learning models |
-| Kinesis | Amazon Kinesis | Real-time data streaming service |
-| Elastic Beanstalk | AWS Elastic Beanstalk | Platform as a service (PaaS) for deploying and scaling web applications and services |
-| Elastic Load Balancing | Elastic Load Balancing | Automatically distribute incoming application traffic across multiple targets |
-| VPC | Virtual Private Cloud | Virtual network dedicated to your AWS account |
-| EBS | Elastic Block Store | Persistent block storage volumes for EC2 instances |
-| EFS | Elastic File System | Scalable file storage for use with EC2 instances |
-| Glacier | Amazon Glacier | Low-cost storage service for data archiving and backup |
-| Athena | Amazon Athena | Query data in S3 using SQL |
-| Redshift | Amazon Redshift | Data warehousing service |
-| ElastiCache | Amazon ElastiCache | In-memory data store and cache service |
-| CloudFormation | AWS CloudFormation | Infrastructure as code service |
-| AWS Backup | AWS Backup | Fully managed backup service for AWS resources |
+| Service                          | Full Form                      | Description                                                                          |
+| -------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------ |
+| IAM                              | Identity and Access Management | Used to manage users, groups, and roles                                              |
+| S3                               | Simple Storage Service         | Used to store files                                                                  |
+| EC2                              | Elastic Compute Cloud          | Provide remote/cloud servers                                                         |
+| SES                              | Simple Email Service           | Used to send emails                                                                  |
+| DynamoDB                         | Amazon Dynamo Database         | NoSQL database service                                                               |
+| RDS                              | Relational Database Service    | Managed relational database service                                                  |
+| Lambda                           | AWS Lambda                     | Serverless computing service                                                         |
+| API Gateway                      | Amazon API Gateway             | Create, publish, maintain, monitor, and secure APIs                                  |
+| CloudFront                       | Amazon CloudFront              | Content delivery network (CDN) service                                               |
+| Route 53                         | Amazon Route 53                | Domain Name System (DNS) web service                                                 |
+| CloudWatch                       | Amazon CloudWatch              | Monitor AWS resources and applications                                               |
+| SNS                              | Simple Notification Service    | Pub/sub messaging and mobile notifications                                           |
+| SQS                              | Simple Queue Service           | Fully managed message queuing service                                                |
+| AppSync                          | AWS AppSync                    | Managed GraphQL service                                                              |
+| Cognito                          | Amazon Cognito                 | User authentication and authorization service                                        |
+| Amazon Auto Scaling              | Amazon Auto Scaling            | Automatically adjust the number of EC2 instances                                     |
+| Amazon Inspector                 | Amazon Inspector               | Automated security assessment service                                                |
+| AWS Firewall Manager             | AWS Firewall Manager           | Central management of AWS WAF and VPC security groups                                |
+| AWS Key Management Service (KMS) | AWS Key Management Service     | Managed service to create and control encryption keys                                |
+| Amazon SageMaker                 | Amazon SageMaker               | Managed service to build, train, and deploy machine learning models                  |
+| Kinesis                          | Amazon Kinesis                 | Real-time data streaming service                                                     |
+| Elastic Beanstalk                | AWS Elastic Beanstalk          | Platform as a service (PaaS) for deploying and scaling web applications and services |
+| Elastic Load Balancing           | Elastic Load Balancing         | Automatically distribute incoming application traffic across multiple targets        |
+| VPC                              | Virtual Private Cloud          | Virtual network dedicated to your AWS account                                        |
+| EBS                              | Elastic Block Store            | Persistent block storage volumes for EC2 instances                                   |
+| EFS                              | Elastic File System            | Scalable file storage for use with EC2 instances                                     |
+| Glacier                          | Amazon Glacier                 | Low-cost storage service for data archiving and backup                               |
+| Athena                           | Amazon Athena                  | Query data in S3 using SQL                                                           |
+| Redshift                         | Amazon Redshift                | Data warehousing service                                                             |
+| ElastiCache                      | Amazon ElastiCache             | In-memory data store and cache service                                               |
+| CloudFormation                   | AWS CloudFormation             | Infrastructure as code service                                                       |
+| AWS Backup                       | AWS Backup                     | Fully managed backup service for AWS resources                                       |
 
 ### EC2 (Elastic Compute Cloud)
 
@@ -185,7 +184,7 @@ With this structure you can deploy your stack with SAM CLI. This imposes best pr
 
 If you want to set email alerts for lambda fails. Here's best config I'm aware of:
 
-- Period: 15 minutes or 1 minute _(select based on your requirement)_
+- Period: 15 minutes or 1 minute *(select based on your requirement)*
 - Statistic: Sum
 - Metric: Errors
 - Conditions: Greater than 0
@@ -204,6 +203,7 @@ If you want to set email alerts for lambda fails. Here's best config I'm aware o
 ### Lambda
 
 Use below boilerplate code for:
+
 - Noise free logging (avoid duplicate timestamp in CloudWatch)
 - Keep env variables on top to identify which env vars are needed for this lambda
 - Always log event for easier debugging
@@ -253,6 +253,5 @@ Ref: [YouTube Video](https://www.youtube.com/watch?v=BvJWhzMuNlg)
   - Use cloudformation designer & related tool to visualize your AWS infra.
 - Enable AWS Cost Anomaly Detection to monitor your spending and receive alerts for unusual spending patterns. Generally, I prefer 10% threshold on AWS account.
 - Always tag your s3 objects. Examples can be by resource owner, by department, etc.
-- Don't add custom resource names (e.g. lambda name, SQS queue name, table name, etc) when using CloudFormation like `LambdaNameTableName: !Sub "${AWS::StackName}-step-function-locks"`. Allow CloudFormation to generate the unique names so that on next deployment when it tries to deploy existing stack with update when there was error in previous deployment you don't get unwanted errors like resource name is already taken.
 
 <!-- ## 📝 Snippets -->

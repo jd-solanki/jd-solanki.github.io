@@ -1,33 +1,58 @@
 ---
-title: Prompt Engineering - My Findings
-description: Learn useful tips and best practices in prompt engineering.
+title: AI Engineering - My Findings
+description: Learn useful tips and best practices in AI engineering.
 ---
 
 ::accordion
-
-::accordion-item{label=Resources icon="i-lucide-book"}
-
-- [Anthropic - Prompting 101](https://www.youtube.com/watch?v=ysPbXH0LpIE)
-
+  :::accordion-item{icon="i-lucide-book" label="Resources"}
+  - [Anthropic - Prompting 101](https://www.youtube.com/watch?v=ysPbXH0LpIE)
+  - [Matt Pocock - How I use Claude for real engineering](https://www.youtube.com/watch?v=kZ-zzHVUrO4)
+  - [Matt Pocock - Context Engineering](https://www.youtube.com/watch?v=-uW5-TaVXu4)
+  :::
 ::
-::
+
+## ✨ Tips
+
+- Keep your context window lean and avoid roating your context window with unnecessary information. Leaner the context window more accurate AI becomes.
+- When implementing new feature tell AI to break it down in multiple phases and work on each phase one by one. Let it drop TODO comments for future phases in your codebase for reference. It has couple of benefits when you push these next phase plan to GitHub issue:
+  - Keep the context window lean by only focusing on single phase. Clear context window on new phase.
+  - Spawn background agents to work on it
+  - (Not likely but for people who are in hurry) Implementing them later if it can't be done now
+- MCP servers eat up your context window so keep as minimum as possible MCP servers attached to your session/chat.
 
 ## Prompts
+
+### `AGENTS.md`
+
+```md
+- In all interactions and commit messages, be extremely concise and sacrifice grammar for the sake of concision.
+
+## GitHub
+
+- Your primary method for interactive with GitHub should be GitHub CLI
+
+## Plans
+
+- At the end of each plan, give me list of unresolved questions to answer, if any. Make the question extremely concise. Sacrifice grammar for the sake of the concision.
+```
 
 ### General
 
 ```md
 <!-- Much easier to scan, less reading overhead, cheaper to output. (@mattpocockuk) -->
 Be extremely concise. Sacrifice grammar for the sake of concision.
+
+<!-- Push your multiple phase plan to GitHub issues -->
+<!-- Ensure it uses GitHub CLI for this. You might already have it in your AGENTS.md -->
+Make a GtiHub issue containing the current plan, Including all of the the items you have checked off the plan list.
 ```
 
 ### Marketing
 
 - Marketing action where you must grab your audience’s attention and convince them to take action
-
-    ```md
-    Craft a persuasive and succinct messaging strategy that highlights the key selling points of {product/service} and encourages customers to buy. Keep the content persuasive and to the point.
-    ```
+  ```md
+  Craft a persuasive and succinct messaging strategy that highlights the key selling points of {product/service} and encourages customers to buy. Keep the content persuasive and to the point.
+  ```
 
 ### LinkedIn Prompt
 
@@ -174,18 +199,14 @@ Don't be afraid to experiment, track what works, and most importantly, be human.
 ### Writing
 
 - Writing about technical concepts for a technical & non-technical audiences
+  ```md
+  I need to explain {technical_concept} to a developer who has a basic understanding of programming but may be unfamiliar with the specific concept I'm addressing. The explanation should be:
 
-    ```md
-    I need to explain {technical_concept} to a developer who has a basic understanding of programming but may be unfamiliar with the specific concept I'm addressing. The explanation should be:
+  1. Clear, concise, and easy to understand, avoiding technical jargon or complex language that might confuse someone who isn't an expert in the field.
+  Accompanied by two examples:
+  a. A simple and minimal example that demonstrates the concept clearly without any extra content or complexities.
+  b. A real-world example that is still minimalistic but illustrates how the concept can be applied in practical scenarios. Ensure that this example is relevant to common development tasks and avoids unnecessary details.
+  3. Emphasize the practical application of the concept in everyday programming tasks, helping the developer to see the direct relevance and utility of the concept.
+  4. Where applicable, offer brief comparisons with similar concepts to provide context and deepen understanding, while keeping these comparisons concise and to the point.
+  ```
 
-    1. Clear, concise, and easy to understand, avoiding technical jargon or complex language that might confuse someone who isn't an expert in the field.
-    Accompanied by two examples:
-    a. A simple and minimal example that demonstrates the concept clearly without any extra content or complexities.
-    b. A real-world example that is still minimalistic but illustrates how the concept can be applied in practical scenarios. Ensure that this example is relevant to common development tasks and avoids unnecessary details.
-    3. Emphasize the practical application of the concept in everyday programming tasks, helping the developer to see the direct relevance and utility of the concept.
-    4. Where applicable, offer brief comparisons with similar concepts to provide context and deepen understanding, while keeping these comparisons concise and to the point.
-    ```
-
-<br />
-
-👀 more to come...
