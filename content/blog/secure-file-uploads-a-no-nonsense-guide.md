@@ -1,6 +1,6 @@
 ---
 title: "Secure File Uploads: A No-Nonsense Guide"
-description: Learn how to securly upload files to your servers with best practices & recommendations
+description: Learn how to securely upload files to your servers with best practices & recommendations
 ---
 
 File uploads are a common feature, but a frequent source of security holes. Here's a concise guide to doing them right.
