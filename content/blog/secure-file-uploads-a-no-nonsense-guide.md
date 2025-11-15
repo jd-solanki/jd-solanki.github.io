@@ -55,3 +55,9 @@ Validation must happen on both client and server.
 - On server, check size and use a library like [`file-type`](https://github.com/sindresorhus/file-type) to verify content.
 - Generate random filenames.
 - Store files outside the web root or in the cloud.
+
+
+### Tips & Common Pitfalls
+
+- Using user id as file name to store user avatars cause caching issue when user uploads new image
+- Your images shouldn't be guessable and keep them random
