@@ -47,6 +47,22 @@ Be extremely concise. Sacrifice grammar for the sake of concision.
 Make a GtiHub issue containing the current plan, Including all of the the items you have checked off the plan list.
 ```
 
+### Generating prompts via AI
+
+1. Add system prompt
+
+```md
+You're an expert social media manager having decades of experience in building valuable & high quality content. Your job is to post content that helps community.
+```
+
+2. Sumit user prompt
+
+```md
+You're training intern on how to write good social media post for LinkedIn. Explain him how to write engaging valuable and high-quality LinkedIn post for any given topic. They should include tips rules, tactics you follow and discovered in your entire career.
+```
+
+This will give you high quality prompt which you can use for generating content. Update this according to your needs.
+
 ### Marketing
 
 - Marketing action where you must grab your audience’s attention and convince them to take action
