@@ -19,6 +19,7 @@ description: Learn useful tips and best practices in AI engineering.
   - Spawn background agents to work on it
   - (Not likely but for people who are in hurry) Implementing them later if it can't be done now
 - MCP servers eat up your context window so keep as minimum as possible MCP servers attached to your session/chat.
+- Couple of small files > One big file. This helps AI to focus on specific task and also keeps the context clear and your code organized.
 
 ## Prompts
 
