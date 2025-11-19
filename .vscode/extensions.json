@@ -6,6 +6,7 @@
         "antfu.smart-clicks",
         "xabikos.javascriptsnippets",
         "antfu.iconify",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "antfu.vite"
     ]
 }
