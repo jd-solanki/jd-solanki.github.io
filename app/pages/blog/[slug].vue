@@ -5,11 +5,21 @@ const route = useRoute()
 const routePath = withoutTrailingSlash(route.path)
 
 const [{ data: post }, { data: surround }] = await Promise.all([
-  useAsyncData(routePath, () => queryCollection('blog').path(routePath).where('private', '<>', true).first()),
+  useAsyncData(routePath, () => {
+    const query = queryCollection('blog').path(routePath)
+    if (!import.meta.env.DEV) {
+      query.where('private', '<>', true)
+    }
+    return query.first()
+  }),
   useAsyncData(`${routePath}-surround`, () => {
-    return queryCollectionItemSurroundings('blog', routePath, {
+    const query = queryCollectionItemSurroundings('blog', routePath, {
       fields: ['description'],
-    }).where('private', '<>', true)
+    })
+    if (!import.meta.env.DEV) {
+      query.where('private', '<>', true)
+    }
+    return query
   }),
 ])
 

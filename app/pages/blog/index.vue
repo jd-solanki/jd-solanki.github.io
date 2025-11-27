@@ -1,5 +1,11 @@
 <script setup lang="ts">
-const { data: posts } = await useAsyncData('blog', () => queryCollection('blog').where('private', '<>', true).all())
+const { data: posts } = await useAsyncData('blog', () => {
+  const query = queryCollection('blog')
+  if (!import.meta.env.DEV) {
+    query.where('private', '<>', true)
+  }
+  return query.all()
+})
 
 const links = computed(() => {
   return posts.value?.map(post => ({
