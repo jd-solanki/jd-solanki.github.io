@@ -98,13 +98,13 @@ You can also sync Github & GitLab repositories using this method 🤯
 git clone https://github.com/firstorg/myrepo.git
 
 # 2. Add another remote
-git remote set-url --add https://github.com/secondorg/myrepo.git
+git remote set-url --add origin https://github.com/secondorg/myrepo.git
 
 # 3. Verify the remotes
 git remote -v # Output should have two push urls
 
-# 4. Push to both remotes
-git push --all # I guess regular git push might work as well
+# 4. Push to both remotes with regular push command
+git push
 ```
 
 ## 🧮 Misc
