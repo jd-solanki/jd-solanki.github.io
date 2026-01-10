@@ -37,7 +37,7 @@ This will now support most of the editors and Claude Code also.
 
 ## Skills
 
-1. Store rules under `.ai/skills/<skill>.md`
+1. Store rules under `.ai/skills/<skill>/SKILL.md`
 
 2. Create symlink to `.claude/skills/` which is now widely adopted by Claude Code, VS Code, Cursor, etc.
 
