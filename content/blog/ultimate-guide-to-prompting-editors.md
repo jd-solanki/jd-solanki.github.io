@@ -7,6 +7,7 @@ date: 2025-01-25
 ::accordion
 
 ::accordion-item{label=Resources icon="i-lucide-book"}
+
 - [VSCode Prompting](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
 ::
 ::
@@ -34,6 +35,16 @@ This will now support most of the editors and Claude Code also.
   mkdir -p .claude && ln -s ../.ai/commands .claude/commands
   ```
 
+## Skills
+
+1. Store rules under `.ai/skills/<skill>.md`
+
+2. Create symlink to `.claude/skills/` which is now widely adopted by Claude Code, VS Code, Cursor, etc.
+
+  ```shell
+  mkdir -p .claude && ln -s ../.ai/skills .claude/skills
+  ```
+
 ## Rules
 
 1. Store rules under `.ai/rules/<name>.instructions.md`
@@ -44,20 +55,19 @@ This will now support most of the editors and Claude Code also.
   ln -s ../.ai/rules .cursor/rules
   ```
 
-3. Copilot support by adding this setting in `.vscode/settings.json`
+1. Copilot support by adding this setting in `.vscode/settings.json`
 
   ```json
   {
     "chat.instructionsFilesLocations": {
       ".ai/rules": true
-    },
+    }
   }
   ```
 
   :::note
   Copilot calls it instructions and requires files to have `.instructions.md` suffix
   :::
-
 
 :::note
 Claude Code doesn't support rules
