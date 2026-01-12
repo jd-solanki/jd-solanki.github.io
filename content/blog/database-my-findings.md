@@ -42,6 +42,7 @@ Thi is because `COUNT(*)` has to count all the records, while `SELECT 1 + LIMIT 
 
 - Prefer using `deactivated_at` or `deleted_at` timestamp columns instead of `is_deleted` or `is_active` for soft deletion. With this you'll be able to track when the record was deleted or deactivated. Only downside is when user wants to restore the record, you have to update the timestamp column to null which seems erasing the history of when it was deleted or deactivated.
 - Add `deactivated_at` and `banned_at` timestamp columns to user table instead of account table. This will restrict directly on user where adding to account table won't mak much sense.
+- Prefer database look ups over enums for flexibility. [[Reference](https://www.youtube.com/watch?v=CkRbgDD7jNM)]
 
 ## Table Definition
 
