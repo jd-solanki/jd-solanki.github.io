@@ -65,3 +65,13 @@ Thi is because `COUNT(*)` has to count all the records, while `SELECT 1 + LIMIT 
 | `address`       | string | 255    |
 | `zip_code`      | string | 10     |
 | `title`         | string | 255    |
+
+## Webhook Table Design
+
+> Learn based practices to design tables that sync data from remote data to local database via webhooks or any other mechanism
+
+- Avoid adding constraints on database columns. Let your data layer have raw data and your application layer handles the validation. For example, instead of using enums for status in your database, prefer text field and at application layer use schema validation libraries like Zod or Pydantic to validate the data. This way you won't miss any webhook data and you will always have data synced to your database and while developing or in production if there's any mismatch between your expectations and the actual received data you can throw error and get alert.
+
+    :::note
+    You may prefer reading [API findings for Webhooks](/blog/rest-api-design-tips#webhooks).
+    :::

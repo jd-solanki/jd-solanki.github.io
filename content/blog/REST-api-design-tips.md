@@ -239,3 +239,51 @@ https://api.example.com/tasks?sort=-created_at,title
 ## SEO
 
 - Hyphens improve keyword recognition in URL (excluding query parameters). E.g. `/product-details`
+
+## Webhooks
+
+- **Unique Endpoints**: Avoid using a single, generic endpoint for all services (e.g., `/webhooks`). Instead, create specific paths for each service.
+
+  - Example: /webhooks/stripe, /webhooks/github, /webhooks/shopify.
+
+- **Descriptive Naming**: The URLs should clearly indicate which service they belong to.
+- **Security & Validation**: Each endpoint should implement specific security measures required by the corresponding service (e.g., secret keys, signature verification, IP whitelisting).
+- **Version Control**: If your API evolves, include versioning in the URL to prevent breaking existing integrations.
+
+  - Example: `/api/v1/webhooks/github`.
+
+- **Example Endpoints:**
+
+    | Service | Recommended URL Structure |
+    | --- | --- |
+    | GitHub | api.yourdomain.com |
+    | Stripe | api.yourdomain.com |
+    | Twilio | api.yourdomain.com |
+    | Generic/Catch-all | api.yourdomain.com[service_name] |
+
+- **Best Practices:**
+
+  - **HTTPS Only**: Always use HTTPS for all webhook endpoints to ensure encrypted communication [1].
+  - **Acknowledge Immediately**: Your endpoint should process the request quickly and return a 200 OK status to the sender as soon as possible, even if you queue the actual processing for later [1].
+  - **Idempotency**: Implement a mechanism to handle duplicate requests gracefully (e.g., using a unique identifier in the request headers) to prevent processing the same event multiple times.
+
+<br/>
+
+- **Storing Raw Webhook Events in Database:**
+
+  - **Error Handling and Reprocessing**: If your initial processing logic fails due to a bug, network issue, or dependency outage, having the raw event data stored allows you to re-queue and reprocess the event once the underlying problem is resolved.
+  - **Debugging and Auditing**: Stored raw events provide a complete, immutable log of what you received. This is invaluable for debugging when something goes wrong and for auditing system behavior.
+  - **Data Integrity**: It ensures you capture the complete payload exactly as sent by the source, preventing potential data loss if your real-time processing fails to extract all necessary fields immediately.
+  - **Decoupling Ingestion from Processing**: By storing the event first and then processing it asynchronously (e.g., using a queue worker), you can respond quickly to the webhook source with a 200 OK status, improving reliability and preventing the source from retrying repeatedly.
+
+  - **Best Practices for Storage**
+
+    - **Asynchronous Processing**: Implement a "store first, process later" pattern. A dedicated background job or message queue should pick up the stored events for actual processing.
+    - **Data Structure**: Store the full JSON or raw text payload in a dedicated column (e.g., a  or  type, depending on your database).
+    - **Metadata**: Include relevant metadata such as the time received, the source/provider (e.g., Stripe, GitHub), and a processing status (e.g., , , ).
+    - **Retention Policy**: Implement a data retention policy to clean up old events after a certain period (e.g., 30-90 days) to prevent the database from growing indefinitely.
+    - **Security**: Ensure sensitive data within webhooks is handled securely, possibly with encryption at rest, and adhere to relevant privacy regulations.
+
+:::note
+You may prefer reading [Database findings for Webhooks](/blog/database-my-findings#webhook-table-design).
+:::
