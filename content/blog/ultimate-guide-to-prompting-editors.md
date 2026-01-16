@@ -44,6 +44,7 @@ This will now support most of the editors and Claude Code also.
   ```shell
   mkdir -p .claude && ln -s ../.ai/skills .claude/skills
   mkdir -p .github && ln -s ../.ai/skills .github/skills
+  mkdir -p .opencode && ln -s ../.ai/skills .opencode/skills
   ```
 
 ## Rules
