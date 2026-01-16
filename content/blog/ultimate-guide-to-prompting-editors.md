@@ -39,10 +39,11 @@ This will now support most of the editors and Claude Code also.
 
 1. Store rules under `.ai/skills/<skill>/SKILL.md`
 
-2. Create symlink to `.claude/skills/` which is now widely adopted by Claude Code, VS Code, Cursor, etc.
+2. Create symlink to for Copilot, Cursor & Claude Code support
 
   ```shell
   mkdir -p .claude && ln -s ../.ai/skills .claude/skills
+  mkdir -p .github && ln -s ../.ai/skills .github/skills
   ```
 
 ## Rules
