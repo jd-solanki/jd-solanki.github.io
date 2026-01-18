@@ -13,6 +13,7 @@ date: 2025-11-19
 - Ensure your website is mobile-friendly and responsive
 - Improve page load speed by optimizing images, leveraging browser caching, and minimizing code
 - Use header tags (H1, H2, H3) to structure your content effectively
+- Don't include URLs which are redirected to your sitemap.xml
 
 ## Checklist
 
