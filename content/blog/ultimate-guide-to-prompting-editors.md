@@ -12,6 +12,8 @@ date: 2025-01-25
 ::
 ::
 
+We'll focus on VS Code, Cursor, Claude Code & OpenCode as they are the most popular AI-assisted coding editors.
+
 ## `AGENTS.md`
 
 1. Create `AGENTS.md` in root of your project.
@@ -47,6 +49,73 @@ This will now support most of the editors and Claude Code also.
   mkdir -p .cursor && ln -s ../.ai/skills .cursor/skills
   mkdir -p .opencode && ln -s ../.ai/skills .opencode/skills
   ```
+
+## MCPs
+
+Syncing MCP across different tooling requires some manual work.
+
+1. Create various MCPs under `.ai/mcp/mcp.<tool>.json`
+
+    ```json
+    // .ai/mcp/mcp.vscode.json
+    {
+      "servers": {
+        "context7": {
+          "type": "http",
+          "url": "https://mcp.context7.com/mcp",
+          "headers": {
+            "CONTEXT7_API_KEY": "YOUR_API_KEY"
+          }
+        }
+      }
+    }
+    ```
+
+    ```json
+    // .ai/mcp/mcp.cc.json
+    {
+      "mcpServers": {
+        "context7": {
+          "type": "http",
+          "url": "https://mcp.context7.com/mcp",
+          "headers": {
+            "CONTEXT7_API_KEY": "YOUR_API_KEY"
+          }
+        }
+      }
+    }
+    ```
+
+2. Sync MCPs via symlink
+
+```shell
+# VS Code
+mkdir -p .vscode && ln -s ../.ai/mcp/mcp.vscode.json .vscode/mcp.json
+
+# Claude Code
+ln -s ./.ai/mcp/mcp.cc.json .mcp.json
+
+# Cursor
+mkdir -p .cursor && ln -s ../.ai/mcp/mcp.cc.json .cursor/mcp.json
+```
+
+1. We can't sync OpenCode MCPs via symlink as it requires editing their settings file. Maintain following:
+
+```json
+// .opencode.json
+{
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "YOUR_API_KEY"
+      },
+      "enabled": true
+    }
+  }
+}
+```
 
 ## Rules
 

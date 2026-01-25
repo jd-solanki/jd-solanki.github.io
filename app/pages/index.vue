@@ -82,15 +82,15 @@ const appConfig = useAppConfig()
             </template>
             <div class="space-y-6">
               <UPageFeature
-                title="LaunchDayOne"
-                description="Production ready Nuxt boilerplate"
-                to="https://launchdayone.com"
+                title="NuxtStart"
+                description="Production ready Nuxt Starter Kit"
+                to="https://nuxtstart.com"
                 target="_blank"
               >
                 <template #leading>
                   <UColorModeImage
-                    light="https://launchdayone.netlify.app/logo.png"
-                    dark="https://launchdayone.netlify.app/logo-light.png"
+                    light="https://nuxtstart.com/logo.png"
+                    dark="https://nuxtstart.com/logo-dark.png"
                     class="size-6 shrink-0 grow-0"
                   />
                 </template>
