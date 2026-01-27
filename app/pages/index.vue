@@ -101,6 +101,14 @@ const appConfig = useAppConfig()
                 icon="i-lucide-bot"
                 :ui="{ leadingIcon: 'text-(--ui-text-heading)' }"
               />
+              <UPageFeature
+                title="Notion Avatars"
+                description="Generate Notion style avatars"
+                icon="i-lucide-circle-user"
+                target="_blank"
+                to="https://notion-avatars.netlify.app/"
+                :ui="{ leadingIcon: 'text-(--ui-text-heading)' }"
+              />
             </div>
           </UCard>
         </div>
