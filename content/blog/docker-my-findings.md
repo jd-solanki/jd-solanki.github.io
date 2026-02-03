@@ -53,6 +53,9 @@ docker start <container-id/container-name>
 
 docker compose up     # Run containers defined in `docker-compose.yml` file
 docker compose down   # Stop and remove containers defined in `docker-compose.yml` file
+
+docker exec -it <container-id/container-name> sh # Access the container's shell
+docker exec -it <container-id/container-name> -c "npm install"  # Run command inside the container
 ```
 
 ## Glossary
