@@ -18,5 +18,6 @@
     "cSpell.words": [
         "Nuxt",
         "Solanki"
-    ]
+    ],
+    "workbench.browser.openLocalhostLinks": true
 }
