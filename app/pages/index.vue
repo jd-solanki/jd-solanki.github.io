@@ -82,6 +82,30 @@ const appConfig = useAppConfig()
             </template>
             <div class="space-y-6">
               <UPageFeature
+                title="Krutrimbox"
+                description="Agent Harness & Orchestrator"
+                icon="i-lucide-box"
+                target="_blank"
+                to="https://github.com/jd-solanki/krutrimbox"
+                :ui="{ leadingIcon: 'text-(--ui-text-heading)' }"
+              />
+              <UPageFeature
+                title="airig"
+                description="AI Setup Distribution"
+                icon="i-lucide-sparkle"
+                target="_blank"
+                to="https://github.com/jd-solanki/airig"
+                :ui="{ leadingIcon: 'text-(--ui-text-heading)' }"
+              />
+              <UPageFeature
+                title="envolix"
+                description="Single CLI to all .env operations"
+                icon="i-lucide-file-code-2"
+                target="_blank"
+                to="https://github.com/jd-solanki/envolix"
+                :ui="{ leadingIcon: 'text-(--ui-text-heading)' }"
+              />
+              <UPageFeature
                 title="NuxtStart"
                 description="Production ready Nuxt Starter Kit"
                 to="https://nuxtstart.com"
